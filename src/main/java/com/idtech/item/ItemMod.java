@@ -1,35 +1,44 @@
 package com.idtech.item;
 
-import net.minecraft.world.item.CreativeModeTab;
+import com.idtech.BaseMod;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber
 public class ItemMod {
 
-    //BASIC ITEMS
-    public static final Item STRUCTURE_GEL = ItemUtils.buildBasicItem("structuregel", CreativeModeTab.TAB_MISC);
+    // make the register
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, BaseMod.MODID);
 
-    //FOODS
+    // item example
+    public static final RegistryObject<Item> BASIC_ITEM = ITEMS.register("basic_item",
+            () -> new Item(new Item.Properties()));
 
+    // ITEMS
 
-    @SubscribeEvent
-    public static void registerItems(RegistryEvent.Register<Item> event) {
+    // TOOLS
 
-        //BASIC ITEMS
-        event.getRegistry().register(STRUCTURE_GEL);
+    // FOOD
 
-        // ITEMS
+    // ARMOR
 
-        // TOOLS
+    // PROJECTILES
 
-        // FOOD
+    // SPAWN EGGS
 
-        // ARMOR
+    // spawn egg example
+    /*public static final RegistryObject<Item> BASIC_ENTITY_SPAWN_EGG = ITEMS.register("basic_entity_spawn_egg",
+        () -> new ForgeSpawnEggItem(EntityMod.BASIC_ENTITY, 0xAAAAAA, 0xBBBBBB,
+            new Item.Properties()));
+     */
 
-        //PROJECTILES
+    // register all the items so they can show up in game
+    public static void register(IEventBus eventBus){
+
+        ITEMS.register(eventBus);
 
     }
+
 }

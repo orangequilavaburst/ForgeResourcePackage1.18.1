@@ -1,52 +1,23 @@
 package com.idtech.item;
 
-import com.idtech.BaseMod;
-
-import net.minecraft.core.Registry;
+import net.minecraft.Util;
 import net.minecraft.resources.ResourceLocation;
-
-import net.minecraft.tags.Tag;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.Optional;
+import java.util.EnumMap;
 import java.util.function.Supplier;
 
 /**
  * Utilities for creating new item and doing things with item
  */
 public class ItemUtils {
-
-    /**
-     * Build a basic item with no added functionality. Useful for crafting materials, drops, ingots, currency, anything
-     * that doesn't need extra code.
-     * @param name Item registry name. All lowercase, no spaces. e.g. "meteor_ingot"
-     * @param group Item group (creative tab) the item will appear in.
-     * @return The built item.
-     */
-    public static Item buildBasicItem(String name, CreativeModeTab group){
-        return new Item(new Item.Properties().tab(group)).setRegistryName(BaseMod.MODID, name);
-    }
-
-    /**
-     * Create a new food item to register a food and have it appear in the game
-     * @param name the name of the food item for registry and textures
-     * @param food the food item itself.
-     * @return
-     */
-    public static Item buildFoodItem(String name, FoodProperties food){
-        return new Item(new Item.Properties().tab(CreativeModeTab.TAB_FOOD).food(food)).setRegistryName(BaseMod.MODID, name);
-    }
-
 
     /**
      *  Create a new armor material. Used for new armor sets that use custom materials.
@@ -82,7 +53,7 @@ public class ItemUtils {
      * @return the built Armor Material
      */
     public static ArmorMaterial buildArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountArrayIn, int enchantabilityIn, SoundEvent eqiupSoundIn,
-                                                   float toughnessIn, float knockbackResistanceIn, Tag<Item> itemTag){
+                                                   float toughnessIn, float knockbackResistanceIn, ItemStack itemTag){
         Supplier<Ingredient> ingredientSupplier = () -> Ingredient.of(itemTag);
         return buildArmorMaterial(nameIn, maxDamageFactorIn, damageReductionAmountArrayIn, enchantabilityIn, eqiupSoundIn, toughnessIn, knockbackResistanceIn, ingredientSupplier);
 
@@ -118,16 +89,20 @@ public class ItemUtils {
             ;
 
 
-        public int getDurabilityForSlot(EquipmentSlot slotIn){
-            return MAX_DAMAGE_ARRAY[slotIn.getIndex()] * this.maxDamageFactor;
+
+        @Override
+        public int getDurabilityForType(ArmorItem.Type p_266807_) {
+            return MAX_DAMAGE_ARRAY[p_266807_.getSlot().getIndex()] * this.maxDamageFactor;
         }
-        public int getDefenseForSlot(EquipmentSlot slotIn) {
-                return this.damageReductionAmountArray[slotIn.getIndex()];
+
+        @Override
+        public int getDefenseForType(ArmorItem.Type p_267168_) {
+            return this.damageReductionAmountArray[p_267168_.getSlot().getIndex()];
         }
 
         public int getEnchantmentValue () {
-            return this.enchantability;
-        }
+        return this.enchantability;
+    }
 
         public SoundEvent getEquipSound() {
             return this.soundEvent;

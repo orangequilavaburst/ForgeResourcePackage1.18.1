@@ -1,27 +1,17 @@
 package com.idtech;
 
-import com.idtech.block.*;
+import com.idtech.block.BlockMod;
 import com.idtech.enchantment.EnchantmentMod;
-import com.idtech.entity.*;
-import com.idtech.item.*;
-
-//import com.idtech.world.WorldMod;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.Tiers;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
+import com.idtech.entity.EntityMod;
+import com.idtech.item.CreativeModeTabMod;
+import com.idtech.item.ItemMod;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.TierSortingRegistry;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -32,8 +22,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Collectors;
 
 /**
@@ -45,19 +33,54 @@ import java.util.stream.Collectors;
 public class BaseMod {
 
     // Change your modid here. Whenever modid is needed, use BaseMod.MODID
-    public static final String MODID = "examplemod";
+    public static final String MODID = "yourmodname";
     private static final Logger LOGGER = LogManager.getLogger(BaseMod.MODID);
 
     public BaseMod() {
+
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
         // Register the setup method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        modEventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
+        modEventBus.addListener(this::enqueueIMC);
         // Register the processIMC method for modloading
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+        modEventBus.addListener(this::processIMC);
+        // Register adding stuff to the creative mode menu
+        modEventBus.addListener(this::addCreative);
+
+        // Register items, blocks, and other registry things
+        CreativeModeTabMod.register(modEventBus);
+        ItemMod.register(modEventBus);
+        BlockMod.register(modEventBus);
+        EntityMod.register(modEventBus);
+        EnchantmentMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+    }
+
+    // register your items here!
+    private void addCreative(BuildCreativeModeTabContentsEvent event){
+
+        // different items go in different creative mode tabs!
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS){
+
+            event.accept(BlockMod.BASIC_BLOCK);
+
+        }
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
+
+            event.accept(ItemMod.BASIC_ITEM);
+
+        }
+        if (event.getTabKey() == CreativeModeTabMod.BASIC_CREATIVE_MODE_TAB.getKey()){
+
+            event.accept(ItemMod.BASIC_ITEM);
+            event.accept(BlockMod.BASIC_BLOCK);
+
+        }
+
     }
 
     /**
@@ -101,72 +124,9 @@ public class BaseMod {
     }
     // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
     // Event bus for receiving Registry Events)
+
     @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
     public static class RegistryEvents {
-//        @SubscribeEvent
-//        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-//            // register a new block here
-//            LOGGER.info("HELLO from Register Block");
-//        }
-
-        /**
-         * Registers block during mod setup
-         *
-         * @param event RegistryEvent to access the block registry
-         */
-        @SubscribeEvent
-        public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-            LOGGER.info("Registering Blocks");
-
-
-//            event.getRegistry().register(BlockMod.CASTLE_WALL);
-            BlockMod.registerBlocks(event);
-
-        }
-
-
-        /**
-         * Registers item during mod setup
-         *
-         * @param event RegistryEvent to access the item registry
-         */
-        @SubscribeEvent
-        public static void registerItems(final RegistryEvent.Register<Item> event) {
-            LOGGER.info("Registering Items");
-            // Add item registry calls here.
-            // event.getRegistry.register(<item variable>)
-
-            ItemMod.registerItems(event);
-            BlockMod.registerBlockItems(event);
-            EntityMod.registerEntityEggs(event);
-
-        }
-
-
-        /**
-         * Registers entities during mod setup
-         *
-         * @param event RegistryEvent to access the entity registry
-         */
-        @SubscribeEvent
-        public static void registerEntities(final RegistryEvent.Register<EntityType<?>> event) {
-            BaseMod.LOGGER.info("Registering Entities");
-            // Add item registry calls here.
-            // event.getRegistry.register(<entity type>)
-            // also register the entity attributes with:
-            // GlobalEntityTypeAttributes.put(<entity type>, <entity attribute method>.func_233813_a_());
-            EntityMod.registerEntities(event);
-
-        }
-
-        @SubscribeEvent
-        public static void registerBiomes(final RegistryEvent.Register<Biome> event) {
-            BaseMod.LOGGER.info("Registering Biomes");
-            // Add biome registry calls here
-            // event.getRegistry.register(<biome variable>)
-//            WorldMod.registerBiomes(event);
-
-        }
 
         @SubscribeEvent
         public static void entityRenderers(final EntityRenderersEvent.RegisterRenderers event){
@@ -177,10 +137,6 @@ public class BaseMod {
             EntityMod.onAttributeCreate(event);
         }
 
-        @SubscribeEvent
-        public static void registerEnchantments(final RegistryEvent.Register<Enchantment> event){
-            EnchantmentMod.registerEnchantments(event);
-        }
 
     }
 }

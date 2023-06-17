@@ -1,40 +1,57 @@
 package com.idtech.block;
 
 
-import net.minecraft.world.item.CreativeModeTab;
+import com.idtech.BaseMod;
+import com.idtech.item.ItemMod;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-//import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.material.Material;
-//import net.minecraftforge.common.ToolType;
-import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber
+import java.util.function.Supplier;
+
 public class BlockMod {
 
-    //Basic Block
-    public static final Block CASTLE_WALL = BlockUtils.createBasicBlock("castlewall", Material.STONE);
-    public static final Item CASTLE_WALL_ITEM = BlockUtils.createBlockItem(CASTLE_WALL, CreativeModeTab.TAB_MISC);
+    // make the register
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, BaseMod.MODID);
+
+    // block example
+    public static final RegistryObject<Block> BASIC_BLOCK = registerBlock("basic_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.STONE)));
+
+    // BLOCKS
 
 
-    @SubscribeEvent
-    public static void registerBlockItems(RegistryEvent.Register<Item> event) {
 
-        event.getRegistry().register(CASTLE_WALL_ITEM);
+    // quick function for registering the block and its item
+    private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
 
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
+        return toReturn;
 
+    }
+
+    // since you need the item to go along with the block, we register the block item here
+    private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block){
+
+        // makes an item for our block
+        return ItemMod.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()));
 
     }
 
-    @SubscribeEvent
-    public static void registerBlocks(RegistryEvent.Register<Block> event) {
+    // register all the blocks so they can show up in game
+    public static void register(IEventBus eventBus){
 
-        event.getRegistry().register(CASTLE_WALL);
-
+        BLOCKS.register(eventBus);
 
     }
+
 }
 
 

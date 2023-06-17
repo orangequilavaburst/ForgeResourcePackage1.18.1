@@ -51,7 +51,7 @@ public class Utils {
      * @param explosionRadius the radius of the explosion
      */
     public static void createExplosion(Level level, BlockPos location, float explosionRadius){
-        level.explode(null, location.getX(), location.getY(), location.getZ(), explosionRadius, Explosion.BlockInteraction.BREAK);
+        level.explode(null, location.getX(), location.getY(), location.getZ(), explosionRadius, Level.ExplosionInteraction.NONE);
        // level.explode()
     }
 
@@ -83,7 +83,7 @@ public class Utils {
         ClipContext.Fluid fluidMode = ignoreFluids ? ClipContext.Fluid.NONE : ClipContext.Fluid.ANY;
 
         ClipContext rayTraceContext = new ClipContext(player.getEyePosition(1), player.getEyePosition(1).add(player.getLookAngle().scale(distance)), ClipContext.Block.COLLIDER, fluidMode, player);
-        BlockHitResult blockHit = player.level.clip(rayTraceContext);
+        BlockHitResult blockHit = player.level().clip(rayTraceContext);
 
         if(blockHit.getType() == BlockHitResult.Type.MISS){
             return null;
