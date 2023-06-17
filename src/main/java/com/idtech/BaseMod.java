@@ -68,16 +68,52 @@ public class BaseMod {
 
             event.accept(BlockMod.BASIC_BLOCK);
 
+            event.accept(BlockMod.DRAGONSTONE_ORE);
+            event.accept(BlockMod.DEEPSLATE_DRAGONSTONE_ORE);
+            event.accept(BlockMod.DRAGONSTONE_BLOCK);
+            event.accept(BlockMod.RAW_DRAGONSTONE_BLOCK);
+
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
 
             event.accept(ItemMod.BASIC_ITEM);
+
+            event.accept(ItemMod.DRAGONSTONE);
+            event.accept(ItemMod.RAW_DRAGONSTONE);
+
+        }
+        if (event.getTabKey() == CreativeModeTabs.COMBAT){
+
+            event.accept(ItemMod.DRAGONSTONE_SWORD);
+
+        }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
+
+            event.accept(ItemMod.DRAGONSTONE_AXE);
+            event.accept(ItemMod.DRAGONSTONE_HOE);
+            event.accept(ItemMod.DRAGONSTONE_SHOVEL);
+            event.accept(ItemMod.DRAGONSTONE_PICKAXE);
+
 
         }
         if (event.getTabKey() == CreativeModeTabMod.BASIC_CREATIVE_MODE_TAB.getKey()){
 
             event.accept(ItemMod.BASIC_ITEM);
             event.accept(BlockMod.BASIC_BLOCK);
+
+            event.accept(BlockMod.DRAGONSTONE_ORE);
+            event.accept(BlockMod.DEEPSLATE_DRAGONSTONE_ORE);
+            event.accept(BlockMod.DRAGONSTONE_BLOCK);
+            event.accept(BlockMod.RAW_DRAGONSTONE_BLOCK);
+
+            event.accept(ItemMod.DRAGONSTONE);
+            event.accept(ItemMod.RAW_DRAGONSTONE);
+
+            event.accept(ItemMod.DRAGONSTONE_AXE);
+            event.accept(ItemMod.DRAGONSTONE_HOE);
+            event.accept(ItemMod.DRAGONSTONE_SHOVEL);
+            event.accept(ItemMod.DRAGONSTONE_PICKAXE);
+            event.accept(ItemMod.DRAGONSTONE_SWORD);
 
         }
 

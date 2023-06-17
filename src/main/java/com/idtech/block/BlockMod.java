@@ -3,10 +3,13 @@ package com.idtech.block;
 
 import com.idtech.BaseMod;
 import com.idtech.item.ItemMod;
+import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,7 +29,17 @@ public class BlockMod {
 
     // BLOCKS
 
+    public static final RegistryObject<Block> DRAGONSTONE_BLOCK = registerBlock("dragonstone_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).mapColor(DyeColor.ORANGE)));
 
+    public static final RegistryObject<Block> RAW_DRAGONSTONE_BLOCK = registerBlock("raw_dragonstone_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK).mapColor(DyeColor.ORANGE)));
+
+    public static final RegistryObject<Block> DRAGONSTONE_ORE = registerBlock("dragonstone_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
+
+    public static final RegistryObject<Block> DEEPSLATE_DRAGONSTONE_ORE = registerBlock("deepslate_dragonstone_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
 
     // quick function for registering the block and its item
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){

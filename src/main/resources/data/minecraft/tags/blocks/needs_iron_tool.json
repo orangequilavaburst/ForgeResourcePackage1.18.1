@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
 
-    "yourmodname:dragonstone_block",
-    "yourmodname:raw_dragonstone_block",
     "yourmodname:dragonstone_ore",
     "yourmodname:deepslate_dragonstone_ore"
 
