@@ -1,5 +1,23 @@
 {
   "item.yourmodname.basic_item": "Basic Item",
+  "item.yourmodname.dragonstone": "Dragonstone",
+  "item.yourmodname.raw_dragonstone": "Raw Dragonstone",
+  "item.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
+  "item.yourmodname.dragonstone_axe": "Dragonstone Axe",
+  "item.yourmodname.dragonstone_shovel": "Dragonstone Shovel",
+  "item.yourmodname.dragonstone_pickaxe": "Dragonstone Pickaxe",
+  "item.yourmodname.dragonstone_hoe": "Dragonstone Hoe",
+  "item.yourmodname.dragonstone_sword": "Dragonstone Sword",
+  "item.yourmodname.dragonstone_helmet": "Dragonstone Helmet",
+  "item.yourmodname.dragonstone_chestplate": "Dragonstone Chestplate",
+  "item.yourmodname.dragonstone_leggings": "Dragonstone Leggings",
+  "item.yourmodname.dragonstone_boots": "Dragonstone Boots",
+
   "block.yourmodname.basic_block": "Basic Block",
+  "block.yourmodname.dragonstone_ore": "Dragonstone Ore",
+  "block.yourmodname.deepslate_dragonstone_ore": "Deepslate Dragonstone Ore",
+  "block.yourmodname.dragonstone_block": "Dragonstone Block",
+  "block.yourmodname.raw_dragonstone_block": "Raw Dragonstone Block",
+
   "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab"
 }
