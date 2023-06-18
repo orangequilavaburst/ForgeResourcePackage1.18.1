@@ -103,6 +103,12 @@ public class BaseMod {
 
 
         }
+        if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
+
+            event.accept(ItemMod.CHEESEBURGER);
+            event.accept(ItemMod.HOT_DOG);
+
+        }
         if (event.getTabKey() == CreativeModeTabMod.BASIC_CREATIVE_MODE_TAB.getKey()){
 
             event.accept(ItemMod.BASIC_ITEM);
@@ -126,6 +132,9 @@ public class BaseMod {
             event.accept(ItemMod.FIREBALL_WAND);
             event.accept(ItemMod.FISH_SLAPPER);
             event.accept(ItemMod.TOTEM_OF_HONESTY);
+
+            event.accept(ItemMod.CHEESEBURGER);
+            event.accept(ItemMod.HOT_DOG);
 
         }
 
