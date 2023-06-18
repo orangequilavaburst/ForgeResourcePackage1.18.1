@@ -1,5 +1,6 @@
 package com.idtech.entity.custom;
 
+import com.idtech.entity.EntityMod;
 import com.idtech.item.ItemMod;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
@@ -26,17 +27,17 @@ public class DragonstoneArrowEntity extends AbstractArrow {
     private int life;
 
     public DragonstoneArrowEntity(EntityType<? extends AbstractArrow> pEntityType, Level pLevel) {
-        super(pEntityType, pLevel);
+        super(EntityMod.DRAGONSTONE_ARROW_ENTITY.get(), pLevel);
         this.life = 0;
     }
     public DragonstoneArrowEntity(EntityType<? extends AbstractArrow> pEntityType, LivingEntity pShooter, Level pLevel) {
-        super(pEntityType, pShooter, pLevel);
+        super(EntityMod.DRAGONSTONE_ARROW_ENTITY.get(), pShooter, pLevel);
         setOwnerUUID(pShooter.getStringUUID());
         this.life = 0;
     }
 
     public DragonstoneArrowEntity(EntityType<? extends AbstractArrow> pEntityType, double pX, double pY, double pZ, Level pLevel) {
-        super(pEntityType, pLevel);
+        super(EntityMod.DRAGONSTONE_ARROW_ENTITY.get(), pLevel);
         this.life = 0;
     }
 
