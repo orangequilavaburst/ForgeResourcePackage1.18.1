@@ -1,8 +1,7 @@
 package com.idtech.item;
 
 import com.idtech.BaseMod;
-import com.idtech.item.custom.DragonstoneArrowItem;
-import com.idtech.item.custom.DragonstoneMagnetItem;
+import com.idtech.item.custom.*;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -48,6 +47,15 @@ public class ItemMod {
 
     public static final RegistryObject<Item> DRAGONSTONE_MAGNET = ITEMS.register("dragonstone_magnet",
             () -> new DragonstoneMagnetItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
+            () -> new FireballWandItem(new Item.Properties().rarity(Rarity.EPIC)));
+
+    public static final RegistryObject<Item> FISH_SLAPPER = ITEMS.register("fish_slapper",
+            () -> new FishSlapperItem(new Item.Properties().rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> TOTEM_OF_HONESTY = ITEMS.register("totem_of_honesty",
+            () -> new HonestyTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
     // FOOD
 

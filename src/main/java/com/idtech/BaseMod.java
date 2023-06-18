@@ -5,6 +5,7 @@ import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
+import com.idtech.sound.SoundMod;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -55,6 +56,7 @@ public class BaseMod {
         BlockMod.register(modEventBus);
         EntityMod.register(modEventBus);
         EnchantmentMod.register(modEventBus);
+        SoundMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -86,6 +88,9 @@ public class BaseMod {
 
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
+            event.accept(ItemMod.FIREBALL_WAND);
+            event.accept(ItemMod.FISH_SLAPPER);
+            event.accept(ItemMod.TOTEM_OF_HONESTY);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -118,6 +123,9 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
+            event.accept(ItemMod.FIREBALL_WAND);
+            event.accept(ItemMod.FISH_SLAPPER);
+            event.accept(ItemMod.TOTEM_OF_HONESTY);
 
         }
 

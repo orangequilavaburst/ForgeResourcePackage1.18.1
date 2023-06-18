@@ -1,0 +1,9 @@
+{
+  "honesty_totem_use":
+  {
+    "subtitle": "sounds.yourmodname.honesty_totem_use",
+    "sounds": [
+      "yourmodname:honesty_totem_use"
+    ]
+  }
+}
