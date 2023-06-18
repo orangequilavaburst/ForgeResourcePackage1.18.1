@@ -1,7 +1,7 @@
 package com.idtech.entity.render;
 
 import com.idtech.BaseMod;
-import com.idtech.entity.DragonstoneArrowEntity;
+import com.idtech.entity.custom.DragonstoneArrowEntity;
 import net.minecraft.client.renderer.entity.ArrowRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;

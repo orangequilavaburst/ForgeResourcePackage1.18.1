@@ -1,6 +1,6 @@
 package com.idtech.item.custom;
 
-import com.idtech.entity.DragonstoneArrowEntity;
+import com.idtech.entity.custom.DragonstoneArrowEntity;
 import com.idtech.entity.EntityMod;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.AbstractArrow;

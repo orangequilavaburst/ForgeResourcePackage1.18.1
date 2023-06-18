@@ -1,6 +1,7 @@
 package com.idtech.entity;
 
 import com.idtech.BaseMod;
+import com.idtech.entity.custom.DragonstoneArrowEntity;
 import com.idtech.entity.render.DragonstoneArrowRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
@@ -22,7 +23,7 @@ public class EntityMod {
     // public static final RegistryObject<EntityType<BasicEntity>> BASIC_ENTITY = ENTITY_TYPES.register("basic_entity", () -> EntityType.Builder.of(BasicEntity::new, ModCategory.MONSTER).sized(0.4f, 1.5f).build(new ResourceLocation(BaseMod.MOD_ID, "basic_entity").toString()));
 
     public static final RegistryObject<EntityType<DragonstoneArrowEntity>> DRAGONSTONE_ARROW_ENTITY = ENTITY_TYPES.register("dragonstone_arrow",
-            () -> EntityType.Builder.of((EntityType.EntityFactory<DragonstoneArrowEntity>)DragonstoneArrowEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).build(new ResourceLocation(BaseMod.MODID, "dragonstone_arrow").toString()));
+            () -> EntityType.Builder.of((EntityType.EntityFactory<DragonstoneArrowEntity>) DragonstoneArrowEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).build(new ResourceLocation(BaseMod.MODID, "dragonstone_arrow").toString()));
 
     public static void register(IEventBus bus){
 

@@ -94,6 +94,7 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_HOE);
             event.accept(ItemMod.DRAGONSTONE_SHOVEL);
             event.accept(ItemMod.DRAGONSTONE_PICKAXE);
+            event.accept(ItemMod.DRAGONSTONE_MAGNET);
 
 
         }
@@ -116,6 +117,7 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_PICKAXE);
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
+            event.accept(ItemMod.DRAGONSTONE_MAGNET);
 
         }
 

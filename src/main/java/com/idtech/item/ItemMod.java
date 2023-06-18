@@ -2,6 +2,7 @@ package com.idtech.item;
 
 import com.idtech.BaseMod;
 import com.idtech.item.custom.DragonstoneArrowItem;
+import com.idtech.item.custom.DragonstoneMagnetItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -44,6 +45,9 @@ public class ItemMod {
 
     public static final RegistryObject<Item> DRAGONSTONE_ARROW = ITEMS.register("dragonstone_arrow",
             () -> new DragonstoneArrowItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGONSTONE_MAGNET = ITEMS.register("dragonstone_magnet",
+            () -> new DragonstoneMagnetItem(new Item.Properties()));
 
     // FOOD
 
