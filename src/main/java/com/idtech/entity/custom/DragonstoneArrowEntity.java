@@ -10,6 +10,7 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -77,6 +78,7 @@ public class DragonstoneArrowEntity extends AbstractArrow {
                     .filter(entry -> entry.hasLineOfSight(this))
                     .filter(entry -> entry.position().distanceTo(this.position()) <= radius)
                     .filter(entity -> !entity.getStringUUID().equals(getOwnerUUID()))
+                    .filter(entity -> !((entity instanceof Player player) && player.isCreative()) )
                     .sorted(Comparator.comparing(entry -> entry.position().distanceTo(this.position())))
                     .toList();
 
