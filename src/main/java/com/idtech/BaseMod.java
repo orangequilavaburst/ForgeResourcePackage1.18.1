@@ -85,6 +85,7 @@ public class BaseMod {
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
 
             event.accept(ItemMod.DRAGONSTONE_SWORD);
+            event.accept(ItemMod.DRAGONSTONE_ARROW);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -114,6 +115,7 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SHOVEL);
             event.accept(ItemMod.DRAGONSTONE_PICKAXE);
             event.accept(ItemMod.DRAGONSTONE_SWORD);
+            event.accept(ItemMod.DRAGONSTONE_ARROW);
 
         }
 

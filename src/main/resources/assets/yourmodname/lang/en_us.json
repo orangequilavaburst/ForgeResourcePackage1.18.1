@@ -19,5 +19,7 @@
   "block.yourmodname.dragonstone_block": "Dragonstone Block",
   "block.yourmodname.raw_dragonstone_block": "Raw Dragonstone Block",
 
+  "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
+
   "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab"
 }
