@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "yourmodname:block/unstable_crate"
+		}
+	}
+}

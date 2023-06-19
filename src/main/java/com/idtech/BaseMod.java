@@ -76,6 +76,11 @@ public class BaseMod {
             event.accept(BlockMod.RAW_DRAGONSTONE_BLOCK);
 
         }
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
+
+            event.accept(BlockMod.UNSTABLE_CRATE);
+
+        }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
 
             event.accept(ItemMod.BASIC_ITEM);
@@ -121,6 +126,8 @@ public class BaseMod {
 
             event.accept(ItemMod.DRAGONSTONE);
             event.accept(ItemMod.RAW_DRAGONSTONE);
+
+            event.accept(BlockMod.UNSTABLE_CRATE);
 
             event.accept(ItemMod.DRAGONSTONE_AXE);
             event.accept(ItemMod.DRAGONSTONE_HOE);

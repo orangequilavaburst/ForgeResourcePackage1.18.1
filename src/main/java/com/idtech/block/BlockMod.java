@@ -2,6 +2,7 @@ package com.idtech.block;
 
 
 import com.idtech.BaseMod;
+import com.idtech.block.custom.UnstableCrateBlock;
 import com.idtech.item.ItemMod;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -41,6 +42,8 @@ public class BlockMod {
     public static final RegistryObject<Block> DEEPSLATE_DRAGONSTONE_ORE = registerBlock("deepslate_dragonstone_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
 
+    public static final RegistryObject<Block> UNSTABLE_CRATE = registerBlock("unstable_crate",
+            () -> new UnstableCrateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(DyeColor.BROWN)));
     // quick function for registering the block and its item
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
 
