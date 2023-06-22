@@ -1,0 +1,11 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "yourmodname:item/experience_jar_0"
+  },
+  "overrides": [
+    { "predicate": { "yourmodname:experience": 1 }, "model": "yourmodname:item/experience_jar_partially_filled"},
+    { "predicate": { "yourmodname:experience": 5 }, "model": "yourmodname:item/experience_jar_mostly_filled"},
+    { "predicate": { "yourmodname:experience": 10 }, "model": "yourmodname:item/experience_jar_filled"}
+  ]
+}

@@ -16,6 +16,8 @@
   "item.yourmodname.fireball_wand": "Fireball Wand",
   "item.yourmodname.fish_slapper": "Fish Slapper",
   "item.yourmodname.totem_of_honesty": "Totem of Honesty",
+  "item.yourmodname.whirlwind_pickaxe": "Whirlwind Pickaxe",
+  "item.yourmodname.experience_jar": "Experience Jar",
   "item.yourmodname.cheeseburger": "Cheeseburger",
   "item.yourmodname.hot_dog": "Hot Dog",
 
@@ -32,6 +34,8 @@
 
   "tooltip.yourmodname.fireball_wand.prefix": "Press",
   "tooltip.yourmodname.fireball_wand.suffix": "to shoot!",
+  "tooltip.yourmodname.experience_jar": "Levels:",
+  "tooltip.yourmodname.whirlwind_pickaxe": "Mining Speed:",
 
   "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab"
 }

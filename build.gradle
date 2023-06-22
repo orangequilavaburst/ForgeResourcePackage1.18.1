@@ -58,6 +58,9 @@ minecraft {
             // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
             property 'forge.logging.console.level', 'debug'
 
+            args '--uuid', 'f6065061-7e65-413e-bc75-accf6c09ce0a'
+            args '--username', 'MegaMan'
+
             mods {
                 yourmodname {
                     source sourceSets.main

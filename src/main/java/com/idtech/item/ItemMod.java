@@ -60,6 +60,12 @@ public class ItemMod {
     public static final RegistryObject<Item> TOTEM_OF_HONESTY = ITEMS.register("totem_of_honesty",
             () -> new HonestyTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
+    public static final RegistryObject<Item> EXPERIENCE_JAR = ITEMS.register("experience_jar",
+            () -> new ExperienceJarItem(new Item.Properties().rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> WHIRLWIND_PICKAXE = ITEMS.register("whirlwind_pickaxe",
+            () -> new WhirlwindPickaxeItem(Tiers.NETHERITE, 10, 1.0f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+
     // FOOD
 
     public static final RegistryObject<Item> CHEESEBURGER = ITEMS.register("cheeseburger",

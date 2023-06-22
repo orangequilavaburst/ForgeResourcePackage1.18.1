@@ -105,7 +105,8 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SHOVEL);
             event.accept(ItemMod.DRAGONSTONE_PICKAXE);
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
-
+            event.accept(ItemMod.WHIRLWIND_PICKAXE);
+            event.accept(ItemMod.EXPERIENCE_JAR);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
@@ -139,6 +140,8 @@ public class BaseMod {
             event.accept(ItemMod.FIREBALL_WAND);
             event.accept(ItemMod.FISH_SLAPPER);
             event.accept(ItemMod.TOTEM_OF_HONESTY);
+            event.accept(ItemMod.WHIRLWIND_PICKAXE);
+            event.accept(ItemMod.EXPERIENCE_JAR);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
