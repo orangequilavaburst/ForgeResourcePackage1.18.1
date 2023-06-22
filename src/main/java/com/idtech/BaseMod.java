@@ -96,6 +96,7 @@ public class BaseMod {
             event.accept(ItemMod.FIREBALL_WAND);
             event.accept(ItemMod.FISH_SLAPPER);
             event.accept(ItemMod.TOTEM_OF_HONESTY);
+            event.accept(ItemMod.SHEER_COLD_SWORD);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -142,6 +143,7 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.EXPERIENCE_JAR);
+            event.accept(ItemMod.SHEER_COLD_SWORD);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);

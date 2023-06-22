@@ -64,7 +64,10 @@ public class ItemMod {
             () -> new ExperienceJarItem(new Item.Properties().rarity(Rarity.RARE)));
 
     public static final RegistryObject<Item> WHIRLWIND_PICKAXE = ITEMS.register("whirlwind_pickaxe",
-            () -> new WhirlwindPickaxeItem(Tiers.NETHERITE, 10, 1.0f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+            () -> new WhirlwindPickaxeItem(Tiers.NETHERITE, 10, -1.0f, new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> SHEER_COLD_SWORD = ITEMS.register("sheer_cold_sword",
+            () -> new SheerColdSwordItem(Tiers.NETHERITE, 10, 0.0f, new Item.Properties().rarity(Rarity.RARE)));
 
     // FOOD
 
