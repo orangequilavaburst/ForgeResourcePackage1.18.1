@@ -31,6 +31,10 @@
 
   "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
 
+  "enchantment.yourmodname.snow_point": "Snow Point",
+  "enchantment.yourmodname.gamble_gear": "Gamble Gear",
+  "enchantment.yourmodname.killer_queen": "Killer Queen",
+
   "sounds.yourmodname.honesty_totem_use": "Totem celebrates",
 
   "tooltip.yourmodname.fireball_wand.prefix": "Press",
