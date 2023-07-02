@@ -15,6 +15,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
@@ -61,7 +63,7 @@ public class WhirlwindPickaxeItem extends PickaxeItem {
     @Override
     public float getDestroySpeed(ItemStack pStack, BlockState pState) {
         float ds = super.getDestroySpeed(pStack, pState);
-        return ds + this.getSpeedMod(pStack);
+        return ds + this.getSpeedMod(pStack) * (EnchantmentHelper.getItemEnchantmentLevel(Enchantments.BLOCK_EFFICIENCY, pStack) + 1);
     }
 
     @Override

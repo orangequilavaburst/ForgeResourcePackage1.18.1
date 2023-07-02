@@ -60,6 +60,12 @@ public class ItemMod {
     public static final RegistryObject<Item> TOTEM_OF_HONESTY = ITEMS.register("totem_of_honesty",
             () -> new HonestyTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 
+    public static final RegistryObject<Item> TOTEM_OF_FLUIDIY = ITEMS.register("totem_of_fluidity",
+            () -> new FluidityTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
+
+    public static final RegistryObject<Item> TOTEM_OF_CALAMITY = ITEMS.register("totem_of_calamity",
+            () -> new CalamityTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
+
     public static final RegistryObject<Item> EXPERIENCE_JAR = ITEMS.register("experience_jar",
             () -> new ExperienceJarItem(new Item.Properties().rarity(Rarity.RARE)));
 
@@ -68,6 +74,15 @@ public class ItemMod {
 
     public static final RegistryObject<Item> SHEER_COLD_SWORD = ITEMS.register("sheer_cold_sword",
             () -> new SheerColdSwordItem(Tiers.NETHERITE, 10, 0.0f, new Item.Properties().rarity(Rarity.RARE)));
+
+    public static final RegistryObject<Item> YTTRIUM_KATANA = ITEMS.register("yttrium_katana",
+            () -> new YttriumKatanaItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> FAZER_BLASTER = ITEMS.register("fazer_blaster",
+            () -> new FazerBlasterItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLDEN_FAZER_BLASTER = ITEMS.register("golden_fazer_blaster",
+            () -> new FazerBlasterItem(new Item.Properties(), 10));
 
     // FOOD
 

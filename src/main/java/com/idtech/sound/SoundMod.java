@@ -15,6 +15,7 @@ public class SoundMod {
     // sounds
 
     public static final RegistryObject<SoundEvent> HONESTY_TOTEM_USE = registerSoundEvent("honesty_totem_use");
+    public static final RegistryObject<SoundEvent> FAZER_BLASTER = registerSoundEvent("fazer_blaster");
 
     // register
 

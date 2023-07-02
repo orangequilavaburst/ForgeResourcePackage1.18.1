@@ -5,5 +5,12 @@
     "sounds": [
       "yourmodname:honesty_totem_use"
     ]
+  },
+  "fazer_blaster":
+  {
+    "subtitle": "sounds.yourmodname.fazer_blaster",
+    "sounds": [
+      "yourmodname:fazer_blaster"
+    ]
   }
 }
