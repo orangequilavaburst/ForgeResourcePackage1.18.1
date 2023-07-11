@@ -228,7 +228,7 @@ public class BaseMod {
     }
 
     @Mod.EventBusSubscriber(modid = BaseMod.MODID, bus=Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
-    public class ModClientEvents{
+    public static class ModClientEvents{
 
         @SubscribeEvent
         public void nameTagEvent(RenderNameTagEvent event) {
