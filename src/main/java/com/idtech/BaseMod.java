@@ -66,7 +66,6 @@ public class BaseMod {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
-        MinecraftForge.EVENT_BUS.register(ModClientEvents.class);
 
     }
 
@@ -227,7 +226,7 @@ public class BaseMod {
 
     }
 
-    @Mod.EventBusSubscriber(modid = BaseMod.MODID, bus=Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    @Mod.EventBusSubscriber(modid = BaseMod.MODID, bus=Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
     public static class ModClientEvents{
 
         @SubscribeEvent
