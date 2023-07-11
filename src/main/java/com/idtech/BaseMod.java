@@ -2,29 +2,21 @@ package com.idtech;
 
 import com.idtech.block.BlockMod;
 import com.idtech.enchantment.EnchantmentMod;
-import com.idtech.enchantment.custom.SnowPointEnchantment;
 import com.idtech.entity.EntityMod;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.sound.SoundMod;
-import net.minecraft.nbt.Tag;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.projectile.Snowball;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
-import net.minecraftforge.event.entity.EntityEvent;
-import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -32,8 +24,6 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.awt.event.MouseEvent;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -183,7 +173,7 @@ public class BaseMod {
         // Put biome manager registry stuff here.
         BaseMod.LOGGER.info("Mod Setup Step");
 //        WorldMod.setupBiomes();
-       // TierSortingRegistry.registerTier(ItemMod.GEL_TIER, new ResourceLocation(MODID, "gelore"), List.of(Tiers.NETHERITE), List.of());
+       // TierSortingRegistry.registerTier(ItemMod.GEL_TIER, new ResourceLocation(MODID, "gelore"), List.of(Tiers.NETHERITE), List.of());+
 
         BaseMod.LOGGER.info("Command registration here hopefully.");
 //        MinecraftForge.EVENT_BUS.register(CustomEvent.class);
