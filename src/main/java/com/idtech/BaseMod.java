@@ -8,6 +8,7 @@ import com.idtech.item.ItemMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
@@ -29,6 +30,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.awt.*;
 import java.util.stream.Collectors;
 
 /**
@@ -230,9 +232,18 @@ public class BaseMod {
     public static class ModClientEvents{
 
         @SubscribeEvent
-        public void nameTagEvent(RenderNameTagEvent event) {
-            if (event.getEntity() == Minecraft.getInstance().player) {
-                event.setContent(event.getContent().copy().withStyle(ChatFormatting.GOLD));
+        public static void nameTagEvent(RenderNameTagEvent event) {
+            if (event.getEntity().getDisplayName().getString().equals("jeb_")) {
+                String name = event.getContent().getString();
+                Component nameTag = Component.empty();
+                float t = (Minecraft.getInstance().player.level().getGameTime() / 50.0f) % 1.0f;
+                for (int i = 0; i < name.length(); i++){
+
+                    Color color = Color.getHSBColor((t + (i/33.3f)) % 1.0f, 0.5f, 1.0f);
+                    nameTag = nameTag.copy().append(Component.literal(Character.toString(name.charAt(i))).withStyle(style -> style.withColor(color.getRGB())));
+
+                }
+                event.setContent(nameTag);
                 event.setResult(Event.Result.ALLOW);
             }
         }
