@@ -79,4 +79,6 @@ public class FishSlapperItem extends SwordItem {
         return Mth.lerp(getAttacks(pStack)/(float)this.maxAttacks, this.knockbackPowerMin, this.knockbackPowerMax);
     }
 
+
+
 }

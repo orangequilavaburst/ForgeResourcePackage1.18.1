@@ -6,12 +6,17 @@ import com.idtech.entity.EntityMod;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.sound.SoundMod;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderNameTagEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
@@ -61,6 +66,8 @@ public class BaseMod {
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ModClientEvents.class);
+
     }
 
     // register your items here!
@@ -179,6 +186,7 @@ public class BaseMod {
 //        MinecraftForge.EVENT_BUS.register(CustomEvent.class);
 //        MinecraftForge.EVENT_BUS.addListener(EventMod::isHoldingEvent);
         //Adds the RegisterCommandEvent as an event and sets a listener for it during FMLCommonSetup
+
     }
 
     private void enqueueIMC(final InterModEnqueueEvent event) {
@@ -218,6 +226,20 @@ public class BaseMod {
         }
 
     }
+
+    @Mod.EventBusSubscriber(modid = BaseMod.MODID, bus=Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
+    public class ModClientEvents{
+
+        @SubscribeEvent
+        public void nameTagEvent(RenderNameTagEvent event) {
+            if (event.getEntity() == Minecraft.getInstance().player) {
+                event.setContent(event.getContent().copy().withStyle(ChatFormatting.GOLD));
+                event.setResult(Event.Result.ALLOW);
+            }
+        }
+
+    }
+
 }
 
 
