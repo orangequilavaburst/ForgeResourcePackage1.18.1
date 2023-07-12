@@ -28,6 +28,9 @@ public class ItemMod {
     public static final RegistryObject<Item> RAW_DRAGONSTONE = ITEMS.register("raw_dragonstone",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> TOTEM_OF_ELECTRICITY = ITEMS.register("totem_of_electricity",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
+
     // TOOLS
 
     public static final RegistryObject<Item> DRAGONSTONE_AXE = ITEMS.register("dragonstone_axe",
@@ -83,6 +86,9 @@ public class ItemMod {
 
     public static final RegistryObject<Item> GOLDEN_FAZER_BLASTER = ITEMS.register("golden_fazer_blaster",
             () -> new FazerBlasterItem(new Item.Properties(), 10));
+
+    public static final RegistryObject<Item> EVIL_GAMEBOY = ITEMS.register("evil_gameboy",
+            () -> new ZombieConverterItem(new Item.Properties(), 10));
 
     // FOOD
 

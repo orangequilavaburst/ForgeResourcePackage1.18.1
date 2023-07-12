@@ -3,16 +3,18 @@ package com.idtech;
 import com.idtech.block.BlockMod;
 import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
+import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.sound.SoundMod;
-import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RenderNameTagEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -22,7 +24,6 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -111,6 +112,7 @@ public class BaseMod {
             event.accept(ItemMod.YTTRIUM_KATANA);
             event.accept(ItemMod.FAZER_BLASTER);
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
+            event.accept(ItemMod.EVIL_GAMEBOY);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -122,6 +124,7 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.EXPERIENCE_JAR);
+            event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
@@ -152,17 +155,22 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
-            event.accept(ItemMod.FIREBALL_WAND);
-            event.accept(ItemMod.FISH_SLAPPER);
+
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
+            event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
+
+            event.accept(ItemMod.FIREBALL_WAND);
+            event.accept(ItemMod.FISH_SLAPPER);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
-            event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.SHEER_COLD_SWORD);
             event.accept(ItemMod.YTTRIUM_KATANA);
             event.accept(ItemMod.FAZER_BLASTER);
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
+
+            event.accept(ItemMod.EXPERIENCE_JAR);
+            event.accept(ItemMod.EVIL_GAMEBOY);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
@@ -246,6 +254,27 @@ public class BaseMod {
                 event.setContent(nameTag);
                 event.setResult(Event.Result.ALLOW);
             }
+        }
+
+        @SubscribeEvent
+        public static void renderPlayerEvent(RenderPlayerEvent event){
+
+            if (event.getEntity().getMainHandItem().is(ItemMod.TOTEM_OF_ELECTRICITY.get()) ||
+                    event.getEntity().getOffhandItem().is(ItemMod.TOTEM_OF_ELECTRICITY.get())) {
+                EntityRendererProvider.Context newContext = new EntityRendererProvider.Context(Minecraft.getInstance().getEntityRenderDispatcher(),
+                        Minecraft.getInstance().getItemRenderer(),
+                        Minecraft.getInstance().getBlockRenderer(),
+                        Minecraft.getInstance().gameRenderer.itemInHandRenderer,
+                        Minecraft.getInstance().getResourceManager(),
+                        Minecraft.getInstance().getEntityModels(),
+                        Minecraft.getInstance().font);
+                PlayerModel<AbstractClientPlayer> model = event.getRenderer().getModel();
+                CustomPlayerRenderer newRenderer = new CustomPlayerRenderer(newContext, model, 1.0f, "werewire_skin");
+                newRenderer.render((AbstractClientPlayer) event.getEntity(), event.getEntity().getYRot(), event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+
+                event.setCanceled(true);
+            }
+
         }
 
     }
