@@ -2,6 +2,7 @@ package com.idtech.enchantment;
 
 import com.idtech.BaseMod;
 import com.idtech.enchantment.custom.GambleGearEnchantment;
+import com.idtech.enchantment.custom.GrapplingEnchantment;
 import com.idtech.enchantment.custom.KillerQueenEnchantment;
 import com.idtech.enchantment.custom.SnowPointEnchantment;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -25,6 +26,8 @@ public class EnchantmentMod {
 
     public static final RegistryObject<Enchantment> KILLER_QUEEN = ENCHANTMENTS.register("killer_queen",
             KillerQueenEnchantment::new);
+
+    public static final RegistryObject<Enchantment> GRAPPLING = ENCHANTMENTS.register("grappling", GrapplingEnchantment::new);
 
     // register all the enchantments so they can show up in game
     public static void register(IEventBus eventBus){

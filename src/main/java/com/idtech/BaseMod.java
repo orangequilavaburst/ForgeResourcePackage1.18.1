@@ -12,12 +12,27 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.FishingRodItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ShieldItem;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -33,6 +48,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * The BaseMod class holds any static variables your mod needs and runs all registry events. You'll add registry lines
@@ -273,6 +289,80 @@ public class BaseMod {
                 newRenderer.render((AbstractClientPlayer) event.getEntity(), event.getEntity().getYRot(), event.getPartialTick(), event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
 
                 event.setCanceled(true);
+            }
+
+        }
+
+    }
+
+    @Mod.EventBusSubscriber(modid = BaseMod.MODID)
+    public static class ModEvents {
+        @SubscribeEvent
+        public static void useItemFinishEvent(final LivingEntityUseItemEvent.Finish event){
+
+            if (event.getEntity() instanceof Player player){
+
+                ItemStack itemStack = event.getItem();
+
+                //BaseMod.LOGGER.info(itemStack.getDisplayName().getString() + " was used! (Finish)");
+
+            }
+
+        }
+
+        @SubscribeEvent
+        public static void useItemStartEvent(final LivingEntityUseItemEvent.Start event){
+
+            if (event.getEntity() instanceof Player player){
+
+                ItemStack itemStack = event.getItem();
+
+                //BaseMod.LOGGER.info(itemStack.getDisplayName().getString() + " was used! (Start)");
+
+            }
+
+        }
+
+        @SubscribeEvent
+        public static void useItemStopEvent(final LivingEntityUseItemEvent.Stop event){
+
+            if (event.getEntity() instanceof Player player){
+
+                ItemStack itemStack = event.getItem();
+
+                //BaseMod.LOGGER.info(itemStack.getDisplayName().getString() + " was used! (Stop)");
+
+            }
+
+        }
+
+        @SubscribeEvent
+        public static void rightClickItemEvent(PlayerInteractEvent.RightClickItem event){
+
+            ItemStack itemStack = event.getItemStack();
+            Player player = event.getEntity();
+
+            int e = EnchantmentHelper.getEnchantmentLevel(EnchantmentMod.GRAPPLING.get(), player);
+            Level level = player.level();
+            FishingHook hook = player.fishing;
+            if (hook != null && e > 0){
+
+                if (hook.isInWall() || hook.onGround() || hook.getHookedIn() != null) {
+
+                    Vec3 playerPos = player.position();
+                    Vec3 hookPos = hook.getPosition(1.0f);
+                    Vec3 angleVec = hookPos.subtract(playerPos);
+                    double speed = ((float) (e)*5.0f) / 100.0f * angleVec.length();
+
+                    player.setDeltaMovement(angleVec.normalize().scale(speed));
+                    player.resetFallDistance();
+
+                    itemStack.hurtAndBreak(1, player, (p_41288_) -> {
+                        p_41288_.broadcastBreakEvent(itemStack.getEquipmentSlot());
+                    });
+
+                }
+
             }
 
         }
