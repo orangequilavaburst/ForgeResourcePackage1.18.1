@@ -3,6 +3,7 @@ package com.idtech;
 import com.idtech.block.BlockMod;
 import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
+import com.idtech.entity.model.CuteAlienModel;
 import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
@@ -15,19 +16,14 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ShieldItem;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
-import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.EntityRenderersEvent;
+import net.minecraftforge.client.event.RenderNameTagEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -48,7 +44,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * The BaseMod class holds any static variables your mod needs and runs all registry events. You'll add registry lines
@@ -153,6 +148,7 @@ public class BaseMod {
 
             event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
             event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);
+            event.accept(ItemMod.CUTE_ALIEN_SPAWN_EGG);
 
         }
         if (event.getTabKey() == CreativeModeTabMod.BASIC_CREATIVE_MODE_TAB.getKey()){
@@ -199,6 +195,7 @@ public class BaseMod {
 
             event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
             event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);
+            event.accept(ItemMod.CUTE_ALIEN_SPAWN_EGG);
 
         }
 
@@ -257,6 +254,11 @@ public class BaseMod {
         @SubscribeEvent
         public static void attributeRegister(EntityAttributeCreationEvent event) {
             EntityMod.onAttributeCreate(event);
+        }
+
+        @SubscribeEvent
+        public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
+            event.registerLayerDefinition(CuteAlienModel.LAYER_LOCATION, CuteAlienModel::createBodyLayer);
         }
 
     }

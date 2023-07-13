@@ -30,6 +30,7 @@
   "item.yourmodname.hot_dog": "Hot Dog",
   "item.yourmodname.friendly_creeper_spawn_egg": "Friendly Creeper Spawn Egg",
   "item.yourmodname.golden_skeleton_spawn_egg": "Golden Skeleton Spawn Egg",
+  "item.yourmodname.cute_alien_spawn_egg": "Cute Alien Spawn Egg",
 
   "block.yourmodname.basic_block": "Basic Block",
   "block.yourmodname.dragonstone_ore": "Dragonstone Ore",
@@ -41,6 +42,7 @@
   "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
   "entity.yourmodname.friendly_creeper": "Friendly Creeper",
   "entity.yourmodname.golden_skeleton": "Golden Skeleton",
+  "entity.yourmodname.cute_alien": "Cute Alien",
 
   "enchantment.yourmodname.snow_point": "Snow Point",
   "enchantment.yourmodname.gamble_gear": "Gamble Gear",

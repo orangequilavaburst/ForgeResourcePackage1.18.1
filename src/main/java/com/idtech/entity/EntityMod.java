@@ -1,9 +1,11 @@
 package com.idtech.entity;
 
 import com.idtech.BaseMod;
+import com.idtech.entity.custom.CuteAlienEntity;
 import com.idtech.entity.custom.DragonstoneArrowEntity;
 import com.idtech.entity.custom.FriendlyCreeperEntity;
 import com.idtech.entity.custom.GoldenSkeletonEntity;
+import com.idtech.entity.render.CuteAlienRenderer;
 import com.idtech.entity.render.DragonstoneArrowRenderer;
 import com.idtech.entity.render.FriendlyCreeperRenderer;
 import com.idtech.entity.render.GoldenSkeletonRenderer;
@@ -37,6 +39,9 @@ public class EntityMod {
     public static final RegistryObject<EntityType<GoldenSkeletonEntity>> GOLDEN_SKELETON = ENTITY_TYPES.register("golden_skeleton",
             () -> EntityType.Builder.of(GoldenSkeletonEntity::new, MobCategory.MONSTER).sized(0.5f, 1.5f).build(new ResourceLocation(BaseMod.MODID, "golden_skeleton").toString()));
 
+    public static final RegistryObject<EntityType<CuteAlienEntity>> CUTE_ALIEN = ENTITY_TYPES.register("cute_alien",
+            () -> EntityType.Builder.of(CuteAlienEntity::new, MobCategory.CREATURE).sized(0.5f, 0.5f).build(new ResourceLocation(BaseMod.MODID, "cute_alien").toString()));
+
     public static void register(IEventBus bus){
 
         ENTITY_TYPES.register(bus);
@@ -48,6 +53,7 @@ public class EntityMod {
         event.registerEntityRenderer(EntityMod.DRAGONSTONE_ARROW_ENTITY.get(), DragonstoneArrowRenderer::new);
         event.registerEntityRenderer(EntityMod.FRIENDLY_CREEPER.get(), FriendlyCreeperRenderer::new);
         event.registerEntityRenderer(EntityMod.GOLDEN_SKELETON.get(), GoldenSkeletonRenderer::new);
+        event.registerEntityRenderer(EntityMod.CUTE_ALIEN.get(), CuteAlienRenderer::new);
 
     }
 
@@ -57,6 +63,7 @@ public class EntityMod {
     public static void onAttributeCreate(EntityAttributeCreationEvent event) {
         event.put(FRIENDLY_CREEPER.get(), FriendlyCreeperEntity.createAttributes().build());
         event.put(GOLDEN_SKELETON.get(), GoldenSkeletonEntity.createAttributes().build());
+        event.put(CUTE_ALIEN.get(), CuteAlienEntity.createAttributes().build());
     }
 
 }

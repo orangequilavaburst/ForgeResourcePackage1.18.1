@@ -123,6 +123,10 @@ public class ItemMod {
             () -> new ForgeSpawnEggItem(EntityMod.GOLDEN_SKELETON, 0xfee048, 0xfee048,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> CUTE_ALIEN_SPAWN_EGG = ITEMS.register("cute_alien_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityMod.CUTE_ALIEN, 0x64F2A8, 0x9235ED,
+                    new Item.Properties()));
+
     // spawn egg example
     /*public static final RegistryObject<Item> BASIC_ENTITY_SPAWN_EGG = ITEMS.register("basic_entity_spawn_egg",
         () -> new ForgeSpawnEggItem(EntityMod.BASIC_ENTITY, 0xAAAAAA, 0xBBBBBB,
