@@ -149,6 +149,12 @@ public class BaseMod {
             event.accept(ItemMod.HOT_DOG);
 
         }
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
+
+            event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
+            event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);
+
+        }
         if (event.getTabKey() == CreativeModeTabMod.BASIC_CREATIVE_MODE_TAB.getKey()){
 
             event.accept(ItemMod.BASIC_ITEM);
@@ -190,6 +196,9 @@ public class BaseMod {
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
+
+            event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
+            event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);
 
         }
 

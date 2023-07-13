@@ -1,11 +1,13 @@
 package com.idtech.item;
 
 import com.idtech.BaseMod;
+import com.idtech.entity.EntityMod;
 import com.idtech.item.custom.*;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -112,6 +114,14 @@ public class ItemMod {
     // PROJECTILES
 
     // SPAWN EGGS
+
+    public static final RegistryObject<Item> FRIENDLY_CREEPER_SPAWN_EGG = ITEMS.register("friendly_creeper_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityMod.FRIENDLY_CREEPER, 0xE56921, 0x942E49,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> GOLDEN_SKELETON_SPAWN_EGG = ITEMS.register("golden_skeleton_spawn_egg",
+            () -> new ForgeSpawnEggItem(EntityMod.GOLDEN_SKELETON, 0xfee048, 0xfee048,
+                    new Item.Properties()));
 
     // spawn egg example
     /*public static final RegistryObject<Item> BASIC_ENTITY_SPAWN_EGG = ITEMS.register("basic_entity_spawn_egg",
