@@ -7,6 +7,7 @@ import com.idtech.entity.model.CuteAlienModel;
 import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
+import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
@@ -77,6 +78,7 @@ public class BaseMod {
         EntityMod.register(modEventBus);
         EnchantmentMod.register(modEventBus);
         SoundMod.register(modEventBus);
+        PaintingMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

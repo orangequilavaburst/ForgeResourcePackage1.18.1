@@ -58,5 +58,12 @@
   "tooltip.yourmodname.experience_jar": "Levels:",
   "tooltip.yourmodname.whirlwind_pickaxe": "Mining Speed:",
 
-  "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab"
+  "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab",
+
+  "painting.yourmodname.dreamland.author": "Nintendo",
+  "painting.yourmodname.dreamland.title": "Dreamland",
+  "painting.yourmodname.mimikyu.author": "Ligton",
+  "painting.yourmodname.mimikyu.title": "Mimikyu",
+  "painting.yourmodname.ralsei.author": "Ka42541785",
+  "painting.yourmodname.ralsei.title": "Ralsei"
 }
