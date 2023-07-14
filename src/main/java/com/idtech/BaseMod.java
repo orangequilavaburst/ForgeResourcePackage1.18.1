@@ -55,7 +55,7 @@ public class BaseMod {
 
     // Change your modid here. Whenever modid is needed, use BaseMod.MODID
     public static final String MODID = "yourmodname";
-    private static final Logger LOGGER = LogManager.getLogger(BaseMod.MODID);
+    public static final Logger LOGGER = LogManager.getLogger(BaseMod.MODID);
 
     public BaseMod() {
 
@@ -136,6 +136,7 @@ public class BaseMod {
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
+            event.accept(ItemMod.DETONATOR);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
@@ -189,6 +190,7 @@ public class BaseMod {
 
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.EVIL_GAMEBOY);
+            event.accept(ItemMod.DETONATOR);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
@@ -363,7 +365,7 @@ public class BaseMod {
                     Vec3 playerPos = player.position();
                     Vec3 hookPos = hook.getPosition(1.0f);
                     Vec3 angleVec = hookPos.subtract(playerPos);
-                    double speed = ((float) (e)*5.0f) / 100.0f * angleVec.length();
+                    double speed = ((float) (e + 1)*5.0f) / 100.0f * angleVec.length();
 
                     player.setDeltaMovement(angleVec.normalize().scale(speed));
                     player.resetFallDistance();

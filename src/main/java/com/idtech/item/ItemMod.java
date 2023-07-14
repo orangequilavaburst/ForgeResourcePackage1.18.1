@@ -92,6 +92,9 @@ public class ItemMod {
     public static final RegistryObject<Item> EVIL_GAMEBOY = ITEMS.register("evil_gameboy",
             () -> new ZombieConverterItem(new Item.Properties(), 10));
 
+    public static final RegistryObject<Item> DETONATOR = ITEMS.register("detonator",
+            () -> new DetonatorItem(new Item.Properties()));
+
     // FOOD
 
     public static final RegistryObject<Item> CHEESEBURGER = ITEMS.register("cheeseburger",
