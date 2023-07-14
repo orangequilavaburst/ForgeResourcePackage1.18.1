@@ -1,0 +1,6 @@
+{
+    "parent": "item/bow",
+    "textures": {
+        "layer0": "yourmodname:item/yttrium_bow_pulling_1"
+    }
+}

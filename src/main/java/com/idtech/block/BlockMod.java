@@ -42,6 +42,18 @@ public class BlockMod {
     public static final RegistryObject<Block> DEEPSLATE_DRAGONSTONE_ORE = registerBlock("deepslate_dragonstone_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
 
+    public static final RegistryObject<Block> YTTRIUM_BLOCK = registerBlock("yttrium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).mapColor(DyeColor.GRAY)));
+
+    public static final RegistryObject<Block> RAW_YTTRIUM_BLOCK = registerBlock("raw_yttrium_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK).mapColor(DyeColor.GRAY)));
+
+    public static final RegistryObject<Block> YTTRIUM_ORE = registerBlock("yttrium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.IRON_ORE).mapColor(DyeColor.GRAY), UniformInt.of(10, 20)));
+
+    public static final RegistryObject<Block> DEEPSLATE_YTTRIUM_ORE = registerBlock("deepslate_yttrium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(DyeColor.GRAY), UniformInt.of(10, 20)));
+
     public static final RegistryObject<Block> UNSTABLE_CRATE = registerBlock("unstable_crate",
             () -> new UnstableCrateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(DyeColor.BROWN)));
     // quick function for registering the block and its item

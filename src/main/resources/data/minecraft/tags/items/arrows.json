@@ -1,6 +1,7 @@
 {
   "replace": false,
   "values": [
-    "yourmodname:dragonstone_arrow"
+    "yourmodname:dragonstone_arrow",
+    "yourmodname:yttrium_arrow"
   ]
 }

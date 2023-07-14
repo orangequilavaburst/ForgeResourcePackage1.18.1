@@ -7,6 +7,7 @@ import com.idtech.entity.model.CuteAlienModel;
 import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
+import com.idtech.item.ItemUtils;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
@@ -97,6 +98,10 @@ public class BaseMod {
             event.accept(BlockMod.DEEPSLATE_DRAGONSTONE_ORE);
             event.accept(BlockMod.DRAGONSTONE_BLOCK);
             event.accept(BlockMod.RAW_DRAGONSTONE_BLOCK);
+            event.accept(BlockMod.YTTRIUM_ORE);
+            event.accept(BlockMod.DEEPSLATE_YTTRIUM_ORE);
+            event.accept(BlockMod.YTTRIUM_BLOCK);
+            event.accept(BlockMod.RAW_YTTRIUM_BLOCK);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
@@ -110,22 +115,36 @@ public class BaseMod {
 
             event.accept(ItemMod.DRAGONSTONE);
             event.accept(ItemMod.RAW_DRAGONSTONE);
+            event.accept(ItemMod.YTTRIUM);
+            event.accept(ItemMod.RAW_YTTRIUM);
 
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
 
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
-            event.accept(ItemMod.FIREBALL_WAND);
-            event.accept(ItemMod.FISH_SLAPPER);
-            event.accept(ItemMod.TOTEM_OF_HONESTY);
-            event.accept(ItemMod.TOTEM_OF_FLUIDIY);
-            event.accept(ItemMod.TOTEM_OF_CALAMITY);
-            event.accept(ItemMod.SHEER_COLD_SWORD);
+            event.accept(ItemMod.DRAGONSTONE_HELMET);
+            event.accept(ItemMod.DRAGONSTONE_CHESTPLATE);
+            event.accept(ItemMod.DRAGONSTONE_LEGGINGS);
+            event.accept(ItemMod.DRAGONSTONE_BOOTS);
+            event.accept(ItemMod.DRAGONSTONE_ARROW);
+            event.accept(ItemMod.YTTRIUM_SWORD);
             event.accept(ItemMod.YTTRIUM_KATANA);
+            event.accept(ItemMod.YTTRIUM_HELMET);
+            event.accept(ItemMod.YTTRIUM_CHESTPLATE);
+            event.accept(ItemMod.YTTRIUM_LEGGINGS);
+            event.accept(ItemMod.YTTRIUM_BOOTS);
+            event.accept(ItemMod.YTTRIUM_BOW);
+            event.accept(ItemMod.YTTRIUM_ARROW);
+            event.accept(ItemMod.SHEER_COLD_SWORD);
+            event.accept(ItemMod.FISH_SLAPPER);
+            event.accept(ItemMod.FIREBALL_WAND);
             event.accept(ItemMod.FAZER_BLASTER);
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
             event.accept(ItemMod.EVIL_GAMEBOY);
+            event.accept(ItemMod.TOTEM_OF_HONESTY);
+            event.accept(ItemMod.TOTEM_OF_FLUIDIY);
+            event.accept(ItemMod.TOTEM_OF_CALAMITY);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -135,6 +154,10 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SHOVEL);
             event.accept(ItemMod.DRAGONSTONE_PICKAXE);
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
+            event.accept(ItemMod.YTTRIUM_AXE);
+            event.accept(ItemMod.YTTRIUM_HOE);
+            event.accept(ItemMod.YTTRIUM_SHOVEL);
+            event.accept(ItemMod.YTTRIUM_PICKAXE);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
@@ -163,9 +186,15 @@ public class BaseMod {
             event.accept(BlockMod.DEEPSLATE_DRAGONSTONE_ORE);
             event.accept(BlockMod.DRAGONSTONE_BLOCK);
             event.accept(BlockMod.RAW_DRAGONSTONE_BLOCK);
+            event.accept(BlockMod.YTTRIUM_ORE);
+            event.accept(BlockMod.DEEPSLATE_YTTRIUM_ORE);
+            event.accept(BlockMod.YTTRIUM_BLOCK);
+            event.accept(BlockMod.RAW_YTTRIUM_BLOCK);
 
             event.accept(ItemMod.DRAGONSTONE);
             event.accept(ItemMod.RAW_DRAGONSTONE);
+            event.accept(ItemMod.YTTRIUM);
+            event.accept(ItemMod.RAW_YTTRIUM);
 
             event.accept(BlockMod.UNSTABLE_CRATE);
 
@@ -176,6 +205,21 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
             event.accept(ItemMod.DRAGONSTONE_MAGNET);
+            event.accept(ItemMod.DRAGONSTONE_HELMET);
+            event.accept(ItemMod.DRAGONSTONE_CHESTPLATE);
+            event.accept(ItemMod.DRAGONSTONE_LEGGINGS);
+            event.accept(ItemMod.DRAGONSTONE_BOOTS);
+            event.accept(ItemMod.YTTRIUM_AXE);
+            event.accept(ItemMod.YTTRIUM_HOE);
+            event.accept(ItemMod.YTTRIUM_SHOVEL);
+            event.accept(ItemMod.YTTRIUM_PICKAXE);
+            event.accept(ItemMod.YTTRIUM_SWORD);
+            event.accept(ItemMod.YTTRIUM_BOW);
+            event.accept(ItemMod.YTTRIUM_ARROW);
+            event.accept(ItemMod.YTTRIUM_HELMET);
+            event.accept(ItemMod.YTTRIUM_CHESTPLATE);
+            event.accept(ItemMod.YTTRIUM_LEGGINGS);
+            event.accept(ItemMod.YTTRIUM_BOOTS);
 
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
@@ -221,6 +265,7 @@ public class BaseMod {
 //        MinecraftForge.EVENT_BUS.register(CustomEvent.class);
 //        MinecraftForge.EVENT_BUS.addListener(EventMod::isHoldingEvent);
         //Adds the RegisterCommandEvent as an event and sets a listener for it during FMLCommonSetup
+        ItemUtils.makeBow(ItemMod.YTTRIUM_BOW.get());
 
     }
 

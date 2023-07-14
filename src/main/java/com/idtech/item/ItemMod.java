@@ -30,6 +30,12 @@ public class ItemMod {
     public static final RegistryObject<Item> RAW_DRAGONSTONE = ITEMS.register("raw_dragonstone",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> YTTRIUM = ITEMS.register("yttrium",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> RAW_YTTRIUM = ITEMS.register("raw_yttrium",
+            () -> new Item(new Item.Properties()));
+
     public static final RegistryObject<Item> TOTEM_OF_ELECTRICITY = ITEMS.register("totem_of_electricity",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
 
@@ -50,12 +56,59 @@ public class ItemMod {
     public static final RegistryObject<Item> DRAGONSTONE_SWORD = ITEMS.register("dragonstone_sword",
             () -> new AxeItem(ToolTierMod.DRAGONSTONE, 3.5f, -2.0f, new Item.Properties()));
 
+    public static final RegistryObject<Item> DRAGONSTONE_HELMET = ITEMS.register("dragonstone_helmet",
+            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGONSTONE_CHESTPLATE = ITEMS.register("dragonstone_chestplate",
+            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGONSTONE_LEGGINGS = ITEMS.register("dragonstone_leggings",
+            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGONSTONE_BOOTS = ITEMS.register("dragonstone_boots",
+            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.BOOTS, new Item.Properties()));
+
     public static final RegistryObject<Item> DRAGONSTONE_ARROW = ITEMS.register("dragonstone_arrow",
             () -> new DragonstoneArrowItem(new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_MAGNET = ITEMS.register("dragonstone_magnet",
             () -> new DragonstoneMagnetItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> YTTRIUM_AXE = ITEMS.register("yttrium_axe",
+            () -> new AxeItem(ToolTierMod.YTTRIUM, 5.0f, -3.0f, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_HOE = ITEMS.register("yttrium_hoe",
+            () -> new HoeItem(ToolTierMod.YTTRIUM, -3, 0, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_SHOVEL = ITEMS.register("yttrium_shovel",
+            () -> new ShovelItem(ToolTierMod.YTTRIUM, 1.5f, -3.0f, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_PICKAXE = ITEMS.register("yttrium_pickaxe",
+            () -> new PickaxeItem(ToolTierMod.YTTRIUM, 1, -2.8f, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_SWORD = ITEMS.register("yttrium_sword",
+            () -> new AxeItem(ToolTierMod.YTTRIUM, 3.5f, -2.0f, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_HELMET = ITEMS.register("yttrium_helmet",
+            () -> new CustomArmorItem(ArmorMaterialMod.YTTRIUM, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_CHESTPLATE = ITEMS.register("yttrium_chestplate",
+            () -> new CustomArmorItem(ArmorMaterialMod.YTTRIUM, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_LEGGINGS = ITEMS.register("yttrium_leggings",
+            () -> new CustomArmorItem(ArmorMaterialMod.YTTRIUM, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_BOOTS = ITEMS.register("yttrium_boots",
+            () -> new CustomArmorItem(ArmorMaterialMod.YTTRIUM, ArmorItem.Type.BOOTS, new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_ARROW = ITEMS.register("yttrium_arrow",
+            () -> new YttriumArrowItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> YTTRIUM_BOW = ITEMS.register("yttrium_bow",
+            () -> new CustomBowItem(new Item.Properties(), 15, 0.0f, 2));
+
+    public static final RegistryObject<Item> YTTRIUM_KATANA = ITEMS.register("yttrium_katana",
+            () -> new YttriumKatanaItem(new Item.Properties()));
     public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
             () -> new FireballWandItem(new Item.Properties().rarity(Rarity.EPIC)));
 
@@ -79,9 +132,6 @@ public class ItemMod {
 
     public static final RegistryObject<Item> SHEER_COLD_SWORD = ITEMS.register("sheer_cold_sword",
             () -> new SheerColdSwordItem(Tiers.NETHERITE, 10, 0.0f, new Item.Properties().rarity(Rarity.RARE)));
-
-    public static final RegistryObject<Item> YTTRIUM_KATANA = ITEMS.register("yttrium_katana",
-            () -> new YttriumKatanaItem(new Item.Properties()));
 
     public static final RegistryObject<Item> FAZER_BLASTER = ITEMS.register("fazer_blaster",
             () -> new FazerBlasterItem(new Item.Properties()));
