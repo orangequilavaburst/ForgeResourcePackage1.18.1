@@ -87,7 +87,7 @@ public class ItemMod {
             () -> new PickaxeItem(ToolTierMod.YTTRIUM, 1, -2.8f, new Item.Properties()));
 
     public static final RegistryObject<Item> YTTRIUM_SWORD = ITEMS.register("yttrium_sword",
-            () -> new SwordItem(ToolTierMod.YTTRIUM, 3.5f, -2.0f, new Item.Properties()));
+            () -> new SwordItem(ToolTierMod.YTTRIUM, 3, -2.0f, new Item.Properties()));
 
     public static final RegistryObject<Item> YTTRIUM_HELMET = ITEMS.register("yttrium_helmet",
             () -> new CustomArmorItem(ArmorMaterialMod.YTTRIUM, ArmorItem.Type.HELMET, new Item.Properties()));

@@ -10,10 +10,15 @@ import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
+import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
@@ -351,6 +356,25 @@ public class BaseMod {
 
                 event.setCanceled(true);
             }
+
+        }
+
+        @SubscribeEvent
+        public static void renderArmEvent(RenderArmEvent event){
+
+            /*
+            event.setCanceled(true);
+
+            Minecraft mc = Minecraft.getInstance();
+            PlayerRenderer renderer = (PlayerRenderer) mc.getEntityRenderDispatcher().getRenderer(event.getPlayer());
+            ModelPart model = renderer.getModel().rightArm;
+
+            event.getPoseStack().pushPose();
+            //event.getPoseStack().mulPose(Axis.YP.rotationDegrees(-45.0F));
+            model.render(event.getPoseStack(), event.getMultiBufferSource().getBuffer(RenderType.entityTranslucent(mc.player.getSkinTextureLocation())),
+                    event.getPackedLight(), OverlayTexture.RED_OVERLAY_V);
+            event.getPoseStack().popPose();
+            */
 
         }
 
