@@ -440,6 +440,7 @@ public class BaseMod {
                     double speed = ((float) (e + 1)*5.0f) / 100.0f * angleVec.length();
 
                     player.setDeltaMovement(angleVec.normalize().scale(speed));
+                    player.setDeltaMovement(player.getDeltaMovement().x(), Math.max(0, player.getDeltaMovement().y()) + 0.25, player.getDeltaMovement().z());
                     player.resetFallDistance();
 
                     itemStack.hurtAndBreak(1, player, (p_41288_) -> {
