@@ -39,6 +39,7 @@
   "item.yourmodname.yttrium_katana": "Yttrium Katana",
   "item.yourmodname.experience_jar": "Experience Jar",
   "item.yourmodname.evil_gameboy": "Evil Gameboy",
+  "item.yourmodname.block_tosser": "Block Tosser",
   "item.yourmodname.cheeseburger": "Cheeseburger",
   "item.yourmodname.hot_dog": "Hot Dog",
   "item.yourmodname.detonator": "Detonator",
@@ -62,6 +63,7 @@
   "entity.yourmodname.friendly_creeper": "Friendly Creeper",
   "entity.yourmodname.golden_skeleton": "Golden Skeleton",
   "entity.yourmodname.cute_alien": "Cute Alien",
+  "entity.yourmodname.block_projectile": "Block Projectile",
 
   "enchantment.yourmodname.snow_point": "Snow Point",
   "enchantment.yourmodname.gamble_gear": "Gamble Gear",
