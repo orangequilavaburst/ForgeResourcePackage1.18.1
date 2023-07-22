@@ -8,6 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -113,6 +114,12 @@ public class BlockProjectileEntity extends ThrowableItemProjectile {
         super.onHit(pResult);
         if (!this.level().isClientSide) {
             SoundEvent sound = (this.getItem().getItem() instanceof BlockItem blockItem) ? blockItem.getBlock().defaultBlockState().getSoundType().getBreakSound() : SoundEvents.ITEM_BREAK;
+
+            ItemEntity itemEntity = new ItemEntity(EntityType.ITEM, this.level());
+            itemEntity.setItem(this.getItem());
+            itemEntity.setPos(this.position());
+            if (!this.level().isClientSide) this.level().addFreshEntity(itemEntity);
+
             this.playSound(sound);
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();

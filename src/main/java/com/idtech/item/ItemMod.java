@@ -148,6 +148,9 @@ public class ItemMod {
     public static final RegistryObject<Item> BLOCK_TOSSER = ITEMS.register("block_tosser",
             () -> new BlockTosserItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> INVENTORY_TOSSER = ITEMS.register("inventory_tosser",
+            () -> new InventoryTosserItem(new Item.Properties()));
+
     // FOOD
 
     public static final RegistryObject<Item> CHEESEBURGER = ITEMS.register("cheeseburger",

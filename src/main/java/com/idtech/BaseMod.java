@@ -149,6 +149,7 @@ public class BaseMod {
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
             event.accept(ItemMod.EVIL_GAMEBOY);
             event.accept(ItemMod.BLOCK_TOSSER);
+            event.accept(ItemMod.INVENTORY_TOSSER);
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
@@ -245,6 +246,7 @@ public class BaseMod {
             event.accept(ItemMod.EVIL_GAMEBOY);
             event.accept(ItemMod.DETONATOR);
             event.accept(ItemMod.BLOCK_TOSSER);
+            event.accept(ItemMod.INVENTORY_TOSSER);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
