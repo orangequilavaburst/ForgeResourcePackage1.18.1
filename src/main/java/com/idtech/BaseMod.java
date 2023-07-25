@@ -8,30 +8,37 @@ import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
+import com.idtech.item.custom.MegaBusterItem;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
+import net.minecraft.client.renderer.ItemInHandRenderer;
+import net.minecraft.client.renderer.ItemModelShaper;
+import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.CreeperRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RenderArmEvent;
-import net.minecraftforge.client.event.RenderNameTagEvent;
-import net.minecraftforge.client.event.RenderPlayerEvent;
+import net.minecraftforge.client.event.*;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -52,6 +59,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.stream.Collectors;
+
+import static net.minecraft.client.renderer.entity.ItemRenderer.SPYGLASS_IN_HAND_MODEL;
+import static net.minecraft.client.renderer.entity.ItemRenderer.TRIDENT_IN_HAND_MODEL;
 
 /**
  * The BaseMod class holds any static variables your mod needs and runs all registry events. You'll add registry lines
@@ -150,6 +160,7 @@ public class BaseMod {
             event.accept(ItemMod.EVIL_GAMEBOY);
             event.accept(ItemMod.BLOCK_TOSSER);
             event.accept(ItemMod.INVENTORY_TOSSER);
+            event.accept(ItemMod.MEGA_BUSTER);
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
@@ -247,6 +258,7 @@ public class BaseMod {
             event.accept(ItemMod.DETONATOR);
             event.accept(ItemMod.BLOCK_TOSSER);
             event.accept(ItemMod.INVENTORY_TOSSER);
+            event.accept(ItemMod.MEGA_BUSTER);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
@@ -276,6 +288,7 @@ public class BaseMod {
 //        MinecraftForge.EVENT_BUS.addListener(EventMod::isHoldingEvent);
         //Adds the RegisterCommandEvent as an event and sets a listener for it during FMLCommonSetup
         ItemUtils.makeBow(ItemMod.YTTRIUM_BOW.get());
+        ItemUtils.makeBuster(ItemMod.MEGA_BUSTER.get());
 
     }
 
@@ -381,6 +394,41 @@ public class BaseMod {
             */
 
         }
+
+    }
+
+    @SubscribeEvent
+    public static void renderItemEvent(RenderHandEvent event){
+
+        /*
+        ItemStack itemStack = event.getItemStack();
+        if (itemStack.is(ItemMod.MEGA_BUSTER.get())){
+
+            event.setCanceled(true);
+
+            Minecraft mc = Minecraft.getInstance();
+            Player player = Minecraft.getInstance().player;
+            ItemInHandRenderer renderer = mc.getEntityRenderDispatcher().getItemInHandRenderer();
+
+            ItemModelShaper itemModelShaper = new net.minecraftforge.client.model.ForgeItemModelShaper(Minecraft.getInstance().getModelManager());
+            BakedModel bakedmodel;
+            if (itemStack.is(Items.TRIDENT)) {
+                bakedmodel = itemModelShaper.getModelManager().getModel(TRIDENT_IN_HAND_MODEL);
+            } else if (itemStack.is(Items.SPYGLASS)) {
+                bakedmodel = itemModelShaper.getModelManager().getModel(SPYGLASS_IN_HAND_MODEL);
+            } else {
+                bakedmodel = itemModelShaper.getItemModel(itemStack);
+            }
+
+            event.getPoseStack().pushPose();
+            renderer.renderItem(player, itemStack,
+                    (event.getHand().equals(InteractionHand.MAIN_HAND)) ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND,
+                    true, event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
+
+            event.getPoseStack().popPose();
+
+        }
+        */
 
     }
 

@@ -1,0 +1,17 @@
+{
+  "parent": "item/generated",
+  "textures": {"layer0": "yourmodname:item/mega_buster_item"},
+  "overrides": [
+    {
+      "predicate": {
+        "flash": 1
+      },
+      "model": "yourmodname:item/mega_buster_item_1"
+    },
+    {
+      "predicate": {
+        "flash": 2
+      },
+      "model": "yourmodname:item/mega_buster_item_2"
+    }
+  ]}

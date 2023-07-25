@@ -12,5 +12,40 @@
     "sounds": [
       "yourmodname:fazer_blaster"
     ]
+  },
+  "mega_buster_shot":
+  {
+    "subtitle": "sounds.yourmodname.mega_buster_shot",
+    "sounds": [
+      "yourmodname:mega_buster_shot"
+    ]
+  },
+  "mega_buster_half_charged_shot":
+  {
+    "subtitle": "sounds.yourmodname.mega_buster_half_charged_shot",
+    "sounds": [
+      "yourmodname:mega_buster_half_charged_shot"
+    ]
+  },
+  "mega_buster_charged_shot":
+  {
+    "subtitle": "sounds.yourmodname.mega_buster_charged_shot",
+    "sounds": [
+      "yourmodname:mega_buster_charged_shot"
+    ]
+  },
+  "mega_buster_charging":
+  {
+    "subtitle": "sounds.yourmodname.mega_buster_charging",
+    "sounds": [
+      "yourmodname:mega_buster_charging"
+    ]
+  },
+  "mega_buster_charged":
+  {
+    "subtitle": "sounds.yourmodname.mega_buster_charged",
+    "sounds": [
+      "yourmodname:mega_buster_charged"
+    ]
   }
 }

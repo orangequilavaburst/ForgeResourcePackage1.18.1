@@ -16,6 +16,11 @@ public class SoundMod {
 
     public static final RegistryObject<SoundEvent> HONESTY_TOTEM_USE = registerSoundEvent("honesty_totem_use");
     public static final RegistryObject<SoundEvent> FAZER_BLASTER = registerSoundEvent("fazer_blaster");
+    public static final RegistryObject<SoundEvent> MEGA_BUSTER_SHOT = registerSoundEvent("mega_buster_shot");
+    public static final RegistryObject<SoundEvent> MEGA_BUSTER_HALF_CHARGED_SHOT = registerSoundEvent("mega_buster_half_charged_shot");
+    public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGED_SHOT = registerSoundEvent("mega_buster_charged_shot");
+    public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGING = registerSoundEvent("mega_buster_charging");
+    public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGED = registerSoundEvent("mega_buster_charged");
 
     // register
 
