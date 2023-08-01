@@ -166,6 +166,7 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
+            event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -255,6 +256,7 @@ public class BaseMod {
             event.accept(ItemMod.YTTRIUM_KATANA);
             event.accept(ItemMod.FAZER_BLASTER);
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
+            event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
 
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.EVIL_GAMEBOY);
