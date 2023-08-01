@@ -59,6 +59,8 @@
   "block.yourmodname.yttrium_block": "Yttrium Block",
   "block.yourmodname.raw_yttrium_block": "Raw Yttrium Block",
   "block.yourmodname.unstable_crate": "Unstable Crate",
+  "block.yourmodname.fire_flower": "Fire Flower",
+  "block.yourmodname.potted_fire_flower": "Potted Fire Flower",
 
   "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
   "entity.yourmodname.yttrium_arrow": "Yttrium Arrow",

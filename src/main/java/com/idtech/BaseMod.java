@@ -1,6 +1,7 @@
 package com.idtech;
 
 import com.idtech.block.BlockMod;
+import com.idtech.block.loot.LootModifierMod;
 import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
 import com.idtech.entity.model.CuteAlienModel;
@@ -8,34 +9,21 @@ import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
-import com.idtech.item.custom.MegaBusterItem;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
-import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.AbstractClientPlayer;
-import net.minecraft.client.renderer.ItemInHandRenderer;
-import net.minecraft.client.renderer.ItemModelShaper;
-import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.entity.CreeperRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.entity.player.PlayerRenderer;
-import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
@@ -59,9 +47,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 import java.util.stream.Collectors;
-
-import static net.minecraft.client.renderer.entity.ItemRenderer.SPYGLASS_IN_HAND_MODEL;
-import static net.minecraft.client.renderer.entity.ItemRenderer.TRIDENT_IN_HAND_MODEL;
 
 /**
  * The BaseMod class holds any static variables your mod needs and runs all registry events. You'll add registry lines
@@ -96,6 +81,7 @@ public class BaseMod {
         EnchantmentMod.register(modEventBus);
         SoundMod.register(modEventBus);
         PaintingMod.register(modEventBus);
+        LootModifierMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -118,6 +104,11 @@ public class BaseMod {
             event.accept(BlockMod.DEEPSLATE_YTTRIUM_ORE);
             event.accept(BlockMod.YTTRIUM_BLOCK);
             event.accept(BlockMod.RAW_YTTRIUM_BLOCK);
+
+        }
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
+
+            event.accept(BlockMod.FIRE_FLOWER);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
@@ -216,6 +207,7 @@ public class BaseMod {
             event.accept(ItemMod.RAW_YTTRIUM);
 
             event.accept(BlockMod.UNSTABLE_CRATE);
+            event.accept(BlockMod.FIRE_FLOWER);
 
             event.accept(ItemMod.DRAGONSTONE_AXE);
             event.accept(ItemMod.DRAGONSTONE_HOE);
@@ -289,6 +281,9 @@ public class BaseMod {
         //Adds the RegisterCommandEvent as an event and sets a listener for it during FMLCommonSetup
         ItemUtils.makeBow(ItemMod.YTTRIUM_BOW.get());
         ItemUtils.makeBuster(ItemMod.MEGA_BUSTER.get());
+        event.enqueueWork(() ->{
+            ((FlowerPotBlock) Blocks.FLOWER_POT).addPlant(BlockMod.FIRE_FLOWER.getId(), BlockMod.POTTED_FIRE_FLOWER);
+        });
 
     }
 

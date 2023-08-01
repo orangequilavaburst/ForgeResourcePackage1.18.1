@@ -5,12 +5,12 @@ import com.idtech.BaseMod;
 import com.idtech.block.custom.UnstableCrateBlock;
 import com.idtech.item.ItemMod;
 import net.minecraft.util.valueproviders.UniformInt;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.DropExperienceBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -56,11 +56,26 @@ public class BlockMod {
 
     public static final RegistryObject<Block> UNSTABLE_CRATE = registerBlock("unstable_crate",
             () -> new UnstableCrateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(DyeColor.BROWN)));
+
+    public static final RegistryObject<Block> FIRE_FLOWER = registerBlock("fire_flower",
+            () -> new FlowerBlock(() -> MobEffects.FIRE_RESISTANCE, 20,
+            BlockBehaviour.Properties.copy(Blocks.ORANGE_TULIP).noOcclusion().mapColor(DyeColor.ORANGE)));
+
+    public static final RegistryObject<Block> POTTED_FIRE_FLOWER = registerBlockWithoutItem("potted_fire_flower",
+            () -> new FlowerPotBlock(null, FIRE_FLOWER, BlockBehaviour.Properties.copy(Blocks.POTTED_ORANGE_TULIP).noOcclusion()));
+
     // quick function for registering the block and its item
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block){
 
         RegistryObject<T> toReturn = BLOCKS.register(name, block);
         registerBlockItem(name, toReturn);
+        return toReturn;
+
+    }
+
+    private static <T extends Block> RegistryObject<T> registerBlockWithoutItem(String name, Supplier<T> block){
+
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
         return toReturn;
 
     }
