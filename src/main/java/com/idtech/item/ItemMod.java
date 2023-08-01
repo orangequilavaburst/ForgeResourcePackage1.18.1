@@ -7,6 +7,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.block.PumpkinBlock;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -138,6 +140,9 @@ public class ItemMod {
 
     public static final RegistryObject<Item> GOLDEN_FAZER_BLASTER = ITEMS.register("golden_fazer_blaster",
             () -> new FazerBlasterItem(new Item.Properties(), 10));
+
+    public static final RegistryObject<Item> FREDDY_FAZBEAR_MASK = ITEMS.register("freddy_fazbear_mask",
+            () -> new FreddyMaskItem(new Item.Properties()));
 
     public static final RegistryObject<Item> EVIL_GAMEBOY = ITEMS.register("evil_gameboy",
             () -> new ZombieConverterItem(new Item.Properties(), 10));

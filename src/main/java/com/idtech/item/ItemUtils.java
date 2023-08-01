@@ -74,7 +74,7 @@ public class ItemUtils {
      * @param repairIngredientIn ingredient used to repair the armor.
      * @return
      */
-    private static ArmorMaterial buildArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountArrayIn, int enchantabilityIn, SoundEvent eqiupSoundIn,
+    public static ArmorMaterial buildArmorMaterial(String nameIn, int maxDamageFactorIn, int[] damageReductionAmountArrayIn, int enchantabilityIn, SoundEvent eqiupSoundIn,
                                                      float toughnessIn, float knockbackResistanceIn, Supplier<Ingredient> repairIngredientIn) {
 
         final int[] MAX_DAMAGE_ARRAY = new int[]{13, 15, 16, 11};

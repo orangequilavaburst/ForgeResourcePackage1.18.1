@@ -21,6 +21,9 @@ public class SoundMod {
     public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGED_SHOT = registerSoundEvent("mega_buster_charged_shot");
     public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGING = registerSoundEvent("mega_buster_charging");
     public static final RegistryObject<SoundEvent> MEGA_BUSTER_CHARGED = registerSoundEvent("mega_buster_charged");
+    public static final RegistryObject<SoundEvent> FREDDY_MASK_EQUIP = registerSoundEvent("freddy_mask_equip");
+    public static final RegistryObject<SoundEvent> FREDDY_MASK_REMOVE = registerSoundEvent("freddy_mask_remove");
+    public static final RegistryObject<SoundEvent> FREDDY_MASK_BREATHING = registerSoundEvent("freddy_mask_breathing");
 
     // register
 

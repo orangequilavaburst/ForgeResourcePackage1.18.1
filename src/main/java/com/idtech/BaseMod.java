@@ -2,6 +2,7 @@ package com.idtech;
 
 import com.idtech.block.BlockMod;
 import com.idtech.block.loot.LootModifierMod;
+import com.idtech.client.FreddyMaskOverlay;
 import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
 import com.idtech.entity.model.CuteAlienModel;
@@ -9,13 +10,19 @@ import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
+import com.idtech.item.custom.FreddyMaskItem;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.resources.sounds.SimpleSoundInstance;
+import net.minecraft.client.sounds.SoundEngine;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -27,10 +34,13 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
+import net.minecraftforge.client.event.sound.PlaySoundEvent;
+import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
+import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -46,6 +56,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -328,6 +339,13 @@ public class BaseMod {
             event.registerLayerDefinition(CuteAlienModel.LAYER_LOCATION, CuteAlienModel::createBodyLayer);
         }
 
+        @SubscribeEvent
+        public static void registerGUIOverlays(final RegisterGuiOverlaysEvent event){
+
+            event.registerBelowAll("freddy_mask", FreddyMaskOverlay.FREDDY_MASK_OVERLAY);
+
+        }
+
     }
 
     @Mod.EventBusSubscriber(modid = BaseMod.MODID, bus=Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
@@ -500,7 +518,28 @@ public class BaseMod {
 
         }
 
+        @SubscribeEvent
+        public static void equipmentChangeEvent(LivingEquipmentChangeEvent event){
+
+            ItemStack from = event.getFrom();
+            ItemStack to = event.getTo();
+
+            if (from.is(ItemMod.FREDDY_FAZBEAR_MASK.get())){
+
+                if (event.getEntity() instanceof Player p){
+                    //p.displayClientMessage(Component.literal("har har har harrr harrr"), false);
+                    Minecraft.getInstance().getSoundManager().stop(SoundMod.FREDDY_MASK_BREATHING.getId(), p.getSoundSource());
+                    Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(SoundMod.FREDDY_MASK_REMOVE.get(),
+                            p.getSoundSource(), 0.25f, 1.0f, RandomSource.create(), p.blockPosition()));
+                }
+
+            }
+
+        }
+
     }
+
+
 
 }
 

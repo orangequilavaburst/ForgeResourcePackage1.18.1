@@ -47,5 +47,26 @@
     "sounds": [
       "yourmodname:mega_buster_charged"
     ]
+  },
+  "freddy_mask_equip":
+  {
+    "subtitle": "sounds.yourmodname.freddy_mask_equip",
+    "sounds": [
+      "yourmodname:freddy_mask_equip"
+    ]
+  },
+  "freddy_mask_remove":
+  {
+    "subtitle": "sounds.yourmodname.freddy_mask_remove",
+    "sounds": [
+      "yourmodname:freddy_mask_remove"
+    ]
+  },
+  "freddy_mask_breathing":
+  {
+    "subtitle": "sounds.yourmodname.freddy_mask_breathing",
+    "sounds": [
+      "yourmodname:freddy_mask_breathing"
+    ]
   }
 }
