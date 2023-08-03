@@ -525,14 +525,25 @@ public class BaseMod {
 
             ItemStack from = event.getFrom();
             ItemStack to = event.getTo();
+            EquipmentSlot slot = event.getSlot();
 
-            if (from.is(ItemMod.FREDDY_FAZBEAR_MASK.get()) && from.getEquipmentSlot() == EquipmentSlot.HEAD){
+            //String f = (from != null) ? from.toString() : "nothing";
+            //String t = (to != null) ? to.toString() : "nothing";
+            //String s = (slot != null) ? slot.getName() : "empty slot";
+
+            if (from.is(ItemMod.FREDDY_FAZBEAR_MASK.get())){
 
                 if (event.getEntity() instanceof Player p){
-                    //p.displayClientMessage(Component.literal("har har har harrr harrr"), false);
-                    Minecraft.getInstance().getSoundManager().stop(SoundMod.FREDDY_MASK_BREATHING.getId(), p.getSoundSource());
-                    Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(SoundMod.FREDDY_MASK_REMOVE.get(),
-                            p.getSoundSource(), 0.25f, 1.0f, RandomSource.create(), p.blockPosition()));
+                    //p.displayClientMessage(Component.literal("From " + f + " to " + t + ", " + s), false);
+
+                    //p.displayClientMessage(Component.literal("From " + f + " to " + s), false);
+                    if (slot == EquipmentSlot.HEAD) {
+                        //p.displayClientMessage(Component.literal("har har har harrr harrr"), false);
+                        Minecraft.getInstance().getSoundManager().stop(SoundMod.FREDDY_MASK_BREATHING.getId(), p.getSoundSource());
+                        Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(SoundMod.FREDDY_MASK_REMOVE.get(),
+                                p.getSoundSource(), 0.25f, 1.0f, RandomSource.create(), p.blockPosition()));
+
+                    }
                 }
 
             }
