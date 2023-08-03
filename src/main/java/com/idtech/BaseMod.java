@@ -526,7 +526,7 @@ public class BaseMod {
             ItemStack from = event.getFrom();
             ItemStack to = event.getTo();
 
-            if (from.is(ItemMod.FREDDY_FAZBEAR_MASK.get())){
+            if (from.is(ItemMod.FREDDY_FAZBEAR_MASK.get()) && from.getEquipmentSlot() == EquipmentSlot.HEAD){
 
                 if (event.getEntity() instanceof Player p){
                     //p.displayClientMessage(Component.literal("har har har harrr harrr"), false);
