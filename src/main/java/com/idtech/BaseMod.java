@@ -22,7 +22,9 @@ import net.minecraft.client.sounds.SoundEngine;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
@@ -39,6 +41,7 @@ import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.living.LivingChangeTargetEvent;
 import net.minecraftforge.event.entity.living.LivingEntityUseItemEvent;
 import net.minecraftforge.event.entity.living.LivingEquipmentChangeEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -546,6 +549,25 @@ public class BaseMod {
                     }
                 }
 
+            }
+
+        }
+
+        @SubscribeEvent
+        public static void livingChangeTargetEvent(LivingChangeTargetEvent event){
+
+            LivingEntity oldTarget = event.getOriginalTarget();
+            if (oldTarget != null) {
+                if (event.getOriginalTarget().getItemBySlot(EquipmentSlot.HEAD).is(ItemMod.FREDDY_FAZBEAR_MASK.get())) {
+                    event.setCanceled(true);
+                }
+            }
+
+            LivingEntity newTarget = event.getNewTarget();
+            if (newTarget != null) {
+                if (event.getNewTarget().getItemBySlot(EquipmentSlot.HEAD).is(ItemMod.FREDDY_FAZBEAR_MASK.get())) {
+                    event.setCanceled(true);
+                }
             }
 
         }
