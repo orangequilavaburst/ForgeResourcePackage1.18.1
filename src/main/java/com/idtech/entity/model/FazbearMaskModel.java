@@ -3,6 +3,7 @@ package com.idtech.entity.model;
 import com.idtech.BaseMod;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.HumanoidModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -14,10 +15,10 @@ import net.minecraft.world.entity.LivingEntity;
 public class FazbearMaskModel<T extends LivingEntity> extends HumanoidModel<T> {
 
     public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation(BaseMod.MODID, "freddy_fazbear_mask"), "main");
-    public final ModelPart head;
-    public FazbearMaskModel(ModelPart pRoot) {
-        super(pRoot);
-        this.head = pRoot.getChild("Head");
+    //public final ModelPart head;
+    public FazbearMaskModel() {
+        super(createBodyLayer().bakeRoot());
+        //this.head = pRoot.getChild("Head");
     }
 
     public static LayerDefinition createBodyLayer() {

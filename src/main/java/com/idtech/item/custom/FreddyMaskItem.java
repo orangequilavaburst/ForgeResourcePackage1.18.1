@@ -39,7 +39,7 @@ public class FreddyMaskItem extends ArmorItem {
             @Override
             public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot slot, HumanoidModel<?> original) {
                 //HumanoidModel<? extends LivingEntity> model = new FazbearMaskModel<>();
-                return original;
+                return new FazbearMaskModel<>();
             }
 
             @Override
