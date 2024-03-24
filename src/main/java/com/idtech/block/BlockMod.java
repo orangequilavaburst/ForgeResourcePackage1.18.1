@@ -5,7 +5,6 @@ import com.idtech.BaseMod;
 import com.idtech.block.custom.UnstableCrateBlock;
 import com.idtech.item.ItemMod;
 import net.minecraft.util.valueproviders.UniformInt;
-import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;

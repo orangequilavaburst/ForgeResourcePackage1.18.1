@@ -1,5 +1,6 @@
 {
   "item.yourmodname.basic_item": "Basic Item",
+  "item.yourmodname.speech_bubble": "Speech Bubble",
   "item.yourmodname.dragonstone": "Dragonstone",
   "item.yourmodname.raw_dragonstone": "Raw Dragonstone",
   "item.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
@@ -83,7 +84,7 @@
   "tooltip.yourmodname.experience_jar": "Levels:",
   "tooltip.yourmodname.whirlwind_pickaxe": "Mining Speed:",
 
-  "creativemodetab.yourmodname.basic_tab": "Basic Creative Mode Tab",
+  "creativemodetab.yourmodname.basic_tab": "Mega Man's Experiments (2022-2023)",
 
   "painting.yourmodname.dreamland.author": "Nintendo",
   "painting.yourmodname.dreamland.title": "Dreamland",

@@ -10,7 +10,6 @@ import com.idtech.entity.render.CustomPlayerRenderer;
 import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
-import com.idtech.item.custom.FreddyMaskItem;
 import com.idtech.painting.PaintingMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
@@ -18,11 +17,8 @@ import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.player.AbstractClientPlayer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
-import net.minecraft.client.sounds.SoundEngine;
 import net.minecraft.network.chat.Component;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.EntityEvent;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -36,8 +32,6 @@ import net.minecraft.world.level.block.FlowerPotBlock;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.*;
-import net.minecraftforge.client.event.sound.PlaySoundEvent;
-import net.minecraftforge.client.gui.overlay.VanillaGuiOverlay;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
@@ -59,7 +53,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -139,6 +132,8 @@ public class BaseMod {
             event.accept(ItemMod.YTTRIUM);
             event.accept(ItemMod.RAW_YTTRIUM);
 
+            event.accept(ItemMod.SPEECH_BUBBLE);
+
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
 
@@ -206,6 +201,8 @@ public class BaseMod {
 
             event.accept(ItemMod.BASIC_ITEM);
             event.accept(BlockMod.BASIC_BLOCK);
+
+            event.accept(ItemMod.SPEECH_BUBBLE);
 
             event.accept(BlockMod.DRAGONSTONE_ORE);
             event.accept(BlockMod.DEEPSLATE_DRAGONSTONE_ORE);
