@@ -111,6 +111,10 @@ public class BaseMod {
             event.accept(BlockMod.DEEPSLATE_YTTRIUM_ORE);
             event.accept(BlockMod.YTTRIUM_BLOCK);
             event.accept(BlockMod.RAW_YTTRIUM_BLOCK);
+            event.accept(BlockMod.DRAGONITE_ORE);
+            event.accept(BlockMod.DEEPSLATE_DRAGONITE_ORE);
+            event.accept(BlockMod.DRAGONITE_BLOCK);
+            event.accept(BlockMod.RAW_DRAGONITE_BLOCK);
 
         }
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
@@ -131,6 +135,8 @@ public class BaseMod {
             event.accept(ItemMod.RAW_DRAGONSTONE);
             event.accept(ItemMod.YTTRIUM);
             event.accept(ItemMod.RAW_YTTRIUM);
+            event.accept(ItemMod.DRAGONITE_INGOT);
+            event.accept(ItemMod.RAW_DRAGONITE);
 
             event.accept(ItemMod.SPEECH_BUBBLE);
 
@@ -165,6 +171,7 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
             event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
+            event.accept(ItemMod.DEVILSKNIFE);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -178,6 +185,10 @@ public class BaseMod {
             event.accept(ItemMod.YTTRIUM_HOE);
             event.accept(ItemMod.YTTRIUM_SHOVEL);
             event.accept(ItemMod.YTTRIUM_PICKAXE);
+            event.accept(ItemMod.DRAGONITE_AXE);
+            event.accept(ItemMod.DRAGONITE_HOE);
+            event.accept(ItemMod.DRAGONITE_SHOVEL);
+            event.accept(ItemMod.DRAGONITE_PICKAXE);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
@@ -188,6 +199,8 @@ public class BaseMod {
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
+            event.accept(ItemMod.BAGUETTE);
+            event.accept(ItemMod.SLICED_BREAD);
 
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
@@ -212,11 +225,17 @@ public class BaseMod {
             event.accept(BlockMod.DEEPSLATE_YTTRIUM_ORE);
             event.accept(BlockMod.YTTRIUM_BLOCK);
             event.accept(BlockMod.RAW_YTTRIUM_BLOCK);
+            event.accept(BlockMod.DRAGONITE_ORE);
+            event.accept(BlockMod.DEEPSLATE_DRAGONITE_ORE);
+            event.accept(BlockMod.DRAGONITE_BLOCK);
+            event.accept(BlockMod.RAW_DRAGONITE_BLOCK);
 
             event.accept(ItemMod.DRAGONSTONE);
             event.accept(ItemMod.RAW_DRAGONSTONE);
             event.accept(ItemMod.YTTRIUM);
             event.accept(ItemMod.RAW_YTTRIUM);
+            event.accept(ItemMod.DRAGONITE_INGOT);
+            event.accept(ItemMod.RAW_DRAGONITE);
 
             event.accept(BlockMod.UNSTABLE_CRATE);
             event.accept(BlockMod.FIRE_FLOWER);
@@ -243,6 +262,11 @@ public class BaseMod {
             event.accept(ItemMod.YTTRIUM_CHESTPLATE);
             event.accept(ItemMod.YTTRIUM_LEGGINGS);
             event.accept(ItemMod.YTTRIUM_BOOTS);
+            event.accept(ItemMod.DRAGONITE_AXE);
+            event.accept(ItemMod.DRAGONITE_HOE);
+            event.accept(ItemMod.DRAGONITE_SHOVEL);
+            event.accept(ItemMod.DRAGONITE_PICKAXE);
+            event.accept(ItemMod.DRAGONITE_SWORD);
 
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);
@@ -257,6 +281,7 @@ public class BaseMod {
             event.accept(ItemMod.FAZER_BLASTER);
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
             event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
+            event.accept(ItemMod.DEVILSKNIFE);
 
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.EVIL_GAMEBOY);
@@ -267,6 +292,8 @@ public class BaseMod {
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);
+            event.accept(ItemMod.BAGUETTE);
+            event.accept(ItemMod.SLICED_BREAD);
 
             event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
             event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);

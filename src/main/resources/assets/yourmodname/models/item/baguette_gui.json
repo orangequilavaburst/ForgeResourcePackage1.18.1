@@ -1,0 +1,9 @@
+{
+
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "yourmodname:item/baguette",
+    "particle": "yourmodname:item/baguette"
+  }
+
+}

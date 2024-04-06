@@ -1,0 +1,8 @@
+{
+
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "yourmodname:item/devilsknife"
+  }
+
+}

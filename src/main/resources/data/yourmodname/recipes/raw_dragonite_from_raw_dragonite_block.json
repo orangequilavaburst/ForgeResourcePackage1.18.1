@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "dragonite",
+  "ingredients": [
+    {
+      "item": "yourmodname:raw_dragonite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "yourmodname:raw_dragonite"
+  }
+}

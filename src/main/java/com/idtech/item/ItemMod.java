@@ -35,6 +35,8 @@ public class ItemMod {
 
     public static final RegistryObject<Item> RAW_YTTRIUM = ITEMS.register("raw_yttrium",
             () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> RAW_DRAGONITE = ITEMS.register("raw_dragonite", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_INGOT = ITEMS.register("dragonite_ingot", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> TOTEM_OF_ELECTRICITY = ITEMS.register("totem_of_electricity",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.RARE)));
@@ -112,6 +114,12 @@ public class ItemMod {
 
     public static final RegistryObject<Item> YTTRIUM_KATANA = ITEMS.register("yttrium_katana",
             () -> new YttriumKatanaItem(new Item.Properties()));
+
+    public static final RegistryObject<Item> DRAGONITE_SWORD = ITEMS.register("dragonite_sword", () -> new SwordItem(ToolTierMod.DRAGONITE, 4, 2, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_PICKAXE = ITEMS.register("dragonite_pickaxe", () -> new PickaxeItem(ToolTierMod.DRAGONITE, 1, 1, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_AXE = ITEMS.register("dragonite_axe", () -> new AxeItem(ToolTierMod.DRAGONITE, 7, 1, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_SHOVEL = ITEMS.register("dragonite_shovel", () -> new ShovelItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_HOE = ITEMS.register("dragonite_hoe", () -> new HoeItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
     public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
             () -> new FireballWandItem(new Item.Properties().rarity(Rarity.EPIC)));
 
@@ -160,6 +168,8 @@ public class ItemMod {
     public static final RegistryObject<Item> MEGA_BUSTER = ITEMS.register("mega_buster",
             () -> new MegaBusterItem(new Item.Properties()));
 
+    public static final RegistryObject<Item> DEVILSKNIFE = ITEMS.register("devilsknife", () -> new DevilsknifeItem(4, 2, new Item.Properties().rarity(Rarity.RARE)));
+
     // FOOD
 
     public static final RegistryObject<Item> CHEESEBURGER = ITEMS.register("cheeseburger",
@@ -176,6 +186,8 @@ public class ItemMod {
                             .meat()
                             .saturationMod(2.0f)
                             .nutrition(5).build())));
+    public static final RegistryObject<Item> BAGUETTE = ITEMS.register("baguette", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationMod(1.0f).build())));
+    public static final RegistryObject<Item> SLICED_BREAD = ITEMS.register("sliced_bread", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.1f).build())));
 
     // ARMOR
 

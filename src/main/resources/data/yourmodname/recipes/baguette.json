@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bread"
+    }
+  },
+  "pattern": [
+    "  B",
+    " B ",
+    "B  "
+  ],
+  "result": {
+    "item": "yourmodname:baguette"
+  }
+}

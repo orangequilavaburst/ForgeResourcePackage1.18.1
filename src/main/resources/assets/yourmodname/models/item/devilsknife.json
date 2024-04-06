@@ -1,0 +1,14 @@
+{
+
+  "loader":"forge:separate_transforms",
+  "gui_light": "front",
+  "base": {
+    "parent": "yourmodname:item/devilsknife_handheld"
+  },
+  "perspectives": {
+    "gui": {
+      "parent": "yourmodname:item/devilsknife_gui"
+    }
+  }
+
+}

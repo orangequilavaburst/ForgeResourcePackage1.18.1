@@ -53,6 +53,16 @@ public class BlockMod {
     public static final RegistryObject<Block> DEEPSLATE_YTTRIUM_ORE = registerBlock("deepslate_yttrium_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_IRON_ORE).mapColor(DyeColor.GRAY), UniformInt.of(10, 20)));
 
+    public static final RegistryObject<Block> DRAGONITE_ORE = registerBlock("dragonite_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DIAMOND_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
+    public static final RegistryObject<Block> DEEPSLATE_DRAGONITE_ORE = registerBlock("deepslate_dragonite_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.copy(Blocks.DEEPSLATE_DIAMOND_ORE).mapColor(DyeColor.ORANGE), UniformInt.of(10, 20)));
+
+    public static final RegistryObject<Block> RAW_DRAGONITE_BLOCK = registerBlock("raw_dragonite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.RAW_IRON_BLOCK).mapColor(DyeColor.ORANGE)));
+    public static final RegistryObject<Block> DRAGONITE_BLOCK = registerBlock("dragonite_block",
+            () -> new Block(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).mapColor(DyeColor.ORANGE)));
+
     public static final RegistryObject<Block> UNSTABLE_CRATE = registerBlock("unstable_crate",
             () -> new UnstableCrateBlock(BlockBehaviour.Properties.copy(Blocks.OAK_PLANKS).mapColor(DyeColor.BROWN)));
 

@@ -44,6 +44,9 @@ public class EntityMod {
     public static final RegistryObject<EntityType<CuteAlienEntity>> CUTE_ALIEN = ENTITY_TYPES.register("cute_alien",
             () -> EntityType.Builder.of(CuteAlienEntity::new, MobCategory.CREATURE).sized(0.5f, 0.5f).build(new ResourceLocation(BaseMod.MODID, "cute_alien").toString()));
 
+    public static final RegistryObject<EntityType<DevilsknifeEntity>> DEVILSKNIFE_ENTITY = ENTITY_TYPES.register("devilsknife",
+            () -> EntityType.Builder.of((EntityType.EntityFactory<DevilsknifeEntity>) DevilsknifeEntity::new, MobCategory.MISC).sized(1.5f, 1.5f).build(new ResourceLocation(BaseMod.MODID, "devilsknife").toString()));
+
     public static void register(IEventBus bus){
 
         ENTITY_TYPES.register(bus);
@@ -58,6 +61,7 @@ public class EntityMod {
         event.registerEntityRenderer(EntityMod.FRIENDLY_CREEPER.get(), FriendlyCreeperRenderer::new);
         event.registerEntityRenderer(EntityMod.GOLDEN_SKELETON.get(), GoldenSkeletonRenderer::new);
         event.registerEntityRenderer(EntityMod.CUTE_ALIEN.get(), CuteAlienRenderer::new);
+        event.registerEntityRenderer(EntityMod.DEVILSKNIFE_ENTITY.get(), DevilsknifeEntityRenderer::new);
 
     }
 

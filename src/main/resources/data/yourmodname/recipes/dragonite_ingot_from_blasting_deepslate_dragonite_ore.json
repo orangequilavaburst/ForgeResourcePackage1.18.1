@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "group": "dragonite",
+  "cookingtime": 100,
+  "experience": 2.0,
+  "ingredient": {
+    "item": "yourmodname:deepslate_dragonite_ore"
+  },
+  "result": "yourmodname:dragonite_ingot"
+}

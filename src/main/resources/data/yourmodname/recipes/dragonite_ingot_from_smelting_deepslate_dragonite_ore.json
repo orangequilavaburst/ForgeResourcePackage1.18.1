@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 2.0,
+  "group": "dragonite",
+  "ingredient": {
+    "item": "yourmodname:deepslate_dragonite_ore"
+  },
+  "result": "yourmodname:dragonite_ingot"
+}
