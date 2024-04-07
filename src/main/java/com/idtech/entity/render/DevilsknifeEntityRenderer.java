@@ -32,10 +32,10 @@ public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity>
         Level level = entity.level();
         poseStack.pushPose();
         // use entity.rotationStart to help?
-        //poseStack.mulPose(Axis.XP.rotationDegrees(90.0f));
-        //poseStack.mulPose(Axis.ZN.rotationDegrees(entity.rotationStart));
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, entity.yRotO - 90, entity.getYRot() - 90)));
         poseStack.mulPose(Axis.ZP.rotationDegrees(Mth.lerp(pPartialTick, entity.xRotO, entity.getXRot())));
+        poseStack.mulPose(Axis.YP.rotationDegrees(entity.rotationStart));
+        poseStack.mulPose(Axis.XP.rotationDegrees(90.0f));
         //poseStack.mulPose(Axis.ZN.rotationDegrees(90));
         if (itemStack.getItem() != Items.AIR){
             BakedModel bakedmodel = this.itemRenderer.getModel(itemStack, entity.level(), null, entity.getId());

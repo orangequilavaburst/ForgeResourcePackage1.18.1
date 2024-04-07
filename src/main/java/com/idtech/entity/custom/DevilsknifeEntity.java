@@ -29,7 +29,7 @@ import net.minecraft.world.phys.Vec3;
 public class DevilsknifeEntity extends AbstractArrow {
     private static final EntityDataAccessor<String> OWNER = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Boolean> ID_FOIL = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.BOOLEAN);
-    private static final ItemStack DEFAULT_ARROW_STACK = new ItemStack(ItemMod.DEVILSKNIFE.get());
+    private static ItemStack DEFAULT_ARROW_STACK = new ItemStack(ItemMod.DEVILSKNIFE.get());
     private static final float MAX_SPEED = 15.0f;
     private static final float ACCELERATION = 0.5f;
     private Vec3 bounceVector = Vec3.ZERO;
@@ -38,7 +38,7 @@ public class DevilsknifeEntity extends AbstractArrow {
 
     public float rotationStart;
     private float rotationSpeed;
-    private final float ROTATION_SPEED = 15.0f;
+    private final float ROTATION_SPEED = -30.0f;
     private int bounces = 0;
     private static final int MAX_BOUNCES = 1;
 
@@ -86,7 +86,7 @@ public class DevilsknifeEntity extends AbstractArrow {
         }
 
         super.tick();
-        this.rotationStart += this.rotationSpeed * Minecraft.getInstance().getDeltaFrameTime();
+        this.rotationStart += this.rotationSpeed;
         this.updateRotation();
 
     }
@@ -100,7 +100,7 @@ public class DevilsknifeEntity extends AbstractArrow {
         bounceVector = getReflectionVector(this.getDeltaMovement(), hitResult.getDirection());
         this.level().playSound(null, this.getX(), this.getY(), this.getZ(), this.level().getBlockState(hitResult.getBlockPos()).getSoundType().getHitSound(), SoundSource.NEUTRAL, 1f, 1f);
 
-        this.setDeltaMovement(bounceVector);
+        this.setDeltaMovement(bounceVector.scale(0.9));
         this.updateRotation();
 
         if (!this.isNoPhysics()){
@@ -216,11 +216,11 @@ public class DevilsknifeEntity extends AbstractArrow {
     }
 
     public ItemStack getPickupItemStackOrigin() {
-        return DEFAULT_ARROW_STACK;
+        return this.getPickupItem();
     }
 
     @Override
-    protected ItemStack getPickupItem() {
+    public ItemStack getPickupItem() {
         return DEFAULT_ARROW_STACK;
     }
 }
