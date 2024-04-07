@@ -28,8 +28,8 @@ public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity>
 
     @Override
     public void render(DevilsknifeEntity entity, float pEntityYaw, float pPartialTick, PoseStack poseStack, MultiBufferSource pBuffer, int pPackedLight) {
-        ItemStack itemStack = entity.getPickupItemStackOrigin();
-        Level level = entity.level();
+        ItemStack itemStack = entity.getPickupItem();
+        //Level level = entity.level();
         poseStack.pushPose();
         // use entity.rotationStart to help?
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, entity.yRotO - 90, entity.getYRot() - 90)));

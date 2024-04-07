@@ -55,7 +55,7 @@ public class DevilsknifeItem extends SwordItem {
         if (p_43396_ instanceof Player player) {
             int i = this.getUseDuration(p_43394_) - p_43397_;
             if (i >= 10) {
-                DevilsknifeEntity thrownKnife = new DevilsknifeEntity(p_43395_, player, p_43394_);
+                DevilsknifeEntity thrownKnife = new DevilsknifeEntity(p_43395_, player, p_43394_.copy());
                 thrownKnife.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
                 thrownKnife.setXRot(player.getViewXRot(1.0f));
                 thrownKnife.setYRot(player.getViewYRot(1.0f));
@@ -65,7 +65,7 @@ public class DevilsknifeItem extends SwordItem {
                 }
 
                 p_43395_.addFreshEntity(thrownKnife);
-                p_43395_.playSound((Player)null, thrownKnife, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
+                p_43395_.playSound(null, thrownKnife, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) {
                     player.getInventory().removeItem(p_43394_);
                 }

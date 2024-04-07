@@ -2,7 +2,6 @@ package com.idtech.entity.custom;
 
 import com.idtech.entity.EntityMod;
 import com.idtech.item.ItemMod;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -29,7 +28,7 @@ import net.minecraft.world.phys.Vec3;
 public class DevilsknifeEntity extends AbstractArrow {
     private static final EntityDataAccessor<String> OWNER = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.STRING);
     private static final EntityDataAccessor<Boolean> ID_FOIL = SynchedEntityData.defineId(DevilsknifeEntity.class, EntityDataSerializers.BOOLEAN);
-    private static ItemStack DEFAULT_ARROW_STACK = new ItemStack(ItemMod.DEVILSKNIFE.get());
+    private ItemStack knifeItem;
     private static final float MAX_SPEED = 15.0f;
     private static final float ACCELERATION = 0.5f;
     private Vec3 bounceVector = Vec3.ZERO;
@@ -42,9 +41,11 @@ public class DevilsknifeEntity extends AbstractArrow {
     private int bounces = 0;
     private static final int MAX_BOUNCES = 1;
 
-    public DevilsknifeEntity(Level p_36722_, LivingEntity p_312718_, ItemStack p_309639_) {
-        super(EntityMod.DEVILSKNIFE_ENTITY.get(), p_312718_, p_36722_);
-        this.entityData.set(ID_FOIL, p_309639_.hasFoil());
+    public DevilsknifeEntity(Level level, LivingEntity p_312718_, ItemStack stack) {
+        super(EntityMod.DEVILSKNIFE_ENTITY.get(), p_312718_, level);
+        this.knifeItem = new ItemStack(ItemMod.DEVILSKNIFE.get());
+        this.knifeItem = stack.copy();
+        this.entityData.set(ID_FOIL, stack.hasFoil());
         setOwnerUUID(p_312718_.getStringUUID());
         this.rotationStart = 0.0f;
         this.rotationSpeed = ROTATION_SPEED;
@@ -52,9 +53,9 @@ public class DevilsknifeEntity extends AbstractArrow {
 
     public DevilsknifeEntity(EntityType<DevilsknifeEntity> devilsknifeEntityEntityType, Level level) {
         super(EntityMod.DEVILSKNIFE_ENTITY.get(), level);
+        this.knifeItem = new ItemStack(ItemMod.DEVILSKNIFE.get());
         this.rotationStart = 0.0f;
         this.rotationSpeed = ROTATION_SPEED;
-
     }
 
     @Override
@@ -104,46 +105,45 @@ public class DevilsknifeEntity extends AbstractArrow {
         this.updateRotation();
 
         if (!this.isNoPhysics()){
-
-            if (this.bounces < this.MAX_BOUNCES){
+            if (this.bounces < MAX_BOUNCES){
                 this.bounces++;
             }
             else {
                 this.setNoPhysics(true);
             }
-
         }
 
     }
 
     protected void onHitEntity(EntityHitResult hitResult) {
         Entity entity = hitResult.getEntity();
-        float f = 8.0F;
-        if (entity instanceof LivingEntity livingentity) {
-            f += EnchantmentHelper.getDamageBonus(this.getPickupItemStackOrigin(), livingentity.getMobType());
+        float damage = 8.0F;
+        if (entity instanceof LivingEntity livingTarget) {
+            damage += EnchantmentHelper.getDamageBonus(this.getPickupItem(), livingTarget.getMobType());
         }
 
-        Entity entity1 = this.getOwner();
-        DamageSource damagesource = this.damageSources().trident(this, entity1 == null ? this : entity1);
+        Entity owner = this.getOwner();
+        DamageSource damagesource = this.damageSources().trident(this, owner == null ? this : owner);
         SoundEvent soundevent = SoundEvents.TRIDENT_HIT;
-        if (entity.hurt(damagesource, f)) {
+        if (entity.hurt(damagesource, damage)) {
             if (entity.getType() == EntityType.ENDERMAN) {
                 return;
             }
 
-            if (entity instanceof LivingEntity) {
-                LivingEntity livingentity1 = (LivingEntity)entity;
-                if (entity1 instanceof LivingEntity) {
-                    EnchantmentHelper.doPostHurtEffects(livingentity1, entity1);
-                    EnchantmentHelper.doPostDamageEffects((LivingEntity)entity1, livingentity1);
+            if (entity instanceof LivingEntity livingTarget) {
+                if (owner instanceof LivingEntity livingOwner) {
+                    int fireLevel = EnchantmentHelper.getFireAspect(livingOwner);
+                    if (fireLevel > 0) {
+                        livingTarget.setSecondsOnFire(fireLevel * 4);
+                    }
+
+                    EnchantmentHelper.doPostHurtEffects(livingTarget, owner);
+                    EnchantmentHelper.doPostDamageEffects((LivingEntity)owner, livingTarget);
                 }
 
-                this.doPostHurtEffects(livingentity1);
+                this.doPostHurtEffects(livingTarget);
             }
-        } /*else if (entity.getType().is(EntityTypeTags.)) {
-            this.deflect();
-            return;
-        }*/
+        }
 
         this.playSound(soundevent, 1.0f, 1.0F);
     }
@@ -180,14 +180,18 @@ public class DevilsknifeEntity extends AbstractArrow {
         this.entityData.define(OWNER, (this.getOwner() != null) ? this.getOwner().getStringUUID() : "");
     }
 
-    public void readAdditionalSaveData(CompoundTag p_37578_) {
-        super.readAdditionalSaveData(p_37578_);
-        this.dealtDamage = p_37578_.getBoolean("DealtDamage");
+    public void readAdditionalSaveData(CompoundTag nbt) {
+        super.readAdditionalSaveData(nbt);
+        this.dealtDamage = nbt.getBoolean("DealtDamage");
+        if (nbt.contains("Knife", 10)) {
+            this.knifeItem = ItemStack.of(nbt.getCompound("Knife"));
+        }
     }
 
-    public void addAdditionalSaveData(CompoundTag p_37582_) {
-        super.addAdditionalSaveData(p_37582_);
-        p_37582_.putBoolean("DealtDamage", this.dealtDamage);
+    public void addAdditionalSaveData(CompoundTag nbt) {
+        super.addAdditionalSaveData(nbt);
+        nbt.putBoolean("DealtDamage", this.dealtDamage);
+        nbt.put("Knife", knifeItem.save(new CompoundTag()));
     }
 
 
@@ -215,12 +219,8 @@ public class DevilsknifeEntity extends AbstractArrow {
         return true;
     }
 
-    public ItemStack getPickupItemStackOrigin() {
-        return this.getPickupItem();
-    }
-
     @Override
     public ItemStack getPickupItem() {
-        return DEFAULT_ARROW_STACK;
+        return knifeItem.copy();
     }
 }
