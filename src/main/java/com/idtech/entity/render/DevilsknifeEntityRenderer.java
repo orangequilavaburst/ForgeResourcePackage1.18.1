@@ -15,7 +15,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.Level;
 
 public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity> {
     private final ItemRenderer itemRenderer;
@@ -29,7 +28,6 @@ public class DevilsknifeEntityRenderer extends EntityRenderer<DevilsknifeEntity>
     @Override
     public void render(DevilsknifeEntity entity, float pEntityYaw, float pPartialTick, PoseStack poseStack, MultiBufferSource pBuffer, int pPackedLight) {
         ItemStack itemStack = entity.getPickupItem();
-        //Level level = entity.level();
         poseStack.pushPose();
         // use entity.rotationStart to help?
         poseStack.mulPose(Axis.YP.rotationDegrees(Mth.lerp(pPartialTick, entity.yRotO - 90, entity.getYRot() - 90)));

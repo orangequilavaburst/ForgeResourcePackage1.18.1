@@ -15,11 +15,9 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 
 public class CustomBowItem extends BowItem {
-
-    public static int drawtime = 20;
-    public static int range = 15;
-    public static float inaccuracy = 0.0f;
-    public static int damage = 1;
+    public int range = 15;
+    public float inaccuracy = 0.0f;
+    public int damage = 1;
 
     public CustomBowItem(Properties pProperties) {
         super(pProperties);
@@ -86,7 +84,7 @@ public class CustomBowItem extends BowItem {
                         pLevel.addFreshEntity(abstractarrow);
                     }
 
-                    pLevel.playSound((Player)null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
+                    pLevel.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ARROW_SHOOT, SoundSource.PLAYERS, 1.0F, 1.0F / (pLevel.getRandom().nextFloat() * 0.4F + 1.2F) + f * 0.5F);
                     if (!flag1 && !player.getAbilities().instabuild) {
                         itemstack.shrink(1);
                         if (itemstack.isEmpty()) {
