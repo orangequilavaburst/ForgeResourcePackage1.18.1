@@ -2,7 +2,6 @@ package com.idtech.item.custom;
 
 import com.idtech.BaseMod;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
@@ -40,7 +39,7 @@ public class FireballWandItem extends Item {
         // Thanks Random on Discord
 
         double finalP = speed/19;
-        double pRatio = finalP / 0.1; // power magnitude is set to 0.1 in AbstractHurtingProjectile constructor
+        // double pRatio = finalP / 0.1; // power magnitude is set to 0.1 in AbstractHurtingProjectile constructor
 
         Vec3 pVec = lookAngle.scale(finalP);
         fireball.xPower = pVec.x;

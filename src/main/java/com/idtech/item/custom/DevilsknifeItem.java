@@ -32,30 +32,30 @@ public class DevilsknifeItem extends SwordItem {
         super(DEVILSKNIFE, p_43270_, p_43271_, p_43272_);
     }
 
-    public UseAnim getUseAnimation(ItemStack p_43417_) {
+    public UseAnim getUseAnimation(ItemStack stack) {
         return UseAnim.SPEAR;
     }
 
-    public int getUseDuration(ItemStack p_43419_) {
+    public int getUseDuration(ItemStack stack) {
         return 72000;
     }
 
-    public InteractionResultHolder<ItemStack> use(Level p_43405_, Player p_43406_, InteractionHand p_43407_) {
-        ItemStack itemstack = p_43406_.getItemInHand(p_43407_);
+    public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
+        ItemStack itemstack = player.getItemInHand(hand);
         if (itemstack.getDamageValue() >= itemstack.getMaxDamage() - 1) {
             return InteractionResultHolder.fail(itemstack);
         }
         else {
-            p_43406_.startUsingItem(p_43407_);
+            player.startUsingItem(hand);
             return InteractionResultHolder.consume(itemstack);
         }
     }
 
-    public void releaseUsing(ItemStack p_43394_, Level p_43395_, LivingEntity p_43396_, int p_43397_) {
-        if (p_43396_ instanceof Player player) {
-            int i = this.getUseDuration(p_43394_) - p_43397_;
+    public void releaseUsing(ItemStack stack, Level level, LivingEntity user, int p_43397_) {
+        if (user instanceof Player player) {
+            int i = this.getUseDuration(stack) - p_43397_;
             if (i >= 10) {
-                DevilsknifeEntity thrownKnife = new DevilsknifeEntity(p_43395_, player, p_43394_.copy());
+                DevilsknifeEntity thrownKnife = new DevilsknifeEntity(level, player, stack.copy());
                 thrownKnife.shootFromRotation(player, player.getXRot(), player.getYRot(), 0.0F, 3.0F, 1.0F);
                 thrownKnife.setXRot(player.getViewXRot(1.0f));
                 thrownKnife.setYRot(player.getViewYRot(1.0f));
@@ -64,10 +64,10 @@ public class DevilsknifeItem extends SwordItem {
                     thrownKnife.pickup = AbstractArrow.Pickup.CREATIVE_ONLY;
                 }
 
-                p_43395_.addFreshEntity(thrownKnife);
-                p_43395_.playSound(null, thrownKnife, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
+                level.addFreshEntity(thrownKnife);
+                level.playSound(null, thrownKnife, SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) {
-                    player.getInventory().removeItem(p_43394_);
+                    player.getInventory().removeItem(stack);
                 }
             }
         }
@@ -75,8 +75,7 @@ public class DevilsknifeItem extends SwordItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> components, TooltipFlag flag) {
-        String tipItemName = stack.getItem().toString();
-        tipItemName = this.getDescriptionId() + ".credits";
+        String tipItemName = this.getDescriptionId() + ".credits";
         components.add(Component.translatable("tooltip.yourmodname.sprite_credits_generic").append(Component.translatable(tipItemName)).withStyle(ChatFormatting.DARK_GRAY));
         super.appendHoverText(stack, level, components, flag);
     }
