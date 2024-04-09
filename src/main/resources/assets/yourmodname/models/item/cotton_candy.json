@@ -1,0 +1,5 @@
+{"parent": "item/handheld","textures": {
+  "layer0": "yourmodname:item/cotton_candy",
+  "layer1": "yourmodname:item/cotton_candy_layer1",
+  "layer2": "yourmodname:item/cotton_candy_layer2"
+}}
