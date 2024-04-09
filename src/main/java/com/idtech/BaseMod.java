@@ -120,6 +120,7 @@ public class BaseMod {
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS){
 
             event.accept(BlockMod.FIRE_FLOWER);
+            event.accept(ItemMod.STARFRUIT_SEEDS);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
@@ -137,6 +138,11 @@ public class BaseMod {
             event.accept(ItemMod.RAW_YTTRIUM);
             event.accept(ItemMod.DRAGONITE_INGOT);
             event.accept(ItemMod.RAW_DRAGONITE);
+
+            event.accept(ItemMod.STARFRUIT);
+            event.accept(ItemMod.MAGICAL_STICK);
+            event.accept(ItemMod.ROCK_SALT);
+            event.accept(ItemMod.SALT);
 
             event.accept(ItemMod.SPEECH_BUBBLE);
 
@@ -172,6 +178,9 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
             event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
             event.accept(ItemMod.DEVILSKNIFE);
+            event.accept(ItemMod.HYPER_BOMB);
+            event.accept(ItemMod.SHURIKEN);
+            event.accept(ItemMod.STAR_ROD);
 
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
@@ -201,6 +210,9 @@ public class BaseMod {
             event.accept(ItemMod.HOT_DOG);
             event.accept(ItemMod.BAGUETTE);
             event.accept(ItemMod.SLICED_BREAD);
+            event.accept(ItemMod.CHERRY);
+            event.accept(ItemMod.STARFRUIT);
+            event.accept(ItemMod.COTTON_CANDY);
 
         }
         if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS){
@@ -282,6 +294,9 @@ public class BaseMod {
             event.accept(ItemMod.GOLDEN_FAZER_BLASTER);
             event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
             event.accept(ItemMod.DEVILSKNIFE);
+            event.accept(ItemMod.HYPER_BOMB);
+            event.accept(ItemMod.SHURIKEN);
+            event.accept(ItemMod.STAR_ROD);
 
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.EVIL_GAMEBOY);
@@ -294,6 +309,14 @@ public class BaseMod {
             event.accept(ItemMod.HOT_DOG);
             event.accept(ItemMod.BAGUETTE);
             event.accept(ItemMod.SLICED_BREAD);
+
+            event.accept(ItemMod.CHERRY);
+            event.accept(ItemMod.STARFRUIT);
+            event.accept(ItemMod.STARFRUIT_SEEDS);
+            event.accept(ItemMod.MAGICAL_STICK);
+            event.accept(ItemMod.ROCK_SALT);
+            event.accept(ItemMod.SALT);
+            event.accept(ItemMod.COTTON_CANDY);
 
             event.accept(ItemMod.FRIENDLY_CREEPER_SPAWN_EGG);
             event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);

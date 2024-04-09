@@ -44,6 +44,10 @@ public class ItemMod {
     public static final RegistryObject<Item> SPEECH_BUBBLE = ITEMS.register("speech_bubble",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<Item> ROCK_SALT = ITEMS.register("rock_salt", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> SALT = ITEMS.register("salt", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> MAGICAL_STICK = ITEMS.register("magical_stick", () -> new Item(new Item.Properties()));
+
     // TOOLS
 
     public static final RegistryObject<Item> DRAGONSTONE_AXE = ITEMS.register("dragonstone_axe",
@@ -170,6 +174,11 @@ public class ItemMod {
 
     public static final RegistryObject<Item> DEVILSKNIFE = ITEMS.register("devilsknife", () -> new DevilsknifeItem(4, 2, new Item.Properties().rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> HYPER_BOMB = ITEMS.register("hyper_bomb", () -> new Item(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> SHURIKEN = ITEMS.register("shuriken", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> STAR_ROD = ITEMS.register("star_rod", () -> new Item(new Item.Properties().stacksTo(1)));
+
     // FOOD
 
     public static final RegistryObject<Item> CHEESEBURGER = ITEMS.register("cheeseburger",
@@ -189,6 +198,10 @@ public class ItemMod {
     public static final RegistryObject<Item> BAGUETTE = ITEMS.register("baguette", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(6).saturationMod(1.0f).build())));
     public static final RegistryObject<Item> SLICED_BREAD = ITEMS.register("sliced_bread", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationMod(0.1f).build())));
 
+    public static final RegistryObject<Item> STARFRUIT = ITEMS.register("starfruit", () -> new Item(new Item.Properties().food(Items.BREAD.getFoodProperties())));
+    public static final RegistryObject<Item> STARFRUIT_SEEDS = ITEMS.register("starfruit_seeds", () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHERRY = ITEMS.register("cherry", () -> new Item(new Item.Properties().food(Items.APPLE.getFoodProperties())));
+    public static final RegistryObject<Item> COTTON_CANDY = ITEMS.register("cotton_candy", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(4).saturationMod(0.75f).build())));
     // ARMOR
 
     // PROJECTILES
