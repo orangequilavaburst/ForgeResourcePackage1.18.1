@@ -174,7 +174,7 @@ public class ItemMod {
 
     public static final RegistryObject<Item> DEVILSKNIFE = ITEMS.register("devilsknife", () -> new DevilsknifeItem(4, 2, new Item.Properties().rarity(Rarity.RARE)));
 
-    public static final RegistryObject<Item> HYPER_BOMB = ITEMS.register("hyper_bomb", () -> new Item(new Item.Properties().stacksTo(16)));
+    public static final RegistryObject<Item> HYPER_BOMB = ITEMS.register("hyper_bomb", () -> new HyperBombItem(new Item.Properties().stacksTo(16)));
 
     public static final RegistryObject<Item> SHURIKEN = ITEMS.register("shuriken", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> STAR_ROD = ITEMS.register("star_rod", () -> new Item(new Item.Properties().stacksTo(1)));

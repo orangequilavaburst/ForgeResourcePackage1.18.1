@@ -47,6 +47,9 @@ public class EntityMod {
     public static final RegistryObject<EntityType<DevilsknifeEntity>> DEVILSKNIFE_ENTITY = ENTITY_TYPES.register("devilsknife",
             () -> EntityType.Builder.of((EntityType.EntityFactory<DevilsknifeEntity>) DevilsknifeEntity::new, MobCategory.MISC).sized(1.5f, 1.5f).build(new ResourceLocation(BaseMod.MODID, "devilsknife").toString()));
 
+    public static final RegistryObject<EntityType<HyperBombEntity>> HYPER_BOMB_ENTITY = ENTITY_TYPES.register("hyper_bomb",
+            () -> EntityType.Builder.of((EntityType.EntityFactory<HyperBombEntity>) HyperBombEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(10).build(new ResourceLocation(BaseMod.MODID, "hyper_bomb").toString()));
+
     public static void register(IEventBus bus){
 
         ENTITY_TYPES.register(bus);
@@ -62,6 +65,7 @@ public class EntityMod {
         event.registerEntityRenderer(EntityMod.GOLDEN_SKELETON.get(), GoldenSkeletonRenderer::new);
         event.registerEntityRenderer(EntityMod.CUTE_ALIEN.get(), CuteAlienRenderer::new);
         event.registerEntityRenderer(EntityMod.DEVILSKNIFE_ENTITY.get(), DevilsknifeEntityRenderer::new);
+        event.registerEntityRenderer(EntityMod.HYPER_BOMB_ENTITY.get(), HyperBombRenderer::new);
 
     }
 
