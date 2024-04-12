@@ -2,6 +2,7 @@ package com.idtech.item.custom;
 
 import com.idtech.BaseMod;
 import com.idtech.particle.custom.AfterImageParticle;
+import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
@@ -18,12 +19,12 @@ public class DragonstoneArmorItem extends CustomArmorItem {
     public void onArmorTick(ItemStack stack, Level level, Player player) {
         super.onArmorTick(stack, level, player);
 
-        if (!level.isClientSide()){
+        if (level instanceof ServerLevel serverLevel){
             if (hasFullSuitOfArmorOn(getMaterial(), player)){
-                ServerLevel serverLevel = level.getServer().getLevel(player.level().dimension());
-                serverLevel.sendParticles(new AfterImageParticle.AfterImageParticleOptions(player.getId()),
+                int particles = serverLevel.sendParticles(new AfterImageParticle.AfterImageParticleOptions(player.getId()),
                         player.getX(), player.getY(), player.getZ(),
-                        0, 0.0D, 0.0D, 0.0D, 0.0D);
+                        0, 0.0D, 0.0D, 0.0D, 1.0D);
+                // BaseMod.LOGGER.info(particles);
             }
         }
     }
