@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 public class ClientBusEvents {
 
     public static void registerParticleFactories(RegisterParticleProvidersEvent event){
-        //event.registerSpecial(ParticleMod.AFTER_IMAGE_PARTICLE.get(), AfterImageParticle.Provider::new);
+        event.registerSpriteSet(ParticleMod.AFTER_IMAGE_PARTICLE.get(), AfterImageParticle.Provider::new);
     }
 
 }

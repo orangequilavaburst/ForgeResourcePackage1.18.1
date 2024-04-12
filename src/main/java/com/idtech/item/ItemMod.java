@@ -66,16 +66,16 @@ public class ItemMod {
             () -> new AxeItem(ToolTierMod.DRAGONSTONE, 3.5f, -2.0f, new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_HELMET = ITEMS.register("dragonstone_helmet",
-            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.HELMET, new Item.Properties()));
+            () -> new DragonstoneArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.HELMET, new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_CHESTPLATE = ITEMS.register("dragonstone_chestplate",
-            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
+            () -> new DragonstoneArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_LEGGINGS = ITEMS.register("dragonstone_leggings",
-            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
+            () -> new DragonstoneArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.LEGGINGS, new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_BOOTS = ITEMS.register("dragonstone_boots",
-            () -> new CustomArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.BOOTS, new Item.Properties()));
+            () -> new DragonstoneArmorItem(ArmorMaterialMod.DRAGONSTONE, ArmorItem.Type.BOOTS, new Item.Properties()));
 
     public static final RegistryObject<Item> DRAGONSTONE_ARROW = ITEMS.register("dragonstone_arrow",
             () -> new DragonstoneArrowItem(new Item.Properties()));
