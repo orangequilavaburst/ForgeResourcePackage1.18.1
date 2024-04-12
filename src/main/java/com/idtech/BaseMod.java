@@ -11,6 +11,7 @@ import com.idtech.item.CreativeModeTabMod;
 import com.idtech.item.ItemMod;
 import com.idtech.item.ItemUtils;
 import com.idtech.painting.PaintingMod;
+import com.idtech.particle.ParticleMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
@@ -89,6 +90,7 @@ public class BaseMod {
         SoundMod.register(modEventBus);
         PaintingMod.register(modEventBus);
         LootModifierMod.register(modEventBus);
+        ParticleMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
