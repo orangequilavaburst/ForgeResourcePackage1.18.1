@@ -1,5 +1,6 @@
 package com.idtech.particle.custom;
 
+import com.idtech.BaseMod;
 import com.idtech.particle.ParticleMod;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -20,6 +21,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -35,27 +37,33 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     @Nullable
     private Entity entity;
 
+    private Pose pose;
+
     private float yRot;
     private float yRot0;
     private float yHeadRot;
     private float yHeadRot0;
     private float yBodyRot;
-    private float yBodyRotO;
+    private float yBodyRot0;
 
     private float position;
     private float speed;
 
 
+
+
     public AfterImageParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, T options) {
         super(pLevel, pX, pY, pZ);
 
-        this.lifetime = 8;
+        this.lifetime = 20;
 
         this.xd = pXSpeed;
         this.yd = pYSpeed;
         this.zd = pZSpeed;
 
         this.entityId = options.entityID();
+
+        //BaseMod.LOGGER.info("LETS FUCKING GOOOOOOO");
     }
 
     @Override
@@ -67,6 +75,8 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
         if (this.entity == null) {
             this.entity = this.level.getEntity(this.entityId);
 
+            //BaseMod.LOGGER.info("Entity ID is now ".concat(Integer.toString(this.entityId)).concat(", which is a ").concat(this.entity.getName().getString()));
+
             if (this.entity == null) return;
 
             this.yRot = this.entity.getYRot();
@@ -77,45 +87,51 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                 this.yHeadRot0 = living.yHeadRotO;
 
                 this.yBodyRot = living.yBodyRot;
-                this.yBodyRotO = living.yBodyRotO;
+                this.yBodyRot0 = living.yBodyRotO;
 
                 this.position = living.walkAnimation.position();
                 this.speed = living.walkAnimation.speed();
             }
+
         }
+        //BaseMod.LOGGER.info("Entity ID is ".concat(Integer.toString(this.entityId)).concat(", which is a ").concat(this.entity.getName().getString()));
+
     }
 
     @Override
     public void render(VertexConsumer pBuffer, Camera pRenderInfo, float pPartialTicks) {
         if (this.entity != null) {
             PoseStack stack = new PoseStack();
-
-            float yRot = this.entity.getYRot();
-            float yRotO = this.entity.yRotO;
-
-            float yHeadRot = 0.0F;
-            float yHeadRotO = 0.0F;
-            float yBodyRot = 0.0F;
-            float yBodyRotO = 0.0F;
-
             boolean invisible = this.entity.isInvisible();
+
+            /*
+            yRot = this.entity.getYRot();
+            yRot0 = this.entity.yRotO;
+
+            yHeadRot = 0.0F;
+            yHeadRot0 = 0.0F;
+            yBodyRot = 0.0F;
+            yBodyRot0 = 0.0F;
+
+
 
             if (this.entity instanceof LivingEntity living) {
                 yHeadRot = living.yHeadRot;
-                yHeadRotO = living.yHeadRotO;
+                yHeadRot0 = living.yHeadRotO;
 
                 living.yHeadRot = this.yHeadRot;
                 living.yHeadRotO = this.yHeadRot0;
 
                 yBodyRot = living.yHeadRot;
-                yBodyRotO = living.yHeadRotO;
+                yBodyRot0 = living.yHeadRotO;
 
                 living.yBodyRot = this.yBodyRot;
-                living.yBodyRotO = this.yBodyRotO;
+                living.yBodyRotO = this.yBodyRot0;
             }
+            */
 
-            this.entity.setYRot(this.yRot);
-            this.entity.yRotO = this.yRot0;
+            //this.entity.setYRot(this.yRot);
+            //this.entity.yRotO = this.yRot0;
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
 
@@ -131,16 +147,18 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
-            this.entity.yRotO = yRotO;
+            /*
+            this.entity.yRotO = yRot0;
             this.entity.setYRot(yRot);
 
             if (this.entity instanceof LivingEntity living) {
-                living.yBodyRotO = yBodyRotO;
+                living.yBodyRotO = yBodyRot0;
                 living.yBodyRot = yBodyRot;
 
-                living.yHeadRotO = yHeadRotO;
+                living.yHeadRotO = yHeadRot0;
                 living.yHeadRot = yHeadRot;
             }
+             */
 
             this.entity.setInvisible(invisible);
 
