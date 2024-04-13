@@ -2,6 +2,7 @@ package com.idtech.item.custom;
 
 import com.idtech.BaseMod;
 import com.idtech.particle.custom.AfterImageParticle;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -27,6 +28,8 @@ public class AfterImageStickItem extends Item {
                     pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(),
                     0, 0.0D, 0.0D, 0.0D, 1.0D);
             BaseMod.LOGGER.info("Particle result: ".concat(Integer.toString(particles)));
+
+            serverLevel.sendParticles(ParticleTypes.SOUL, pPlayer.position().x, pPlayer.position().y + 2.0, pPlayer.position().z, 0, 0.0, 0.0, 0.0, 0.0);
         }
         return InteractionResultHolder.success(pPlayer.getItemInHand(pUsedHand));
     }
