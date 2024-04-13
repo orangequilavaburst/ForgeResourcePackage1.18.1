@@ -37,8 +37,6 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     @Nullable
     private Entity entity;
 
-    private Pose pose;
-
     private float yRot;
     private float yRot0;
     private float yHeadRot;
