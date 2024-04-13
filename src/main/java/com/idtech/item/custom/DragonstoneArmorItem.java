@@ -21,9 +21,9 @@ public class DragonstoneArmorItem extends CustomArmorItem {
 
         if (level instanceof ServerLevel serverLevel){
             if (hasFullSuitOfArmorOn(getMaterial(), player)){
-                int particles = serverLevel.sendParticles(new AfterImageParticle.AfterImageParticleOptions(player.getId()),
+                /*int particles = serverLevel.sendParticles(new AfterImageParticle.AfterImageParticleOptions(player.getId()),
                         player.getX(), player.getY(), player.getZ(),
-                        0, 0.0D, 0.0D, 0.0D, 1.0D);
+                        0, 0.0D, 0.0D, 0.0D, 1.0D);*/
                 // level.addParticle(new AfterImageParticle.AfterImageParticleOptions(player.getId()), player.getX(), player.getY(), player.getZ(), 0.0d, 0.0d, 0.0d);
                 // BaseMod.LOGGER.info(particles);
             }

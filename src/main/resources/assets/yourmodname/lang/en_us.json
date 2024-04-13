@@ -81,6 +81,8 @@
   "item.yourmodname.golden_skeleton_spawn_egg": "Golden Skeleton Spawn Egg",
   "item.yourmodname.cute_alien_spawn_egg": "Cute Alien Spawn Egg",
 
+  "item.yourmodname.after_image_debug_stick": "After Image Debug Stick",
+
   "block.yourmodname.basic_block": "Basic Block",
   "block.yourmodname.dragonstone_ore": "Dragonstone Ore",
   "block.yourmodname.deepslate_dragonstone_ore": "Deepslate Dragonstone Ore",

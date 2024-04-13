@@ -21,6 +21,7 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -45,7 +46,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     private float speed;
 
 
-    protected AfterImageParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, T options) {
+    public AfterImageParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, T options) {
         super(pLevel, pX, pY, pZ);
 
         this.lifetime = 8;
@@ -147,7 +148,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     }
 
     @Override
-    public ParticleRenderType getRenderType() {
+    public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.CUSTOM;
     }
 
@@ -178,7 +179,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
 
         @Override
         public @NotNull String writeToString() {
-            return String.format(Locale.ROOT, "%s %d", BuiltInRegistries.PARTICLE_TYPE.getKey(this.getType()), this.entityID);
+            return String.format(Locale.ROOT, "%s %d", ForgeRegistries.PARTICLE_TYPES.getKey(this.getType()), this.entityID);
         }
     }
 

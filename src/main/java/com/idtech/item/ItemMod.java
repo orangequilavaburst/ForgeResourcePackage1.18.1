@@ -220,6 +220,11 @@ public class ItemMod {
             () -> new ForgeSpawnEggItem(EntityMod.CUTE_ALIEN, 0x64F2A8, 0x9235ED,
                     new Item.Properties()));
 
+    // DEBUG
+
+    public static final RegistryObject<Item> AFTER_IMAGE_DEBUG_STICK = ITEMS.register("after_image_debug_stick",
+            () -> new AfterImageStickItem(new Item.Properties().stacksTo(1)));
+
     // spawn egg example
     /*public static final RegistryObject<Item> BASIC_ENTITY_SPAWN_EGG = ITEMS.register("basic_entity_spawn_egg",
         () -> new ForgeSpawnEggItem(EntityMod.BASIC_ENTITY, 0xAAAAAA, 0xBBBBBB,

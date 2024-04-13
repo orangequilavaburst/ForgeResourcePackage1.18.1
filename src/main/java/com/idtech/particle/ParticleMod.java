@@ -4,12 +4,11 @@ import com.idtech.BaseMod;
 import com.idtech.particle.custom.AfterImageParticle;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 public class ParticleMod {
 
@@ -19,7 +18,7 @@ public class ParticleMod {
     public static final RegistryObject<ParticleType<AfterImageParticle.AfterImageParticleOptions>> AFTER_IMAGE_PARTICLE =
             PARTICLE_TYPES.register("after_image", () -> new ParticleType<>(false, AfterImageParticle.AfterImageParticleOptions.DESERIALIZER) {
                 @Override
-                public Codec<AfterImageParticle.AfterImageParticleOptions> codec() {
+                public @NotNull Codec<AfterImageParticle.AfterImageParticleOptions> codec() {
                     return null;
                 }
             });

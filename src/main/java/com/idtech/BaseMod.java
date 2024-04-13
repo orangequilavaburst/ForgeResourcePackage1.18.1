@@ -324,6 +324,8 @@ public class BaseMod {
             event.accept(ItemMod.GOLDEN_SKELETON_SPAWN_EGG);
             event.accept(ItemMod.CUTE_ALIEN_SPAWN_EGG);
 
+            event.accept(ItemMod.AFTER_IMAGE_DEBUG_STICK);
+
         }
 
     }
