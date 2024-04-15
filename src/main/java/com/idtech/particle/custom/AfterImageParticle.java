@@ -1,6 +1,5 @@
 package com.idtech.particle.custom;
 
-import com.idtech.BaseMod;
 import com.idtech.particle.ParticleMod;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -17,11 +16,9 @@ import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +46,6 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
 
 
 
-
     public AfterImageParticle(ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed, T options) {
         super(pLevel, pX, pY, pZ);
 
@@ -68,7 +64,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     public void tick() {
         super.tick();
 
-        this.alpha = 1.0F - ((float) this.age / this.lifetime);
+        this.alpha = (0.5F - ((float) this.age / this.lifetime)*0.5f);
 
         if (this.entity == null) {
             this.entity = this.level.getEntity(this.entityId);
