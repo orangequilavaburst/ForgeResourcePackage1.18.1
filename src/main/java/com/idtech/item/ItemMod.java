@@ -124,6 +124,9 @@ public class ItemMod {
     public static final RegistryObject<Item> DRAGONITE_AXE = ITEMS.register("dragonite_axe", () -> new AxeItem(ToolTierMod.DRAGONITE, 7, 1, new Item.Properties()));
     public static final RegistryObject<Item> DRAGONITE_SHOVEL = ITEMS.register("dragonite_shovel", () -> new ShovelItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
     public static final RegistryObject<Item> DRAGONITE_HOE = ITEMS.register("dragonite_hoe", () -> new HoeItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
+
+    public static final RegistryObject<Item> LASER_DRILL = ITEMS.register("laser_drill",
+            () -> new LaserDrillItem(Tiers.DIAMOND, 1, 1.0f, new Item.Properties(), 10.0f));
     public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
             () -> new FireballWandItem(new Item.Properties().rarity(Rarity.EPIC)));
 

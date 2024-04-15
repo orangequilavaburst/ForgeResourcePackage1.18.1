@@ -204,6 +204,7 @@ public class BaseMod {
             event.accept(ItemMod.EXPERIENCE_JAR);
             event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
             event.accept(ItemMod.DETONATOR);
+            event.accept(ItemMod.LASER_DRILL);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
@@ -281,6 +282,7 @@ public class BaseMod {
             event.accept(ItemMod.DRAGONITE_SHOVEL);
             event.accept(ItemMod.DRAGONITE_PICKAXE);
             event.accept(ItemMod.DRAGONITE_SWORD);
+            event.accept(ItemMod.LASER_DRILL);
 
             event.accept(ItemMod.TOTEM_OF_HONESTY);
             event.accept(ItemMod.TOTEM_OF_FLUIDIY);

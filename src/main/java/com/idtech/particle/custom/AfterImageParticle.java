@@ -71,7 +71,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
 
             //BaseMod.LOGGER.info("Entity ID is now ".concat(Integer.toString(this.entityId)).concat(", which is a ").concat(this.entity.getName().getString()));
 
-            if (this.entity == null) return;
+            if (this.entity != null) return;
 
             this.yRot = this.entity.getYRot();
             this.yRot0 = this.entity.yRotO;
