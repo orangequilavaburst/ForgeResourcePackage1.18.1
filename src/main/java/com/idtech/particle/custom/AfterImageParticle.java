@@ -1,6 +1,7 @@
 package com.idtech.particle.custom;
 
 import com.idtech.particle.ParticleMod;
+import com.idtech.particle.render.AfterImageRenderer;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexBuffer;
@@ -98,22 +99,44 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     }
 
     @Override
+    public void remove() {
+        super.remove();
+        this.savedFrame.forEach(((renderType, vertexBuffer) -> {
+            vertexBuffer.close();
+        }));
+    }
+
+    @Override
     public void render(VertexConsumer pBuffer, Camera pRenderInfo, float pPartialTicks) {
         if (this.entity != null) {
             PoseStack stack = new PoseStack();
             boolean invisible = this.entity.isInvisible();
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
-
             EntityRenderDispatcher manager = Minecraft.getInstance().getEntityRenderDispatcher();
             EntityRenderer<? super Entity> renderer = manager.getRenderer(this.entity);
 
+            if (this.savedFrame == null){
+
+                this.savedFrame = AfterImageRenderer.preRenderEntity(this.entity, pPartialTicks);
+
+            }
+            else{
+                this.savedFrame.forEach((renderType, buffer) -> {
+                    renderType.setupRenderState();
+                    buffer.bind();
+                    buffer.draw();
+                });
+            }
+
+            /*
             MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
             Vec3 offset = renderer.getRenderOffset(this.entity, pPartialTicks);
             stack.translate((this.x - pRenderInfo.getPosition().x) + offset.x, (this.y - pRenderInfo.getPosition().y) + offset.y, (this.z - pRenderInfo.getPosition().z) + offset.z);
             renderer.render(this.entity, 0.0F, pPartialTicks, stack, buffer, manager.getPackedLightCoords(this.entity, pPartialTicks));
             buffer.getBuffer(RenderType.translucent());
             buffer.endBatch();
+            */
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 

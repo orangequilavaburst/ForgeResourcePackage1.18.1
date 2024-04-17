@@ -23,7 +23,7 @@ public class AfterImageRenderer {
     public static final Supplier<Camera> CAMERA = () -> Minecraft.getInstance().gameRenderer.getMainCamera();
     public static final Supplier<EntityRenderDispatcher> ENTITY_RENDERER = () -> Minecraft.getInstance().getEntityRenderDispatcher();
 
-    public Map<RenderType, VertexBuffer> preRenderEntity(Entity entity, float partialTicks){
+    public static Map<RenderType, VertexBuffer> preRenderEntity(Entity entity, float partialTicks){
 
         PoseStack poseStack = new PoseStack();
         EntityRenderDispatcher entityRenderer = ENTITY_RENDERER.get();
@@ -44,10 +44,12 @@ public class AfterImageRenderer {
 
         Map<RenderType, VertexBuffer> map = new HashMap<>();
         bufferSource.renderBuilders.forEach((renderType, bufferBuilder) -> {
-            VertexBuffer buffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
-            buffer.bind();
-            buffer.upload(bufferBuilder.end());
-            map.put(renderType, buffer);
+            if (bufferBuilder.building() && renderType != null) {
+                VertexBuffer buffer = new VertexBuffer(VertexBuffer.Usage.STATIC);
+                buffer.bind();
+                buffer.upload(bufferBuilder.end());
+                map.put(renderType, buffer);
+            }
         });
 
         return map;
