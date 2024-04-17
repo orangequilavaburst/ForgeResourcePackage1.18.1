@@ -3,7 +3,9 @@ package com.idtech.particle.custom;
 import com.idtech.particle.ParticleMod;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexBuffer;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.blaze3d.vertex.VertexFormatElement;
 import com.mojang.brigadier.StringReader;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.client.Camera;
@@ -25,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
+import java.util.Map;
 
 // thank you so much Radoncoding!
 public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleOptions> extends TextureSheetParticle {
@@ -33,6 +36,8 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
 
     @Nullable
     private Entity entity;
+    @Nullable
+    private Map<RenderType, VertexBuffer> savedFrame;
 
     private float yRot;
     private float yRot0;
@@ -98,35 +103,6 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
             PoseStack stack = new PoseStack();
             boolean invisible = this.entity.isInvisible();
 
-            /*
-            yRot = this.entity.getYRot();
-            yRot0 = this.entity.yRotO;
-
-            yHeadRot = 0.0F;
-            yHeadRot0 = 0.0F;
-            yBodyRot = 0.0F;
-            yBodyRot0 = 0.0F;
-
-
-
-            if (this.entity instanceof LivingEntity living) {
-                yHeadRot = living.yHeadRot;
-                yHeadRot0 = living.yHeadRotO;
-
-                living.yHeadRot = this.yHeadRot;
-                living.yHeadRotO = this.yHeadRot0;
-
-                yBodyRot = living.yHeadRot;
-                yBodyRot0 = living.yHeadRotO;
-
-                living.yBodyRot = this.yBodyRot;
-                living.yBodyRotO = this.yBodyRot0;
-            }
-            */
-
-            //this.entity.setYRot(this.yRot);
-            //this.entity.yRotO = this.yRot0;
-
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, this.alpha);
 
             EntityRenderDispatcher manager = Minecraft.getInstance().getEntityRenderDispatcher();
@@ -140,19 +116,6 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
             buffer.endBatch();
 
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-
-            /*
-            this.entity.yRotO = yRot0;
-            this.entity.setYRot(yRot);
-
-            if (this.entity instanceof LivingEntity living) {
-                living.yBodyRotO = yBodyRot0;
-                living.yBodyRot = yBodyRot;
-
-                living.yHeadRotO = yHeadRot0;
-                living.yHeadRot = yHeadRot;
-            }
-             */
 
             this.entity.setInvisible(invisible);
 
