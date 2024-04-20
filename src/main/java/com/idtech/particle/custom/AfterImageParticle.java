@@ -129,15 +129,6 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                 });
             }
 
-            /*
-            MultiBufferSource.BufferSource buffer = Minecraft.getInstance().renderBuffers().bufferSource();
-            Vec3 offset = renderer.getRenderOffset(this.entity, pPartialTicks);
-            stack.translate((this.x - pRenderInfo.getPosition().x) + offset.x, (this.y - pRenderInfo.getPosition().y) + offset.y, (this.z - pRenderInfo.getPosition().z) + offset.z);
-            renderer.render(this.entity, 0.0F, pPartialTicks, stack, buffer, manager.getPackedLightCoords(this.entity, pPartialTicks));
-            buffer.getBuffer(RenderType.translucent());
-            buffer.endBatch();
-            */
-
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 
             this.entity.setInvisible(invisible);
