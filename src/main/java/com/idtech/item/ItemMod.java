@@ -204,7 +204,7 @@ public class ItemMod {
     public static final RegistryObject<Item> STARFRUIT = ITEMS.register("starfruit", () -> new Item(new Item.Properties().food(Items.BREAD.getFoodProperties())));
     public static final RegistryObject<Item> STARFRUIT_SEEDS = ITEMS.register("starfruit_seeds", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> CHERRY = ITEMS.register("cherry", () -> new Item(new Item.Properties().food(Items.APPLE.getFoodProperties())));
-    public static final RegistryObject<Item> COTTON_CANDY = ITEMS.register("cotton_candy", () -> new Item(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(4).saturationMod(0.75f).build())));
+    public static final RegistryObject<Item> COTTON_CANDY = ITEMS.register("cotton_candy", () -> new CottonCandyItem(new Item.Properties().food(new FoodProperties.Builder().alwaysEat().nutrition(4).saturationMod(0.75f).build())));
     // ARMOR
 
     // PROJECTILES

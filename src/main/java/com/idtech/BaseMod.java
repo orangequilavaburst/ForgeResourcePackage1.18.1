@@ -20,12 +20,14 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FishingHook;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -54,6 +56,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
+import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -395,6 +398,37 @@ public class BaseMod {
         @SubscribeEvent
         public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event){
             event.registerLayerDefinition(CuteAlienModel.LAYER_LOCATION, CuteAlienModel::createBodyLayer);
+        }
+
+        @SubscribeEvent
+        public static void colorItemsEvent(RegisterColorHandlersEvent.Item event){
+            event.register(((pStack, pTintIndex) -> {
+                java.util.List<MobEffectInstance> effects = PotionUtils.getMobEffects(pStack);
+                if (effects.size() == 1){
+                    if (pTintIndex > 0){
+                        return PotionUtils.getColor(effects);
+                    }
+                }
+                else if (effects.size() > 1){
+                    if (pTintIndex == 1){
+                        java.util.List<MobEffectInstance> effectOne = effects.subList(0, effects.size()/2);
+                        /*LOGGER.info("First effect list:");
+                        for (MobEffectInstance effect : effectOne){
+                            LOGGER.info(effect.getEffect().getDisplayName().getString());
+                        }*/
+                        return PotionUtils.getColor(effectOne);
+                    }
+                    else if (pTintIndex == 2){
+                        java.util.List<MobEffectInstance> effectTwo = effects.subList(effects.size()/2, effects.size());
+                        /*LOGGER.info("Second effect list:");
+                        for (MobEffectInstance effect : effectTwo){
+                            LOGGER.info(effect.getEffect().getDisplayName().getString());
+                        }*/
+                        return PotionUtils.getColor(effectTwo);
+                    }
+                }
+                return 0xFFFFFF;
+            }), ItemMod.COTTON_CANDY.get());
         }
 
         @SubscribeEvent
