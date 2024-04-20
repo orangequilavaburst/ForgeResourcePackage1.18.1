@@ -14,8 +14,6 @@ import net.minecraft.world.level.gameevent.GameEvent;
 
 public class CottonCandyItem extends PotionItem {
 
-    int DEFAULT_COLOR = 0xFFFFFF;
-
     public CottonCandyItem(Properties pProperties) {
         super(pProperties);
     }

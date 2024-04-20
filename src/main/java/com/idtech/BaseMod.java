@@ -56,7 +56,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
-import java.util.List;
 import java.util.stream.Collectors;
 
 /**
@@ -484,56 +483,17 @@ public class BaseMod {
         @SubscribeEvent
         public static void renderArmEvent(RenderArmEvent event){
 
-            /*
-            event.setCanceled(true);
+        }
 
-            Minecraft mc = Minecraft.getInstance();
-            PlayerRenderer renderer = (PlayerRenderer) mc.getEntityRenderDispatcher().getRenderer(event.getPlayer());
-            ModelPart model = renderer.getModel().rightArm;
-
-            event.getPoseStack().pushPose();
-            //event.getPoseStack().mulPose(Axis.YP.rotationDegrees(-45.0F));
-            model.render(event.getPoseStack(), event.getMultiBufferSource().getBuffer(RenderType.entityTranslucent(mc.player.getSkinTextureLocation())),
-                    event.getPackedLight(), OverlayTexture.RED_OVERLAY_V);
-            event.getPoseStack().popPose();
-            */
+        @SubscribeEvent
+        public static void renderItemEvent(RenderHandEvent event){
 
         }
 
-    }
-
-    @SubscribeEvent
-    public static void renderItemEvent(RenderHandEvent event){
-
-        /*
-        ItemStack itemStack = event.getItemStack();
-        if (itemStack.is(ItemMod.MEGA_BUSTER.get())){
-
-            event.setCanceled(true);
-
-            Minecraft mc = Minecraft.getInstance();
-            Player player = Minecraft.getInstance().player;
-            ItemInHandRenderer renderer = mc.getEntityRenderDispatcher().getItemInHandRenderer();
-
-            ItemModelShaper itemModelShaper = new net.minecraftforge.client.model.ForgeItemModelShaper(Minecraft.getInstance().getModelManager());
-            BakedModel bakedmodel;
-            if (itemStack.is(Items.TRIDENT)) {
-                bakedmodel = itemModelShaper.getModelManager().getModel(TRIDENT_IN_HAND_MODEL);
-            } else if (itemStack.is(Items.SPYGLASS)) {
-                bakedmodel = itemModelShaper.getModelManager().getModel(SPYGLASS_IN_HAND_MODEL);
-            } else {
-                bakedmodel = itemModelShaper.getItemModel(itemStack);
-            }
-
-            event.getPoseStack().pushPose();
-            renderer.renderItem(player, itemStack,
-                    (event.getHand().equals(InteractionHand.MAIN_HAND)) ? ItemDisplayContext.FIRST_PERSON_RIGHT_HAND : ItemDisplayContext.FIRST_PERSON_LEFT_HAND,
-                    true, event.getPoseStack(), event.getMultiBufferSource(), event.getPackedLight());
-
-            event.getPoseStack().popPose();
+        @SubscribeEvent
+        public static void renderStageEvent(RenderLevelStageEvent event){
 
         }
-        */
 
     }
 

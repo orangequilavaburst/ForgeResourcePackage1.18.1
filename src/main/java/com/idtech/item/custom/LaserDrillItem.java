@@ -11,10 +11,7 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.item.UseAnim;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -22,7 +19,9 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 
-public class LaserDrillItem extends Item {
+public class LaserDrillItem extends Item{
+
+    // look at BundleItem for storing tools
 
     private final float miningRange;
     private int lastSentState;
@@ -118,8 +117,8 @@ public class LaserDrillItem extends Item {
 
     private float incrementDestroyProgress(BlockState pState, BlockPos pPos, int pUseDuration, Player pPlayer) {
         int i = pUseDuration;
-        float f = pState.getDestroyProgress(pPlayer, pPlayer.level(), pPos) * (float)(i + 1);
-        int j = (int)(f * 10.0F);
+        float f = pState.getDestroyProgress(pPlayer, pPlayer.level(), pPos) * (float) (i + 1);
+        int j = (int) (f * 10.0F);
         if (j != this.lastSentState) {
             pPlayer.level().destroyBlockProgress(pPlayer.getId(), pPos, j);
             this.lastSentState = j;
