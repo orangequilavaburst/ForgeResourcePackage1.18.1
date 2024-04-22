@@ -106,9 +106,11 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     @Override
     public void remove() {
         super.remove();
-        this.savedFrame.forEach(((renderType, vertexBuffer) -> {
-            vertexBuffer.close();
-        }));
+        if (this.savedFrame != null) {
+            this.savedFrame.forEach(((renderType, vertexBuffer) -> {
+                vertexBuffer.close();
+            }));
+        }
     }
 
     @Override
@@ -137,12 +139,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                     if (shader == null){
                         return;
                     }
-                    Uniform modelViewMatrix = shader.MODEL_VIEW_MATRIX;
-                    if (modelViewMatrix != null){
-                        modelViewMatrix.set(stack.last().pose());
-                        modelViewMatrix.upload();
-                    }
-                    setupSectionShader(RenderSystem.getProjectionMatrix(), shader); // find out where the projection matrix actually comes from
+                    setupSectionShader(stack.last().pose(), RenderSystem.getProjectionMatrix(), shader);
 
                     buffer.bind();
                     buffer.draw();
@@ -162,10 +159,14 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     }
 
     // thx m_marvin on discord
-    protected void setupSectionShader(Matrix4f pProjectionMatrix, ShaderInstance pShader) {
+    protected void setupSectionShader(Matrix4f pModelViewMatrix, Matrix4f pProjectionMatrix, ShaderInstance pShader) {
         for(int i = 0; i < 12; ++i) {
             int j = RenderSystem.getShaderTexture(i);
             pShader.setSampler("Sampler" + i, j);
+        }
+
+        if (pShader.MODEL_VIEW_MATRIX != null){
+            pShader.MODEL_VIEW_MATRIX.set(pModelViewMatrix);
         }
 
         if (pShader.PROJECTION_MATRIX != null) {
