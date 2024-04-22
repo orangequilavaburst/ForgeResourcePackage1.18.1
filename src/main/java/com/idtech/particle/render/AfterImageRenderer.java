@@ -38,7 +38,7 @@ public class AfterImageRenderer {
             poseStack.pushPose();
             //poseStack.translate(entity.position().x(), entity.position().y(), entity.position().z());
             poseStack.translate(-CAMERA.get().getPosition().x(), -CAMERA.get().getPosition().y(), -CAMERA.get().getPosition().z());
-            poseStack.rotateAround(CAMERA.get().rotation().invert(), 0.0f, 0.0f, 0.0f);
+            poseStack.mulPose(CAMERA.get().rotation().invert());
             renderer.render(entity, entity.getViewYRot(partialTicks), partialTicks, poseStack, bufferSource, light);
             poseStack.popPose();
 
