@@ -2,6 +2,7 @@ package com.idtech.particle.custom;
 
 import com.idtech.particle.ParticleMod;
 import com.idtech.particle.render.AfterImageRenderer;
+import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -25,8 +26,10 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
+import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
 import java.util.Locale;
@@ -127,8 +130,11 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                 this.savedFrame.forEach((renderType, buffer) -> {
                     renderType.setupRenderState();
 
+                    stack.pushPose();
+                    stack.translate(this.getPos().x(), this.getPos().y(), this.getPos().z());
+
                     ShaderInstance shader = RenderSystem.getShader();
-                    if (shader != null){
+                    if (shader == null){
                         return;
                     }
                     Uniform modelViewMatrix = shader.MODEL_VIEW_MATRIX;
@@ -136,6 +142,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                         modelViewMatrix.set(stack.last().pose());
                         modelViewMatrix.upload();
                     }
+                    setupSectionShader(stack.last().pose(), shader); // find out where the projection matrix actually comes from
 
                     buffer.bind();
                     buffer.draw();
@@ -152,6 +159,66 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
     @Override
     public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.CUSTOM;
+    }
+
+    // thx m_marvin on discord
+    protected void setupSectionShader(Matrix4f pProjectionMatrix, ShaderInstance pShader) {
+        for(int i = 0; i < 12; ++i) {
+            int j = RenderSystem.getShaderTexture(i);
+            pShader.setSampler("Sampler" + i, j);
+        }
+
+        if (pShader.PROJECTION_MATRIX != null) {
+            pShader.PROJECTION_MATRIX.set(pProjectionMatrix);
+        }
+
+        if (pShader.INVERSE_VIEW_ROTATION_MATRIX != null) {
+            pShader.INVERSE_VIEW_ROTATION_MATRIX.set(RenderSystem.getInverseViewRotationMatrix());
+        }
+
+        if (pShader.COLOR_MODULATOR != null) {
+            pShader.COLOR_MODULATOR.set(RenderSystem.getShaderColor());
+        }
+
+        if (pShader.GLINT_ALPHA != null) {
+            pShader.GLINT_ALPHA.set(RenderSystem.getShaderGlintAlpha());
+        }
+
+        if (pShader.FOG_START != null) {
+            pShader.FOG_START.set(RenderSystem.getShaderFogStart());
+        }
+
+        if (pShader.FOG_END != null) {
+            pShader.FOG_END.set(RenderSystem.getShaderFogEnd());
+        }
+
+        if (pShader.FOG_COLOR != null) {
+            pShader.FOG_COLOR.set(RenderSystem.getShaderFogColor());
+        }
+
+        if (pShader.FOG_SHAPE != null) {
+            pShader.FOG_SHAPE.set(RenderSystem.getShaderFogShape().getIndex());
+        }
+
+        if (pShader.TEXTURE_MATRIX != null) {
+            pShader.TEXTURE_MATRIX.set(RenderSystem.getTextureMatrix());
+        }
+
+        if (pShader.GAME_TIME != null) {
+            pShader.GAME_TIME.set(RenderSystem.getShaderGameTime());
+        }
+
+        if (pShader.SCREEN_SIZE != null) {
+            Window window = Minecraft.getInstance().getWindow();
+            pShader.SCREEN_SIZE.set((float)window.getWidth(), (float)window.getHeight());
+        }
+
+        if (pShader.LINE_WIDTH != null) {
+            pShader.LINE_WIDTH.set(RenderSystem.getShaderLineWidth());
+        }
+
+        RenderSystem.setupShaderLights(pShader);
+        pShader.apply();
     }
 
     public record AfterImageParticleOptions(int entityID) implements ParticleOptions{
