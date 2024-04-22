@@ -142,7 +142,7 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                         modelViewMatrix.set(stack.last().pose());
                         modelViewMatrix.upload();
                     }
-                    setupSectionShader(stack.last().pose(), shader); // find out where the projection matrix actually comes from
+                    setupSectionShader(RenderSystem.getProjectionMatrix(), shader); // find out where the projection matrix actually comes from
 
                     buffer.bind();
                     buffer.draw();
