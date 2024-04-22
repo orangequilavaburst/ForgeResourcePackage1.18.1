@@ -132,8 +132,8 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
                 this.savedFrame.forEach((renderType, buffer) -> {
                     renderType.setupRenderState();
 
-                    stack.pushPose();
-                    stack.translate(this.getPos().x(), this.getPos().y(), this.getPos().z());
+                    //stack.pushPose();
+                    //stack.translate(this.getPos().x(), this.getPos().y(), this.getPos().z());
 
                     ShaderInstance shader = RenderSystem.getShader();
                     if (shader == null){

@@ -36,7 +36,9 @@ public class AfterImageRenderer {
             int light = LevelRenderer.getLightColor(entity.level(), new BlockPos(entity.getBlockX(), entity.getBlockY(), entity.getBlockZ()));
 
             poseStack.pushPose();
-            poseStack.translate(entity.position().x(), entity.position().y(), entity.position().z());
+            //poseStack.translate(entity.position().x(), entity.position().y(), entity.position().z());
+            poseStack.translate(-CAMERA.get().getPosition().x(), -CAMERA.get().getPosition().y(), -CAMERA.get().getPosition().z());
+            poseStack.rotateAround(CAMERA.get().rotation().invert(), 0.0f, 0.0f, 0.0f);
             renderer.render(entity, entity.getViewYRot(partialTicks), partialTicks, poseStack, bufferSource, light);
             poseStack.popPose();
 
