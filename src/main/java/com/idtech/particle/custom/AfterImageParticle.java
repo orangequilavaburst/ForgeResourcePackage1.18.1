@@ -2,6 +2,7 @@ package com.idtech.particle.custom;
 
 import com.idtech.particle.ParticleMod;
 import com.idtech.particle.render.AfterImageRenderer;
+import com.mojang.blaze3d.shaders.Uniform;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexBuffer;
@@ -15,6 +16,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.ShaderInstance;
 import net.minecraft.client.renderer.entity.EntityRenderDispatcher;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.core.particles.ParticleOptions;
@@ -124,6 +126,17 @@ public class AfterImageParticle<T extends AfterImageParticle.AfterImageParticleO
             else{
                 this.savedFrame.forEach((renderType, buffer) -> {
                     renderType.setupRenderState();
+
+                    ShaderInstance shader = RenderSystem.getShader();
+                    if (shader != null){
+                        return;
+                    }
+                    Uniform modelViewMatrix = shader.MODEL_VIEW_MATRIX;
+                    if (modelViewMatrix != null){
+                        modelViewMatrix.set(stack.last().pose());
+                        modelViewMatrix.upload();
+                    }
+
                     buffer.bind();
                     buffer.draw();
                 });
