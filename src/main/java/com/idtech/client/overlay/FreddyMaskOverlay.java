@@ -1,4 +1,4 @@
-package com.idtech.client;
+package com.idtech.client.overlay;
 
 import com.idtech.BaseMod;
 import com.idtech.item.ItemMod;

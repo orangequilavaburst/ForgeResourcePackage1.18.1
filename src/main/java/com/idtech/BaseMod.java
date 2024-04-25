@@ -2,7 +2,8 @@ package com.idtech;
 
 import com.idtech.block.BlockMod;
 import com.idtech.block.loot.LootModifierMod;
-import com.idtech.client.FreddyMaskOverlay;
+import com.idtech.client.MenuTypeMod;
+import com.idtech.client.overlay.FreddyMaskOverlay;
 import com.idtech.enchantment.EnchantmentMod;
 import com.idtech.entity.EntityMod;
 import com.idtech.entity.model.CuteAlienModel;
@@ -93,6 +94,7 @@ public class BaseMod {
         PaintingMod.register(modEventBus);
         LootModifierMod.register(modEventBus);
         ParticleMod.register(modEventBus);
+        MenuTypeMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -130,6 +132,7 @@ public class BaseMod {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS){
 
             event.accept(BlockMod.UNSTABLE_CRATE);
+            event.accept(BlockMod.COTTON_CANDY_MACHINE);
 
         }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
@@ -255,6 +258,7 @@ public class BaseMod {
             event.accept(ItemMod.RAW_DRAGONITE);
 
             event.accept(BlockMod.UNSTABLE_CRATE);
+            event.accept(BlockMod.COTTON_CANDY_MACHINE);
             event.accept(BlockMod.FIRE_FLOWER);
 
             event.accept(ItemMod.DRAGONSTONE_AXE);

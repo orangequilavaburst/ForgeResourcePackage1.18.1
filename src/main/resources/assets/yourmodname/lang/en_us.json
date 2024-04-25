@@ -100,6 +100,7 @@
   "block.yourmodname.unstable_crate": "Unstable Crate",
   "block.yourmodname.fire_flower": "Fire Flower",
   "block.yourmodname.potted_fire_flower": "Potted Fire Flower",
+  "block.yourmodname.cotton_candy_machine": "Cotton Candy Machine",
 
   "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
   "entity.yourmodname.yttrium_arrow": "Yttrium Arrow",
@@ -124,6 +125,8 @@
   "tooltip.yourmodname.experience_jar": "Levels:",
   "tooltip.yourmodname.whirlwind_pickaxe": "Mining Speed:",
   "tooltip.yourmodname.sprite_credits_generic": "Sprite by ",
+
+  "container.yourmodname.cotton_candy_machine": "Cotton Candy Machine",
 
   "creativemodetab.yourmodname.basic_tab": "Mega Man's Experiments",
 

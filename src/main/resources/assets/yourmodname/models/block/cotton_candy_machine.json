@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "down": "minecraft:block/cherry_planks",
+    "east": "yourmodname:block/cotton_candy_machine_temp_side",
+    "north": "yourmodname:block/cotton_candy_machine_temp_front",
+    "particle": "yourmodname:block/cotton_candy_machine_temp_front",
+    "south": "yourmodname:block/cotton_candy_machine_temp_side",
+    "up": "yourmodname:block/cotton_candy_machine_temp_top",
+    "west": "yourmodname:block/cotton_candy_machine_temp_front"
+  }
+}
