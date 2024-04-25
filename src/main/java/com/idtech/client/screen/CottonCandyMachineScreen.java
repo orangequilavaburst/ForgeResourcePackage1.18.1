@@ -10,6 +10,8 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 
+import java.awt.*;
+
 public class CottonCandyMachineScreen extends AbstractContainerScreen<CottonCandyMachineMenu> {
 
     private static final ResourceLocation TEXTURE =
@@ -22,7 +24,7 @@ public class CottonCandyMachineScreen extends AbstractContainerScreen<CottonCand
     @Override
     protected void init() {
         super.init();
-        this.titleLabelX = 4;
+        this.titleLabelX = 8;
         this.inventoryLabelY = 10000;
     }
 
@@ -35,6 +37,11 @@ public class CottonCandyMachineScreen extends AbstractContainerScreen<CottonCand
         int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
+
+        if (menu.getSugarProgress() > 0){
+            pGuiGraphics.blit(TEXTURE, x + 33, y + 16, 176, 0/*54 - menu.getSugarProgress()*/, 18, menu.getSugarProgress());
+        }
+        pGuiGraphics.drawString(this.font, String.format("%d/%d", menu.getSugar(), menu.getMaxSugar()), x + 33, y + 71, Color.WHITE.getRGB());
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.idtech;
 
 import com.idtech.block.BlockMod;
+import com.idtech.block.entity.BlockEntityMod;
 import com.idtech.block.loot.LootModifierMod;
 import com.idtech.client.MenuTypeMod;
 import com.idtech.client.overlay.FreddyMaskOverlay;
@@ -95,6 +96,7 @@ public class BaseMod {
         LootModifierMod.register(modEventBus);
         ParticleMod.register(modEventBus);
         MenuTypeMod.register(modEventBus);
+        BlockEntityMod.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

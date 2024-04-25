@@ -22,6 +22,8 @@ public class TagMod {
 
     public static class Items {
 
+        public static final TagKey<Item> COTTON_CANDY_SUGAR = tag("cotton_candy_sugar");
+
         private static TagKey<Item> tag(String name){
             return ItemTags.create(new ResourceLocation(BaseMod.MODID, name));
         }
