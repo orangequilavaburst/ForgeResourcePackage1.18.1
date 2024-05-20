@@ -1,10 +1,14 @@
 package com.idtech.item.custom;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundBlockDestructionPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -14,10 +18,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Random;
 
 public class LaserDrillItem extends Item{
 
@@ -57,9 +66,13 @@ public class LaserDrillItem extends Item{
 
     @Override
     public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
-        if (pLivingEntity instanceof Player pPlayer) {
-            pLevel.destroyBlockProgress(pLivingEntity.getId(), this.blockMiningPos, -1);
-            this.lastSentState = 0;
+
+        if (!pLevel.isClientSide()) {
+            if (pLivingEntity instanceof ServerPlayer serverPlayer) {
+
+                serverPlayer.connection.send(new ClientboundBlockDestructionPacket(serverPlayer.getId(), this.blockMiningPos, -1));
+
+            }
         }
         super.releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
     }
@@ -76,29 +89,41 @@ public class LaserDrillItem extends Item{
                 //blockState.getDestroyProgress(pPlayer, pLevel, hit.getBlockPos());
                 if (pPlayer.getAbilities().instabuild) {
                     pLevel.destroyBlock(blockPos, true, pLivingEntity);
-                }
-                else{
+                } else {
                     if (this.blockMiningPos.equals(blockPos)) {
-                        int t = pStack.getUseDuration() - pRemainingUseDuration;
-                        this.incrementDestroyProgress(blockState, blockPos, t, pPlayer);
-                        float f1 = blockState.getDestroyProgress(pPlayer, pLevel, this.blockMiningPos);
-                        if (f1 >= 0.7F) {
-                            pLevel.destroyBlockProgress(pPlayer.getId(), this.blockMiningPos, -1);
-                            pLevel.destroyBlock(this.blockMiningPos, true, pPlayer);
-                            return;
+                        pPlayer.displayClientMessage(Component.literal(String.format("Looking at: ")).append(Component.translatable(pLevel.getBlockState(this.blockMiningPos).getBlock().getDescriptionId())), true);
+
+                        if (!pLevel.isClientSide()){
+
+                            if (pPlayer instanceof ServerPlayer serverPlayer){
+
+                                serverPlayer.connection.send(new ClientboundBlockDestructionPacket(serverPlayer.getId(), this.blockMiningPos, 1));
+
+                            }
+
                         }
-                        pPlayer.displayClientMessage(Component.literal(String.format("Block progress: %d", this.lastSentState)), true);
-                    }
-                    else{
-                        pLevel.destroyBlockProgress(pPlayer.getId(), this.blockMiningPos, -1);
-                        this.lastSentState = 0;
+
+                    } else {
                         pPlayer.displayClientMessage(Component.literal("Missed block!"), true);
+
+                        if (pPlayer instanceof ServerPlayer serverPlayer){
+
+                            serverPlayer.connection.send(new ClientboundBlockDestructionPacket(serverPlayer.getId(), this.blockMiningPos, -1));
+
+                        }
+
                         this.use(pLevel, pPlayer, pPlayer.getUsedItemHand());
+                        return;
                     }
                 }
 
                 pLevel.addParticle(ParticleTypes.FLAME, hit.getLocation().x, hit.getLocation().y, hit.getLocation().z, 0.0f, 0.0f, 0.0f);
+                Vec3 hitNormal = new Vec3(hit.getDirection().getNormal().getX(), hit.getDirection().getNormal().getY(), hit.getDirection().getNormal().getZ());
+                pLevel.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, pLevel.getBlockState(this.blockMiningPos)), hit.getLocation().x, hit.getLocation().y, hit.getLocation().z, hitNormal.x(), hitNormal.y(), hitNormal.z());
 
+            }
+            else{
+                pPlayer.displayClientMessage(Component.literal("You're not hitting anything!"), true);
             }
         }
 
@@ -112,19 +137,7 @@ public class LaserDrillItem extends Item{
 
     @Override
     public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.CROSSBOW;
-    }
-
-    private float incrementDestroyProgress(BlockState pState, BlockPos pPos, int pUseDuration, Player pPlayer) {
-        int i = pUseDuration;
-        float f = pState.getDestroyProgress(pPlayer, pPlayer.level(), pPos) * (float) (i + 1);
-        int j = (int) (f * 10.0F);
-        if (j != this.lastSentState) {
-            pPlayer.level().destroyBlockProgress(pPlayer.getId(), pPos, j);
-            this.lastSentState = j;
-        }
-
-        return f;
+        return UseAnim.BOW;
     }
 
 }
