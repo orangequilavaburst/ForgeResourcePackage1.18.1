@@ -93,24 +93,8 @@ public class LaserDrillItem extends Item{
                     if (this.blockMiningPos.equals(blockPos)) {
                         pPlayer.displayClientMessage(Component.literal(String.format("Looking at: ")).append(Component.translatable(pLevel.getBlockState(this.blockMiningPos).getBlock().getDescriptionId())), true);
 
-                        if (!pLevel.isClientSide()){
-
-                            if (pPlayer instanceof ServerPlayer serverPlayer){
-
-                                serverPlayer.connection.send(new ClientboundBlockDestructionPacket(serverPlayer.getId(), this.blockMiningPos, 1));
-
-                            }
-
-                        }
-
                     } else {
                         pPlayer.displayClientMessage(Component.literal("Missed block!"), true);
-
-                        if (pPlayer instanceof ServerPlayer serverPlayer){
-
-                            serverPlayer.connection.send(new ClientboundBlockDestructionPacket(serverPlayer.getId(), this.blockMiningPos, -1));
-
-                        }
 
                         this.use(pLevel, pPlayer, pPlayer.getUsedItemHand());
                         return;
