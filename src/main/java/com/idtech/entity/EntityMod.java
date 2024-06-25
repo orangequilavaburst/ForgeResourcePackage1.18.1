@@ -46,6 +46,10 @@ public class EntityMod {
     public static final RegistryObject<EntityType<HyperBombEntity>> HYPER_BOMB_ENTITY = ENTITY_TYPES.register("hyper_bomb",
             () -> EntityType.Builder.of((EntityType.EntityFactory<HyperBombEntity>) HyperBombEntity::new, MobCategory.MISC).sized(0.5f, 0.5f).clientTrackingRange(4).updateInterval(10).build(new ResourceLocation(BaseMod.MODID, "hyper_bomb").toString()));
 
+    public static final RegistryObject<EntityType<PrimedTntBarrel>> PRIMED_TNT_BARREL = ENTITY_TYPES.register("primed_tnt_barrel",
+            () -> EntityType.Builder.of((EntityType.EntityFactory<PrimedTntBarrel>) PrimedTntBarrel::new, MobCategory.MISC).fireImmune().sized(0.98F, 0.98F).clientTrackingRange(10).updateInterval(10).build(new ResourceLocation(BaseMod.MODID, "primed_tnt_barrel").toString()));
+
+
     public static void register(IEventBus bus){
 
         ENTITY_TYPES.register(bus);
@@ -62,6 +66,7 @@ public class EntityMod {
         event.registerEntityRenderer(EntityMod.CUTE_ALIEN.get(), CuteAlienRenderer::new);
         event.registerEntityRenderer(EntityMod.DEVILSKNIFE_ENTITY.get(), DevilsknifeEntityRenderer::new);
         event.registerEntityRenderer(EntityMod.HYPER_BOMB_ENTITY.get(), HyperBombRenderer::new);
+        event.registerEntityRenderer(EntityMod.PRIMED_TNT_BARREL.get(), TntBarrelRenderer::new);
 
     }
 

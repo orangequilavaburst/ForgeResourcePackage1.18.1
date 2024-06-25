@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "yourmodname:block/tnt_barrel",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "yourmodname:block/tnt_barrel",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "yourmodname:block/tnt_barrel",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "yourmodname:block/tnt_barrel",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "yourmodname:block/tnt_barrel"
+    },
+    "facing=west": {
+      "model": "yourmodname:block/tnt_barrel",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

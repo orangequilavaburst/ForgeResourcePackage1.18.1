@@ -101,6 +101,7 @@
   "block.yourmodname.fire_flower": "Fire Flower",
   "block.yourmodname.potted_fire_flower": "Potted Fire Flower",
   "block.yourmodname.cotton_candy_machine": "Cotton Candy Machine",
+  "block.yourmodname.tnt_barrel": "TNT Barrel",
 
   "entity.yourmodname.dragonstone_arrow": "Dragonstone Arrow",
   "entity.yourmodname.yttrium_arrow": "Yttrium Arrow",
@@ -111,6 +112,7 @@
   "entity.yourmodname.devilsknife": "Devilsknife",
   "entity.yourmodname.hyper_bomb": "Hyper Bomb",
   "entity.yourmodname.shuriken": "Shuriken",
+  "entity.yourmodname.primed_tnt_barrel": "Primed TNT Barrel",
 
   "enchantment.yourmodname.snow_point": "Snow Point",
   "enchantment.yourmodname.gamble_gear": "Gamble Gear",

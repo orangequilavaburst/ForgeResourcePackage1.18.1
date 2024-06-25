@@ -3,6 +3,7 @@ package com.idtech.block;
 
 import com.idtech.BaseMod;
 import com.idtech.block.custom.CottonCandyMachineBlock;
+import com.idtech.block.custom.TntBarrelBlock;
 import com.idtech.block.custom.UnstableCrateBlock;
 import com.idtech.item.ItemMod;
 import net.minecraft.util.valueproviders.UniformInt;
@@ -69,6 +70,9 @@ public class BlockMod {
 
     public static final RegistryObject<Block> COTTON_CANDY_MACHINE = registerBlock("cotton_candy_machine",
             () -> new CottonCandyMachineBlock(BlockBehaviour.Properties.copy(Blocks.CRAFTING_TABLE).mapColor(DyeColor.PINK)));
+
+    public static final RegistryObject<Block> TNT_BARREL = registerBlock("tnt_barrel",
+            () -> new TntBarrelBlock(BlockBehaviour.Properties.copy(Blocks.BARREL).mapColor(DyeColor.BROWN)));
 
     public static final RegistryObject<Block> FIRE_FLOWER = registerBlock("fire_flower",
             () -> new FlowerBlock(() -> MobEffects.FIRE_RESISTANCE, 20,

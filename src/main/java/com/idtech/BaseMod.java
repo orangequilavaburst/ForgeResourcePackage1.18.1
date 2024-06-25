@@ -137,6 +137,11 @@ public class BaseMod {
             event.accept(BlockMod.COTTON_CANDY_MACHINE);
 
         }
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS){
+
+            event.accept(BlockMod.TNT_BARREL);
+
+        }
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS){
 
             event.accept(ItemMod.BASIC_ITEM);
@@ -261,6 +266,7 @@ public class BaseMod {
 
             event.accept(BlockMod.UNSTABLE_CRATE);
             event.accept(BlockMod.COTTON_CANDY_MACHINE);
+            event.accept(BlockMod.TNT_BARREL);
             event.accept(BlockMod.FIRE_FLOWER);
 
             event.accept(ItemMod.DRAGONSTONE_AXE);
