@@ -42,7 +42,7 @@ public class TntBarrelRenderer extends EntityRenderer<PrimedTntBarrel> {
         pPoseStack.mulPose(Axis.YP.rotationDegrees(-90.0F));
         pPoseStack.translate(-0.5F, -0.5F, 0.5F);
         pPoseStack.mulPose(Axis.YP.rotationDegrees(90.0F));
-        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, BlockMod.TNT_BARREL.get().defaultBlockState(), pPoseStack, pBuffer, pPackedLight, i / 5 % 2 == 0);
+        TntMinecartRenderer.renderWhiteSolidBlock(this.blockRenderer, BlockMod.TNT_BARREL.get().defaultBlockState().setValue(BlockStateProperties.FACING, pEntity.getDirection()), pPoseStack, pBuffer, pPackedLight, i / 5 % 2 == 0);
         pPoseStack.popPose();
         super.render(pEntity, pEntityYaw, pPartialTicks, pPoseStack, pBuffer, pPackedLight);
     }

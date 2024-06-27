@@ -1,6 +1,8 @@
 package com.idtech.block.custom;
 
+import com.idtech.block.BlockMod;
 import com.idtech.entity.custom.PrimedTntBarrel;
+import com.mojang.math.Axis;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundEvents;
@@ -29,6 +31,7 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
 
@@ -84,7 +87,12 @@ public class TntBarrelBlock extends Block {
             PrimedTntBarrel primedtnt = new PrimedTntBarrel(pLevel, (double)pPos.getX() + 0.5D, (double)pPos.getY(), (double)pPos.getZ() + 0.5D, pExplosion.getIndirectSourceEntity());
             int i = primedtnt.getFuse();
             primedtnt.setFuse((short)(pLevel.random.nextInt(i / 4) + i / 8));
-            primedtnt.setDir(pLevel.getBlockState(pPos).getValue(FACING).get3DDataValue());
+
+            Vec3 vecdir = pPos.getCenter().subtract(pExplosion.getPosition()).normalize();
+            Direction dirdir = Direction.getNearest(vecdir.x(), vecdir.y(), vecdir.z());
+            primedtnt.setDir(dirdir.get3DDataValue());
+            primedtnt.setDeltaMovement(vecdir);
+
             pLevel.addFreshEntity(primedtnt);
         }
     }

@@ -2,22 +2,30 @@ package com.idtech.entity.custom;
 
 import com.idtech.entity.EntityMod;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.item.PrimedTnt;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
 public class PrimedTntBarrel extends PrimedTnt {
 
     private static final EntityDataAccessor<Integer> DATA_FUSE_ID = SynchedEntityData.defineId(PrimedTntBarrel.class, EntityDataSerializers.INT);
     private static final EntityDataAccessor<Integer> DATA_DIRECTION_ID = SynchedEntityData.defineId(PrimedTntBarrel.class, EntityDataSerializers.INT);
-    private static final int DEFAULT_FUSE_TIME = 80;
+    private static final int DEFAULT_FUSE_TIME = 40;
+    private static final float DEFAULT_ACCELERATION = 0.05f;
+    private static final float DEFAULT_MAX_SPEED = 5.0f;
+    private static final float MAX_SPEED_GRAVITY_DAMP = 0.25f;
 
     @javax.annotation.Nullable
     private LivingEntity owner;
@@ -33,6 +41,7 @@ public class PrimedTntBarrel extends PrimedTnt {
         double d0 = pLevel.random.nextDouble() * (double)((float)Math.PI * 2F);
         this.setDeltaMovement(-Math.sin(d0) * 0.02D, (double)0.2F, -Math.cos(d0) * 0.02D);
         this.setFuse(80);
+        this.setDir(Direction.NORTH.get3DDataValue());
         this.xo = pX;
         this.yo = pY;
         this.zo = pZ;
@@ -54,8 +63,13 @@ public class PrimedTntBarrel extends PrimedTnt {
      * Called to update the entity's position/logic.
      */
     public void tick() {
+
+        float at = Math.min(DEFAULT_MAX_SPEED, (float)this.getDeltaMovement().length())/DEFAULT_MAX_SPEED;
         if (!this.isNoGravity()) {
-            this.setDeltaMovement(this.getDeltaMovement().add(0.0D, -0.04D, 0.0D));
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0D, Mth.lerp(at, -0.04D, 0.0D), 0.0D));
+            if (at >= 1.0f){
+                this.setDeltaMovement(this.getDeltaMovement().x(), this.getDeltaMovement().y()*(1.0D - MAX_SPEED_GRAVITY_DAMP), this.getDeltaMovement().z());
+            }
         }
 
         this.move(MoverType.SELF, this.getDeltaMovement());
@@ -67,7 +81,36 @@ public class PrimedTntBarrel extends PrimedTnt {
         */
 
         Vec3 dir = new Vec3(this.getDirection().getNormal().getX(), this.getDirection().getNormal().getY(), this.getDirection().getNormal().getZ());
-        this.setDeltaMovement(this.getDeltaMovement().add(dir.scale(0.1)));
+        boolean check = true;
+        switch(this.getDirection()){
+
+            case NORTH:
+            case SOUTH:
+                if (Math.abs(this.getDeltaMovement().z()) >= DEFAULT_MAX_SPEED){
+                    check = false;
+                }
+                break;
+
+            case EAST:
+            case WEST:
+                if (Math.abs(this.getDeltaMovement().x()) >= DEFAULT_MAX_SPEED){
+                    check = false;
+                }
+                break;
+
+            case UP:
+            case DOWN:
+                if (Math.abs(this.getDeltaMovement().y()) >= DEFAULT_MAX_SPEED){
+                    check = false;
+                }
+                break;
+
+        }
+
+        if (check) {
+            this.setDeltaMovement(this.getDeltaMovement().add(dir.scale(DEFAULT_ACCELERATION)));
+        }
+
 
         int i = this.getFuse() - 1;
         this.setFuse(i);
@@ -79,24 +122,28 @@ public class PrimedTntBarrel extends PrimedTnt {
         } else {
             this.updateInWaterStateAndDoFluidPushing();
             if (this.level().isClientSide) {
-                this.level().addParticle(ParticleTypes.SMOKE, this.getX(), this.getY() + 0.5D, this.getZ(), 0.0D, 0.0D, 0.0D);
+                this.level().addParticle(ParticleTypes.SMOKE, this.getX() - 0.5D*this.getDirection().getStepX(), this.getY() - 0.5D*this.getDirection().getStepY() + 0.5D, this.getZ() - 0.5D*this.getDirection().getStepZ(),
+                        0.0D, 0.0D, 0.0D);
+                this.level().addParticle(new ItemParticleOption(ParticleTypes.ITEM, new ItemStack(Items.GUNPOWDER)), this.getX() - 0.5D*this.getDirection().getStepX(), this.getY() - 0.5D*this.getDirection().getStepY() + 0.5D, this.getZ() - 0.5D*this.getDirection().getStepZ(),
+                        0.0D, 0.0D, 0.0D);
             }
         }
 
     }
 
     public void defineSynchedData() {
-        super.defineSynchedData();
-        this.entityData.define(DATA_FUSE_ID, this.getFuse());
-        this.entityData.define(DATA_DIRECTION_ID, this.getDir());
+        //super.defineSynchedData();
+        this.entityData.define(DATA_FUSE_ID, DEFAULT_FUSE_TIME);
+        this.entityData.define(DATA_DIRECTION_ID, Direction.NORTH.get3DDataValue());
     }
 
     protected void explode() {
-        float f = 4.0F;
-        this.level().explode(this, this.getX(), this.getY(0.0625D), this.getZ(), 4.0F, Level.ExplosionInteraction.TNT);
+        float f = 4.5f;
+        this.level().explode(this, this.getX(), this.getY(0.0625D), this.getZ(), f, Level.ExplosionInteraction.TNT);
     }
+
     protected void addAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
+        //super.addAdditionalSaveData(pCompound);
         pCompound.putShort("Fuse", (short)this.getFuse());
         pCompound.putShort("Direction", (short)this.getDir());
     }
@@ -105,7 +152,7 @@ public class PrimedTntBarrel extends PrimedTnt {
      * (abstract) Protected helper method to read subclass entity data from NBT.
      */
     protected void readAdditionalSaveData(CompoundTag pCompound) {
-        super.readAdditionalSaveData(pCompound);
+        //super.readAdditionalSaveData(pCompound);
         this.setFuse(pCompound.getShort("Fuse"));
         this.setDir(pCompound.getShort("Direction"));
     }
@@ -137,9 +184,7 @@ public class PrimedTntBarrel extends PrimedTnt {
         this.entityData.set(DATA_DIRECTION_ID, dir);
     }
 
-    /**
-     * Gets the fuse from the data manager
-     */
+    //Gets the fuse from the data manager
     public int getDir() {
         return this.entityData.get(DATA_DIRECTION_ID);
     }
