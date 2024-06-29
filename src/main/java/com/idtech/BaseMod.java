@@ -163,6 +163,15 @@ public class BaseMod {
         }
         if (event.getTabKey() == CreativeModeTabs.COMBAT){
 
+            event.accept(ItemMod.WOODEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.GOLDEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.STONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.IRON_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DIAMOND_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.NETHERITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONSTONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.YTTRIUM_SWISS_ARMY_KNIFE);
             event.accept(ItemMod.DRAGONSTONE_SWORD);
             event.accept(ItemMod.DRAGONSTONE_ARROW);
             event.accept(ItemMod.DRAGONSTONE_HELMET);
@@ -199,6 +208,15 @@ public class BaseMod {
         }
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES){
 
+            event.accept(ItemMod.WOODEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.GOLDEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.STONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.IRON_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DIAMOND_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.NETHERITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONSTONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.YTTRIUM_SWISS_ARMY_KNIFE);
             event.accept(ItemMod.DRAGONSTONE_AXE);
             event.accept(ItemMod.DRAGONSTONE_HOE);
             event.accept(ItemMod.DRAGONSTONE_SHOVEL);
@@ -268,6 +286,16 @@ public class BaseMod {
             event.accept(BlockMod.COTTON_CANDY_MACHINE);
             event.accept(BlockMod.TNT_BARREL);
             event.accept(BlockMod.FIRE_FLOWER);
+
+            event.accept(ItemMod.WOODEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.GOLDEN_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.STONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.IRON_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DIAMOND_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.NETHERITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONSTONE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.DRAGONITE_SWISS_ARMY_KNIFE);
+            event.accept(ItemMod.YTTRIUM_SWISS_ARMY_KNIFE);
 
             event.accept(ItemMod.DRAGONSTONE_AXE);
             event.accept(ItemMod.DRAGONSTONE_HOE);

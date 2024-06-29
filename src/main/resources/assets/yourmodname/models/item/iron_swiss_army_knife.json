@@ -1,0 +1,6 @@
+{
+	"parent": "item/handheld",
+	"textures": {
+		"layer0": "yourmodname:item/iron_swiss_army_knife"
+	}
+}

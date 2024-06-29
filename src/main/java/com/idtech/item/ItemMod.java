@@ -125,6 +125,25 @@ public class ItemMod {
     public static final RegistryObject<Item> DRAGONITE_SHOVEL = ITEMS.register("dragonite_shovel", () -> new ShovelItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
     public static final RegistryObject<Item> DRAGONITE_HOE = ITEMS.register("dragonite_hoe", () -> new HoeItem(ToolTierMod.DRAGONITE, 0, 0, new Item.Properties()));
 
+    public static final RegistryObject<Item> WOODEN_SWISS_ARMY_KNIFE = ITEMS.register("wooden_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.WOOD, new Item.Properties()));
+    public static final RegistryObject<Item> GOLDEN_SWISS_ARMY_KNIFE = ITEMS.register("golden_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.GOLD, new Item.Properties()));
+    public static final RegistryObject<Item> STONE_SWISS_ARMY_KNIFE = ITEMS.register("stone_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.STONE, new Item.Properties()));
+    public static final RegistryObject<Item> IRON_SWISS_ARMY_KNIFE = ITEMS.register("iron_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.IRON, new Item.Properties()));
+    public static final RegistryObject<Item> DIAMOND_SWISS_ARMY_KNIFE = ITEMS.register("diamond_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.DIAMOND, new Item.Properties()));
+    public static final RegistryObject<Item> NETHERITE_SWISS_ARMY_KNIFE = ITEMS.register("netherite_swiss_army_knife",
+            () -> new MultiToolItem(Tiers.NETHERITE, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONSTONE_SWISS_ARMY_KNIFE = ITEMS.register("dragonstone_swiss_army_knife",
+            () -> new MultiToolItem(ToolTierMod.DRAGONSTONE, new Item.Properties()));
+    public static final RegistryObject<Item> DRAGONITE_SWISS_ARMY_KNIFE = ITEMS.register("dragonite_swiss_army_knife",
+            () -> new MultiToolItem(ToolTierMod.DRAGONITE, new Item.Properties()));
+    public static final RegistryObject<Item> YTTRIUM_SWISS_ARMY_KNIFE = ITEMS.register("yttrium_swiss_army_knife",
+            () -> new MultiToolItem(ToolTierMod.YTTRIUM, new Item.Properties()));
+
     public static final RegistryObject<Item> LASER_DRILL = ITEMS.register("laser_drill",
             () -> new LaserDrillItem(new Item.Properties(), 10.0f));
     public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
