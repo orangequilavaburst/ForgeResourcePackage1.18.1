@@ -152,6 +152,9 @@ public class ItemMod {
     public static final RegistryObject<Item> FISH_SLAPPER = ITEMS.register("fish_slapper",
             () -> new FishSlapperItem(new Item.Properties().rarity(Rarity.RARE)));
 
+    public static final RegistryObject<Item> MEOWMERE = ITEMS.register("meowmere",
+            () -> new MeowmereItem(new Item.Properties().rarity(Rarity.RARE)));
+
     public static final RegistryObject<Item> TOTEM_OF_HONESTY = ITEMS.register("totem_of_honesty",
             () -> new HonestyTotemItem(new Item.Properties().rarity(Rarity.RARE).stacksTo(1)));
 

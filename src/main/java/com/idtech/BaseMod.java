@@ -201,6 +201,7 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_CALAMITY);
             event.accept(ItemMod.FREDDY_FAZBEAR_MASK);
             event.accept(ItemMod.DEVILSKNIFE);
+            event.accept(ItemMod.MEOWMERE);
             event.accept(ItemMod.HYPER_BOMB);
             event.accept(ItemMod.SHURIKEN);
             event.accept(ItemMod.STAR_ROD);
@@ -333,6 +334,7 @@ public class BaseMod {
 
             event.accept(ItemMod.FIREBALL_WAND);
             event.accept(ItemMod.FISH_SLAPPER);
+            event.accept(ItemMod.MEOWMERE);
             event.accept(ItemMod.WHIRLWIND_PICKAXE);
             event.accept(ItemMod.SHEER_COLD_SWORD);
             event.accept(ItemMod.YTTRIUM_KATANA);

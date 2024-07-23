@@ -1,0 +1,9 @@
+{
+
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "yourmodname:item/meowmere",
+    "particle": "yourmodname:item/meowmere"
+  }
+
+}
