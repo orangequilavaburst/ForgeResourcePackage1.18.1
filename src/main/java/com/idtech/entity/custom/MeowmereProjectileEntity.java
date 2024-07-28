@@ -1,7 +1,9 @@
 package com.idtech.entity.custom;
 
 import com.idtech.entity.EntityMod;
+import com.idtech.particle.ParticleMod;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Holder;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -11,6 +13,8 @@ import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
+import net.minecraft.world.damagesource.*;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.animal.CatVariant;
@@ -22,6 +26,7 @@ import net.minecraft.world.phys.Vec3;
 import org.joml.Vector3f;
 
 import java.awt.*;
+import java.util.Random;
 
 public class MeowmereProjectileEntity extends ThrowableProjectile {
 
@@ -86,6 +91,9 @@ public class MeowmereProjectileEntity extends ThrowableProjectile {
     @Override
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
+        if (pResult.getEntity() instanceof LivingEntity pTarget) {
+            pTarget.hurt(this.damageSources().mobProjectile((Entity) this, (LivingEntity) this.getOwner()), 5.0f);
+        }
         this.discard();
     }
 

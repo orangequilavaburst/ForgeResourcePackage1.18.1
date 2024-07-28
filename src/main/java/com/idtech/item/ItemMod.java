@@ -149,6 +149,9 @@ public class ItemMod {
     public static final RegistryObject<Item> FIREBALL_WAND = ITEMS.register("fireball_wand",
             () -> new FireballWandItem(new Item.Properties().rarity(Rarity.EPIC)));
 
+    public static final RegistryObject<Item> PARTY_POPPER = ITEMS.register("party_popper",
+            () -> new PartyPopperItem(new Item.Properties().stacksTo(16)));
+
     public static final RegistryObject<Item> FISH_SLAPPER = ITEMS.register("fish_slapper",
             () -> new FishSlapperItem(new Item.Properties().rarity(Rarity.RARE)));
 

@@ -68,5 +68,13 @@
     "sounds": [
       "yourmodname:freddy_mask_breathing"
     ]
+  },
+
+  "party_popper":
+  {
+    "subtitle": "sounds.yourmodname.party_popper",
+    "sounds": [
+      "yourmodname:party_popper"
+    ]
   }
 }

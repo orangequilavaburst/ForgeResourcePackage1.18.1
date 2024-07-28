@@ -1,5 +1,6 @@
 package com.idtech.item.custom;
 
+import com.idtech.particle.ParticleMod;
 import com.idtech.sound.SoundMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
@@ -38,6 +39,7 @@ public class HonestyTotemItem extends Item {
                 double d4 = pPlayer.getY(0.5D + d1 / 4.0D);
                 double d5 = pPlayer.getZ(d2 / 4.0D);
                 pPlayer.level().addParticle(ParticleTypes.TOTEM_OF_UNDYING, false, d3, d4, d5, d0, d1 + 0.2D, d2);
+                pPlayer.level().addParticle(ParticleMod.CONFETTI_PARTICLE.get(), false, d3, d4, d5, d0 + random.nextFloat() * 2.0F - 1.0F, d1 + 0.2D + random.nextFloat() * 2.0F - 1.0F, d2 + random.nextFloat() * 2.0F - 1.0F);
             }
         }
 

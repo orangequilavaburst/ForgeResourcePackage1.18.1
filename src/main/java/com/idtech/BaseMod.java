@@ -236,6 +236,7 @@ public class BaseMod {
             event.accept(ItemMod.TOTEM_OF_ELECTRICITY);
             event.accept(ItemMod.DETONATOR);
             event.accept(ItemMod.LASER_DRILL);
+            event.accept(ItemMod.PARTY_POPPER);
 
         }
         if (event.getTabKey() == CreativeModeTabs.FOOD_AND_DRINKS){
@@ -352,6 +353,7 @@ public class BaseMod {
             event.accept(ItemMod.BLOCK_TOSSER);
             event.accept(ItemMod.INVENTORY_TOSSER);
             event.accept(ItemMod.MEGA_BUSTER);
+            event.accept(ItemMod.PARTY_POPPER);
 
             event.accept(ItemMod.CHEESEBURGER);
             event.accept(ItemMod.HOT_DOG);

@@ -5,6 +5,7 @@ import com.idtech.client.MenuTypeMod;
 import com.idtech.client.screen.CottonCandyMachineScreen;
 import com.idtech.particle.ParticleMod;
 import com.idtech.particle.custom.AfterImageParticle;
+import com.idtech.particle.custom.ConfettiParticle;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
@@ -23,6 +24,7 @@ public class ClientBusEvents {
     @SubscribeEvent
     public static void registerParticleFactories(RegisterParticleProvidersEvent event){
         event.registerSpriteSet(ParticleMod.AFTER_IMAGE_PARTICLE.get(), AfterImageParticle.Provider::new);
+        event.registerSpriteSet(ParticleMod.CONFETTI_PARTICLE.get(), ConfettiParticle.Provider::new);
     }
 
 }

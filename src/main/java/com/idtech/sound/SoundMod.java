@@ -24,6 +24,7 @@ public class SoundMod {
     public static final RegistryObject<SoundEvent> FREDDY_MASK_EQUIP = registerSoundEvent("freddy_mask_equip");
     public static final RegistryObject<SoundEvent> FREDDY_MASK_REMOVE = registerSoundEvent("freddy_mask_remove");
     public static final RegistryObject<SoundEvent> FREDDY_MASK_BREATHING = registerSoundEvent("freddy_mask_breathing");
+    public static final RegistryObject<SoundEvent> PARTY_POPPER = registerSoundEvent("party_popper");
 
     // register
 

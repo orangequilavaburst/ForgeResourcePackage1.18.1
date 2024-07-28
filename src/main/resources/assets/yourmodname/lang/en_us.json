@@ -69,6 +69,7 @@
   "item.yourmodname.inventory_tosser": "Inventory Tosser",
   "item.yourmodname.detonator": "Detonator",
   "item.yourmodname.laser_drill": "Laser Drill",
+  "item.yourmodname.party_popper": "Party Popper",
 
   "item.yourmodname.wooden_swiss_army_knife": "Wooden Swiss Army Knife",
   "item.yourmodname.golden_swiss_army_knife": "Golden Swiss Army Knife",
@@ -132,6 +133,7 @@
 
   "sounds.yourmodname.honesty_totem_use": "Totem celebrates",
   "sounds.yourmodname.fazer_blaster": "Fazer Blaster Shoots",
+  "sounds.yourmodname.party_popper": "Party Popper used",
 
   "tooltip.yourmodname.fireball_wand.prefix": "Press",
   "tooltip.yourmodname.fireball_wand.suffix": "to shoot!",

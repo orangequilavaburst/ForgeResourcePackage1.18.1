@@ -2,6 +2,7 @@ package com.idtech.item.custom;
 
 import com.idtech.entity.custom.MeowmereProjectileEntity;
 import com.idtech.item.ItemMod;
+import com.idtech.particle.ParticleMod;
 import com.idtech.utils.TagMod;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,6 +13,8 @@ import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.common.ForgeTier;
+
+import java.util.Random;
 
 public class MeowmereItem extends SwordItem {
 
